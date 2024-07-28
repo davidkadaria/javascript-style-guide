@@ -68,9 +68,11 @@ Other Style Guides
   1. [Amendments](#amendments)
 
 ## Types
+## ტიპები
 
   <a name="types--primitives"></a><a name="1.1"></a>
   - [1.1](#types--primitives) **Primitives**: When you access a primitive type you work directly on its value.
+  - [1.1](#types--primitives) **მარტივი ტიპები (პრიმიტივები)**: მარტივ ტიპთან ურთიერთობისას უშუალოდ მის მნიშვნელობაზე ზემოქმედებთ.
 
     - `string`
     - `number`
@@ -92,9 +94,11 @@ Other Style Guides
     ```
 
     - Symbols and BigInts cannot be faithfully polyfilled, so they should not be used when targeting browsers/environments that don’t support them natively.
+    - Symbol და BigInt ტიპები ჯერ არ გახლავთ სრულად დანერგილი, ამიტომ მათი გამოყენება, როდესაც საქმე გაქვთ ისეთ ბრაუზერებთან/გარემოებთან, რომლებიც მათ მხარს არ უჭერენ, მიზანშეწონილი არ არის.
 
   <a name="types--complex"></a><a name="1.2"></a>
   - [1.2](#types--complex)  **Complex**: When you access a complex type you work on a reference to its value.
+  - [1.2](#types--complex)  **რთული (კომპლექსური) ტიპები**: რთულ ტიპთან ურთიერთობისას მის მნიშვნელობაზე ირიბად ზემოქმედებთ.
 
     - `object`
     - `array`
@@ -112,6 +116,7 @@ Other Style Guides
     ```
 
 **[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## References
 
