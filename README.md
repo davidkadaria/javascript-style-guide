@@ -381,36 +381,40 @@ Other Style Guides
 **[⬆ ზემოთ](#table-of-contents)**
 
 ## Arrays
+## მასივები
 
   <a name="arrays--literals"></a><a name="4.1"></a>
   - [4.1](#arrays--literals) Use the literal syntax for array creation. eslint: [`no-array-constructor`](https://eslint.org/docs/rules/no-array-constructor)
+  - [4.1](#arrays--literals) მასივების შესაქმნელად გამოიყენეთ კვადრატული ფრჩხილები (`literal syntax`). eslint: [`no-array-constructor`](https://eslint.org/docs/rules/no-array-constructor)
 
     ```javascript
-    // bad
+    // ცუდია
     const items = new Array();
 
-    // good
+    // კარგია
     const items = [];
     ```
 
   <a name="arrays--push"></a><a name="4.2"></a>
   - [4.2](#arrays--push) Use [Array#push](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push) instead of direct assignment to add items to an array.
+  - [4.2](#arrays--push) მასივში ელემენტების დასამატებლად, ნაცვლად მნიშვნელობის უშუალო გადაცემისა, გამოიყენეთ [Array#push](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push) [მეთოდი].
 
     ```javascript
     const someStack = [];
 
-    // bad
+    // ცუდია
     someStack[someStack.length] = 'abracadabra';
 
-    // good
+    // კარგია
     someStack.push('abracadabra');
     ```
 
   <a name="es6-array-spreads"></a><a name="4.3"></a>
   - [4.3](#es6-array-spreads) Use array spreads `...` to copy arrays.
+  - [4.3](#es6-array-spreads) მასივთა კოპირებისათვის გამოიყენეთ `...` მასივის განვრცობის (*spread*) სინტაქსი.
 
     ```javascript
-    // bad
+    // ცუდია
     const len = items.length;
     const itemsCopy = [];
     let i;
@@ -419,73 +423,77 @@ Other Style Guides
       itemsCopy[i] = items[i];
     }
 
-    // good
+    // კარგია
     const itemsCopy = [...items];
     ```
 
   <a name="arrays--from"></a>
   <a name="arrays--from-iterable"></a><a name="4.4"></a>
   - [4.4](#arrays--from-iterable) To convert an iterable object to an array, use spreads `...` instead of [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
+  - [4.4](#arrays--from-iterable) გამეორებადი (*iterable*) ობიექტის მასივად გარდაქმნისათვის, [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) [მეთოდის] ნაცვლად, გამოიყენეთ `...` მასივის განვრცობის (*spread*) სინტაქსი.
 
     ```javascript
     const foo = document.querySelectorAll('.foo');
 
-    // good
+    // კარგია
     const nodes = Array.from(foo);
 
-    // best
+    // საუკეთესოა
     const nodes = [...foo];
     ```
 
   <a name="arrays--from-array-like"></a>
   - [4.5](#arrays--from-array-like) Use [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) for converting an array-like object to an array.
+  - [4.5](#arrays--from-array-like) მასივის მსგავსი ობიექტის მასივად გარდაქმნისათვის გამოიყენეთ [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) [მეთოდი].
 
     ```javascript
     const arrLike = { 0: 'foo', 1: 'bar', 2: 'baz', length: 3 };
 
-    // bad
+    // ცუდია
     const arr = Array.prototype.slice.call(arrLike);
 
-    // good
+    // კარგია
     const arr = Array.from(arrLike);
     ```
 
   <a name="arrays--mapping"></a>
   - [4.6](#arrays--mapping) Use [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) instead of spread `...` for mapping over iterables, because it avoids creating an intermediate array.
+  - [4.6](#arrays--mapping) გამეორებადი (*iterable*) ობიექტების *მაპინგისათვის* (mapping), `...` განვრცობის (*spread*) [სინტაქსის] ნაცვლად, გამოიყენეთ [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) [მეთოდი], რადგან ამით თავს აარიდებთ შუალედური მასივის შექმნას.
 
     ```javascript
-    // bad
+    // ცუდია
     const baz = [...foo].map(bar);
 
-    // good
+    // კარგია
     const baz = Array.from(foo, bar);
     ```
 
   <a name="arrays--callback-return"></a><a name="4.5"></a>
   - [4.7](#arrays--callback-return) Use return statements in array method callbacks. It’s ok to omit the return if the function body consists of a single statement returning an expression without side effects, following [8.2](#arrows--implicit-return). eslint: [`array-callback-return`](https://eslint.org/docs/rules/array-callback-return)
+  - [4.7](#arrays--callback-return) გამოიყენეთ `return` განცხადებები მასივის მეთოდების ფუნქციებში (*callbacks*). `return`-ის გამოტოვება დასაშვებია, თუკი ფუნქციის ტანი შედგება ერთი განცხადებისაგან, რომელიც აბრუნებს გამოსახულებას გვერდითი ეფექტების გარეშე. იხილეთ [8.2](#arrows--implicit-return). eslint: [`array-callback-return`](https://eslint.org/docs/rules/array-callback-return)
 
     ```javascript
-    // good
+    // კარგია
     [1, 2, 3].map((x) => {
       const y = x + 1;
       return x * y;
     });
 
-    // good
+    // კარგია
     [1, 2, 3].map((x) => x + 1);
 
-    // bad - no returned value means `acc` becomes undefined after the first iteration
+    // bad - no returned value means `acc` becomes undefined after the first iteration // ცუდია - არ ხდება მნიშვნელობის დაბრუნება, შესაბამისად, `acc` გახდება undefined პირველი გამეორების (იტერაციის) შემდეგ
     [[0, 1], [2, 3], [4, 5]].reduce((acc, item, index) => {
       const flatten = acc.concat(item);
     });
 
-    // good
+    // კარგია
     [[0, 1], [2, 3], [4, 5]].reduce((acc, item, index) => {
       const flatten = acc.concat(item);
       return flatten;
     });
 
-    // bad
+    // ცუდია
     inbox.filter((msg) => {
       const { subject, author } = msg;
       if (subject === 'Mockingbird') {
@@ -495,7 +503,7 @@ Other Style Guides
       }
     });
 
-    // good
+    // კარგია
     inbox.filter((msg) => {
       const { subject, author } = msg;
       if (subject === 'Mockingbird') {
@@ -508,9 +516,10 @@ Other Style Guides
 
   <a name="arrays--bracket-newline"></a>
   - [4.8](#arrays--bracket-newline) Use line breaks after opening array brackets and before closing array brackets, if an array has multiple lines
+  - [4.8](#arrays--bracket-newline) თუ მასივი რამდენიმე ხაზს მოიცავს, მასივის გამხსნელი ფრჩხილის შემდეგ და დამხურავ ფრჩხილამდე მოახდინეთ ხაზის შეწყვეტა (ახალ ხაზზე გადატანა).
 
     ```javascript
-    // bad
+    // ცუდია
     const arr = [
       [0, 1], [2, 3], [4, 5],
     ];
@@ -525,7 +534,7 @@ Other Style Guides
       1, 2,
     ];
 
-    // good
+    // კარგია
     const arr = [[0, 1], [2, 3], [4, 5]];
 
     const objectInArray = [
@@ -543,7 +552,7 @@ Other Style Guides
     ];
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Destructuring
 
