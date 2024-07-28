@@ -630,64 +630,70 @@ Other Style Guides
 **[⬆ ზემოთ](#table-of-contents)**
 
 ## Strings
+## სტრიქონები
 
   <a name="strings--quotes"></a><a name="6.1"></a>
   - [6.1](#strings--quotes) Use single quotes `''` for strings. eslint: [`quotes`](https://eslint.org/docs/rules/quotes)
+  - [6.1](#strings--quotes) სტრიქონებისათვის გამოიყენეთ ერთმაგი ბრჭყალები `''`. eslint: [`quotes`](https://eslint.org/docs/rules/quotes)
 
     ```javascript
-    // bad
+    // ცუდია
     const name = "Capt. Janeway";
 
-    // bad - template literals should contain interpolation or newlines
+    // bad - template literals should contain interpolation or newlines // ცუდია - შაბლონური სტრიქონი უნდა შეიცავდეს ინტერპოლაციას (ჩანართს) ან ახალ ხაზებს
     const name = `Capt. Janeway`;
 
-    // good
+    // კარგია
     const name = 'Capt. Janeway';
     ```
 
   <a name="strings--line-length"></a><a name="6.2"></a>
   - [6.2](#strings--line-length) Strings that cause the line to go over 100 characters should not be written across multiple lines using string concatenation.
+  - [6.2](#strings--line-length) 100 ან მეტი სიმბოლოსაგან შემდგარი სტრიქონების ჩაწერა მრავალ ხაზზე სტრიქონის შეერთების (კონკატენციის) გამოყენებით არ უნდა მოხდეს.
 
     > Why? Broken strings are painful to work with and make code less searchable.
+    > რატომ? წყვეტილ (ფრაგმენტირებულ) სტრიქონებთან მუშაობა მოუხერხებელია და ართულებს კოდში [ამა თუ იმ მონაკვეთის] მოძიებას.
 
     ```javascript
-    // bad
+    // ცუდია
     const errorMessage = 'This is a super long error that was thrown because \
     of Batman. When you stop to think about how Batman had anything to do \
     with this, you would get nowhere \
     fast.';
 
-    // bad
+    // ცუდია
     const errorMessage = 'This is a super long error that was thrown because ' +
       'of Batman. When you stop to think about how Batman had anything to do ' +
       'with this, you would get nowhere fast.';
 
-    // good
+    // კარგია
     const errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
     ```
 
   <a name="es6-template-literals"></a><a name="6.4"></a>
   - [6.3](#es6-template-literals) When programmatically building up strings, use template strings instead of concatenation. eslint: [`prefer-template`](https://eslint.org/docs/rules/prefer-template) [`template-curly-spacing`](https://eslint.org/docs/rules/template-curly-spacing)
+  - [6.3](#es6-template-literals) სტრიქონთა პროგრამულად (*დინამიურად*) შედგენისას შეერთების (კონკატენციის) ნაცვლად გამოიყენეთ შაბლონური სტრიქონები. eslint: [`prefer-template`](https://eslint.org/docs/rules/prefer-template) [`template-curly-spacing`](https://eslint.org/docs/rules/template-curly-spacing)
 
     > Why? Template strings give you a readable, concise syntax with proper newlines and string interpolation features.
+    > რატომ? შაბლონური სტრიქონები გთავაზობთ მარტივად წაკითხვად, მოკლე (ლაკონურ) სინტაქსს; უზრუნველყოფს ფუნქციონალს ახალი ხაზების ჯეროვნად გამოხატვისა და სტრიქონის ინტერპოლაციისათვის.
 
     ```javascript
-    // bad
+    // ცუდია
     function sayHi(name) {
       return 'How are you, ' + name + '?';
     }
 
-    // bad
+    // ცუდია
     function sayHi(name) {
       return ['How are you, ', name, '?'].join();
     }
 
-    // bad
+    // ცუდია
     function sayHi(name) {
       return `How are you, ${ name }?`;
     }
 
-    // good
+    // კარგია
     function sayHi(name) {
       return `How are you, ${name}?`;
     }
@@ -695,22 +701,25 @@ Other Style Guides
 
   <a name="strings--eval"></a><a name="6.5"></a>
   - [6.4](#strings--eval) Never use `eval()` on a string; it opens too many vulnerabilities. eslint: [`no-eval`](https://eslint.org/docs/rules/no-eval)
+  - [6.4](#strings--eval) სტრიქონზე არასოდეს გამოიყენოთ `eval()` [მეთოდი], რადგან იგი [გზას] უხსნის ძალიან ბევრ სისუსტეს (მოწყვლადობას).
 
   <a name="strings--escaping"></a>
   - [6.5](#strings--escaping) Do not unnecessarily escape characters in strings. eslint: [`no-useless-escape`](https://eslint.org/docs/rules/no-useless-escape)
+  - [6.5](#strings--escaping) სტრიქონებში ზედმეტად არ გამოიყენოთ `escape`-სიმბოლოები. eslint: [`no-useless-escape`](https://eslint.org/docs/rules/no-useless-escape)
 
     > Why? Backslashes harm readability, thus they should only be present when necessary.
+    > რატომ? უკუმიმართულებით დახრილი ხაზები (`\`) აუარესებს წაკითხვადობას, მაშასადამე, მათი არსებობა დასაშვებია მხოლოდ საჭიროების შემთხვევაში.
 
     ```javascript
-    // bad
+    // ცუდია
     const foo = '\'this\' \i\s \"quoted\"';
 
-    // good
+    // კარგია
     const foo = '\'this\' is "quoted"';
     const foo = `my name is '${name}'`;
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Functions
 
