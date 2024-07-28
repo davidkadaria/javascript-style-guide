@@ -119,35 +119,44 @@ Other Style Guides
 **[⬆ ზემოთ](#table-of-contents)**
 
 ## References
+## ცვლადების დეკლარირება
 
   <a name="references--prefer-const"></a><a name="2.1"></a>
   - [2.1](#references--prefer-const) Use `const` for all of your references; avoid using `var`. eslint: [`prefer-const`](https://eslint.org/docs/rules/prefer-const), [`no-const-assign`](https://eslint.org/docs/rules/no-const-assign)
+  - [2.1](#references--prefer-const) ცვლადების გამოსაცხადებლად გამოიყენეთ `const` დირექტივა; მოერიდეთ `var`-ის გამოყენებას. eslint: [`prefer-const`](https://eslint.org/docs/rules/prefer-const), [`no-const-assign`](https://eslint.org/docs/rules/no-const-assign)
 
     > Why? This ensures that you can’t reassign your references, which can lead to bugs and difficult to comprehend code.
+    > რატომ? ამ შემთხვევაში არ გექნებათ ცვლადებისათვის მნიშვნელობების ხელახლა მინიჭების საშუალება, რითაც თავიდან აიცილებთ პოტენციურ პროგრამულ ხარვეზებს და კოდიც მეტად მარტივად გასაგები გამოვა.
 
     ```javascript
     // bad
+    // ცუდია
     var a = 1;
     var b = 2;
 
     // good
+    // კარგია
     const a = 1;
     const b = 2;
     ```
 
   <a name="references--disallow-var"></a><a name="2.2"></a>
   - [2.2](#references--disallow-var) If you must reassign references, use `let` instead of `var`. eslint: [`no-var`](https://eslint.org/docs/rules/no-var)
+  - [2.2](#references--disallow-var) თუ გჭირდებათ ცვლადების იმგვარად გამოცხადება, რომ მათთვის მნიშვნელობების ხელახლა მინიჭება შესაძლებელი იყოს, `var`-ის ნაცვლად გამოიყენეთ `let` დირექტივა. eslint: [`no-var`](https://eslint.org/docs/rules/no-var)
 
     > Why? `let` is block-scoped rather than function-scoped like `var`.
+    > რატომ? `let` დირექტივა ვრცელდება ბლოკის ფარგლებში (*block-scoped*), განსხვავებით `var`-ისგან, რომელიც ფუნქციის ფარგლებში ვრცელდება (*function-scoped*).
 
     ```javascript
     // bad
+    // ცუდია
     var count = 1;
     if (true) {
       count += 1;
     }
 
     // good, use the let.
+    // კარგია, გამოიყენეთ let.
     let count = 1;
     if (true) {
       count += 1;
@@ -156,9 +165,11 @@ Other Style Guides
 
   <a name="references--block-scope"></a><a name="2.3"></a>
   - [2.3](#references--block-scope) Note that both `let` and `const` are block-scoped, whereas `var` is function-scoped.
+  - [2.3](#references--block-scope) გახსოვდეთ, რომ `let`-იც და `const`-იც ვრცელდება ბლოკის ფარგლებში (*block-scoped*), მაშინ როცა `var`-ი ფუნქციის ფარგლებში ვრცელდება (*function-scoped*).
 
     ```javascript
     // const and let only exist in the blocks they are defined in.
+    // const-ის და let-ის გამოყენებით დეკლარირებული ცვლადები მხოლოდ იმ ბლოკის ფარგლებში არსებობენ, რომელშიც მათი განსაზღვრა მოხდა.
     {
       let a = 1;
       const b = 1;
@@ -170,8 +181,10 @@ Other Style Guides
     ```
 
     In the above code, you can see that referencing `a` and `b` will produce a ReferenceError, while `c` contains the number. This is because `a` and `b` are block scoped, while `c` is scoped to the containing function.
+    როგორც ზემოთ მოცემულ კოდში ხედავთ, `a` და `b` ცვლადების გამოყენება გამოიწვევს `ReferenceError` ტიპის შეცდომას, ხოლო `c` ცვლადი დააბრუნებს რიცხვით მნიშვნელობას. ასე იმიტომ ხდება, რომ `a` და `b` ცვლადები მოქცეულნი არიან ბლოკის ფარგლებში (*block-scoped*), მაშინ როცა `c` ცვლადი მოქცეულია ფუნქციის ფარგლებში (*function-scoped*).
 
 **[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Objects
 
