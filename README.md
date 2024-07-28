@@ -119,7 +119,7 @@ Other Style Guides
 **[⬆ ზემოთ](#table-of-contents)**
 
 ## References
-## ცვლადების დეკლარირება
+## ცვლადები
 
   <a name="references--prefer-const"></a><a name="2.1"></a>
   - [2.1](#references--prefer-const) Use `const` for all of your references; avoid using `var`. eslint: [`prefer-const`](https://eslint.org/docs/rules/prefer-const), [`no-const-assign`](https://eslint.org/docs/rules/no-const-assign)
