@@ -1,14 +1,20 @@
 # Airbnb JavaScript Style Guide() {
+# JavaScript-ის სტილისტიკის სახელმძღვანელო Airbnb-სგან() {
 
 *A mostly reasonable approach to JavaScript*
+*ყველაზე გონივრული მიდგომა JavaScript ენაზე კოდის საწერად*
 
 > **Note**: this guide assumes you are using [Babel](https://babeljs.io), and requires that you use [babel-preset-airbnb](https://npmjs.com/babel-preset-airbnb) or the equivalent. It also assumes you are installing shims/polyfills in your app, with [airbnb-browser-shims](https://npmjs.com/airbnb-browser-shims) or the equivalent.
+> **შენიშვნა**: წინამდებარე სახელმძღვანელო ითვალისწინებს თქვენი მხრიდან [Babel](https://babeljs.io)-ის გამოყენებას და საჭიროებს იყენებდეთ [babel-preset-airbnb](https://npmjs.com/babel-preset-airbnb)-ს ან მის ეკვივალენტს. ასევე საჭიროა თქვენს აპლიკაციაში მოახდინოთ [airbnb-browser-shims](https://npmjs.com/airbnb-browser-shims)-ის ან მისი ეკვივალენტი shims/polyfills-ის ინსტალაცია.
 
 [![Downloads](https://img.shields.io/npm/dm/eslint-config-airbnb.svg)](https://www.npmjs.com/package/eslint-config-airbnb)
+[![ჩამოტვირთვები](https://img.shields.io/npm/dm/eslint-config-airbnb.svg)](https://www.npmjs.com/package/eslint-config-airbnb)
 [![Downloads](https://img.shields.io/npm/dm/eslint-config-airbnb-base.svg)](https://www.npmjs.com/package/eslint-config-airbnb-base)
+[![ჩამოტვირთვები](https://img.shields.io/npm/dm/eslint-config-airbnb-base.svg)](https://www.npmjs.com/package/eslint-config-airbnb-base)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/airbnb/javascript?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 This guide is available in other languages too. See [Translation](#translation)
+წინამდებარე სახელმძღვანელო ნათარგმნია არაერთ ენაზე. იხილეთ [თარგმანები](#translation).
 
 Other Style Guides
 
@@ -19,6 +25,7 @@ Other Style Guides
   - [Ruby](https://github.com/airbnb/ruby)
 
 ## Table of Contents
+## სარჩევი
 
   1. [Types](#types)
   1. [References](#references)
