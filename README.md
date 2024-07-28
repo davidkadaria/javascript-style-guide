@@ -187,22 +187,26 @@ Other Style Guides
 **[⬆ ზემოთ](#table-of-contents)**
 
 ## Objects
+## ობიექტები
 
   <a name="objects--no-new"></a><a name="3.1"></a>
   - [3.1](#objects--no-new) Use the literal syntax for object creation. eslint: [`no-new-object`](https://eslint.org/docs/rules/no-new-object)
+  - [3.1](#objects--no-new) ობიექტის შესაქმნელად გამოიყენეთ ფიგურული ფრჩხილები (`literal syntax`). eslint: [`no-new-object`](https://eslint.org/docs/rules/no-new-object)
 
     ```javascript
-    // bad
+    // ცუდია
     const item = new Object();
 
-    // good
+    // კარგია
     const item = {};
     ```
 
   <a name="es6-computed-properties"></a><a name="3.4"></a>
   - [3.2](#es6-computed-properties) Use computed property names when creating objects with dynamic property names.
+  - [3.2](#es6-computed-properties) როცა ქმნით ისეთ ობიექტებს, რომლებსაც თვისებათა დინამიური სახელები გააჩნიათ, ყველა თვისების ფორმულირება მოახდინეთ ობიექტის ტანშივე.
 
     > Why? They allow you to define all the properties of an object in one place.
+    > რატომ? ეს საშუალებას მოგცემთ, ობიექტის ყველა თვისება ერთ სივრცეში განსაზღვროთ.
 
     ```javascript
 
@@ -210,14 +214,14 @@ Other Style Guides
       return `a key named ${k}`;
     }
 
-    // bad
+    // ცუდია
     const obj = {
       id: 5,
       name: 'San Francisco',
     };
     obj[getKey('enabled')] = true;
 
-    // good
+    // კარგია
     const obj = {
       id: 5,
       name: 'San Francisco',
@@ -227,9 +231,10 @@ Other Style Guides
 
   <a name="es6-object-shorthand"></a><a name="3.5"></a>
   - [3.3](#es6-object-shorthand) Use object method shorthand. eslint: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand)
+  - [3.3](#es6-object-shorthand) გამოიყენეთ ობიექტის მეთოდის შემოკლებული (სტენოგრაფიული) ჩანაწერი. eslint: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand)
 
     ```javascript
-    // bad
+    // ცუდია
     const atom = {
       value: 1,
 
@@ -238,7 +243,7 @@ Other Style Guides
       },
     };
 
-    // good
+    // კარგია
     const atom = {
       value: 1,
 
@@ -250,18 +255,20 @@ Other Style Guides
 
   <a name="es6-object-concise"></a><a name="3.6"></a>
   - [3.4](#es6-object-concise) Use property value shorthand. eslint: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand)
+  - [3.4](#es6-object-concise) გამოიყენეთ თვისების მნიშვნელობის შემოკლებული (სტენოგრაფიული) ჩანაწერი. eslint: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand)
 
     > Why? It is shorter and descriptive.
+    > რატომ? ის უფრო მოკლე და თვალსაჩინოა.
 
     ```javascript
     const lukeSkywalker = 'Luke Skywalker';
 
-    // bad
+    // ცუდია
     const obj = {
       lukeSkywalker: lukeSkywalker,
     };
 
-    // good
+    // კარგია
     const obj = {
       lukeSkywalker,
     };
@@ -269,14 +276,16 @@ Other Style Guides
 
   <a name="objects--grouped-shorthand"></a><a name="3.7"></a>
   - [3.5](#objects--grouped-shorthand) Group your shorthand properties at the beginning of your object declaration.
+  - [3.5](#objects--grouped-shorthand) შემოკლებულად (სტენოგრაფიულად) ჩაწერილი თვისებები განათავსეთ ობიექტის დასაწყისში.
 
     > Why? It’s easier to tell which properties are using the shorthand.
+    > რატომ? ეს ამარტივებს იმის გარკვევას, თუ რომელი თვისებებია ჩაწერილი შემოკლებულად.
 
     ```javascript
     const anakinSkywalker = 'Anakin Skywalker';
     const lukeSkywalker = 'Luke Skywalker';
 
-    // bad
+    // ცუდია
     const obj = {
       episodeOne: 1,
       twoJediWalkIntoACantina: 2,
@@ -286,7 +295,7 @@ Other Style Guides
       anakinSkywalker,
     };
 
-    // good
+    // კარგია
     const obj = {
       lukeSkywalker,
       anakinSkywalker,
@@ -299,18 +308,20 @@ Other Style Guides
 
   <a name="objects--quoted-props"></a><a name="3.8"></a>
   - [3.6](#objects--quoted-props) Only quote properties that are invalid identifiers. eslint: [`quote-props`](https://eslint.org/docs/rules/quote-props)
+  - [3.6](#objects--quoted-props) ბრჭყალებში მოაქციეთ მხოლოდ ის თვისებები, რომლებიც არაჯეროვანი (*არასწორი*) იდენტიფიკატორებია. eslint: [`quote-props`](https://eslint.org/docs/rules/quote-props)
 
     > Why? In general we consider it subjectively easier to read. It improves syntax highlighting, and is also more easily optimized by many JS engines.
+    > რატომ? ზოგადად, ჩვენი აზრით, ასეთი კოდი უფრო მარტივია წასაკითხად. ეს აუმჯობესებს სინტაქსის ხაზგასმას (*highlighting*) და, ასევე მრავალი JS-ძრავა უფრო მარტივად ახორციელებს [ასეთი კოდის] წარმადობის გაუმჯობესებას (*ოპტიმიზაციას*).
 
     ```javascript
-    // bad
+    // ცუდია
     const bad = {
       'foo': 3,
       'bar': 4,
       'data-blah': 5,
     };
 
-    // good
+    // კარგია
     const good = {
       foo: 3,
       bar: 4,
@@ -320,51 +331,54 @@ Other Style Guides
 
   <a name="objects--prototype-builtins"></a>
   - [3.7](#objects--prototype-builtins) Do not call `Object.prototype` methods directly, such as `hasOwnProperty`, `propertyIsEnumerable`, and `isPrototypeOf`. eslint: [`no-prototype-builtins`](https://eslint.org/docs/rules/no-prototype-builtins)
+  - [3.7](#objects--prototype-builtins) `Object.prototype` მეთოდები, — როგორებიცაა: `hasOwnProperty`, `propertyIsEnumerable` და `isPrototypeOf`, — არ გამოიძახოთ პირდაპირ. eslint: [`no-prototype-builtins`](https://eslint.org/docs/rules/no-prototype-builtins)
 
     > Why? These methods may be shadowed by properties on the object in question - consider `{ hasOwnProperty: false }` - or, the object may be a null object (`Object.create(null)`). In modern browsers that support ES2022, or with a polyfill such as <https://npmjs.com/object.hasown>, `Object.hasOwn` can also be used as an alternative to `Object.prototype.hasOwnProperty.call`.
+    > რატომ? ეს მეთოდები შესაძლებელია გადაფარულ იქნეს ობიექტის თვესებების მიერ, — მაგალითად: `{ hasOwnProperty: false }`, — ან შესაძლოა ობიექტი იყოს ნულოვანი (`Object.create(null)`).
 
     ```javascript
-    // bad
+    // ცუდია
     console.log(object.hasOwnProperty(key));
 
-    // good
+    // კარგია
     console.log(Object.prototype.hasOwnProperty.call(object, key));
 
-    // better
-    const has = Object.prototype.hasOwnProperty; // cache the lookup once, in module scope.
+    // უკეთესია
+    const has = Object.prototype.hasOwnProperty; // cache the lookup once, in module scope. // ქეშირება მოდულის ფარგლებში.
     console.log(has.call(object, key));
 
-    // best
-    console.log(Object.hasOwn(object, key)); // only supported in browsers that support ES2022
+    // საუკეთესოა
+    console.log(Object.hasOwn(object, key)); // only supported in browsers that support ES2022 // ხელმისაწვდომია მხოლოდ იმ ბრაუზერებში, რომლებიც მხარს უჭერენ ES2022-ს
 
-    /* or */
+    /* ან */
     import has from 'has'; // https://www.npmjs.com/package/has
     console.log(has(object, key));
-    /* or */
+    /* ან */
     console.log(Object.hasOwn(object, key)); // https://www.npmjs.com/package/object.hasown
     ```
 
   <a name="objects--rest-spread"></a>
   - [3.8](#objects--rest-spread) Prefer the object spread syntax over [`Object.assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) to shallow-copy objects. Use the object rest parameter syntax to get a new object with certain properties omitted. eslint: [`prefer-object-spread`](https://eslint.org/docs/rules/prefer-object-spread)
+  - [3.8](#objects--rest-spread) ობიექტთა ზედაპირული კოპირებისათვის უპირატესობა მიანიჭეთ ობიექტის განვრცობის (*spread*) სინტაქსს, ნაცვლად [`Object.assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)-ისა. გამოიყენეთ ობიექტის დანარჩენ თვისებათა (*rest parameter*) სინტაქსი, რათა მიიღოთ ახალი ობიექტი გარკვეული თვისებების გამოტოვებით.
 
     ```javascript
-    // very bad
+    // ძალიან ცუდია
     const original = { a: 1, b: 2 };
-    const copy = Object.assign(original, { c: 3 }); // this mutates `original` ಠ_ಠ
-    delete copy.a; // so does this
+    const copy = Object.assign(original, { c: 3 }); // this mutates `original` ಠ_ಠ // ეს ცვლის `original`-ს ಠ_ಠ
+    delete copy.a; // ესეც
 
-    // bad
+    // ცუდია
     const original = { a: 1, b: 2 };
     const copy = Object.assign({}, original, { c: 3 }); // copy => { a: 1, b: 2, c: 3 }
 
-    // good
+    // კარგია
     const original = { a: 1, b: 2 };
     const copy = { ...original, c: 3 }; // copy => { a: 1, b: 2, c: 3 }
 
     const { a, ...noA } = copy; // noA => { b: 2, c: 3 }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Arrays
 
