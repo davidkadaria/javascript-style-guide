@@ -1,14 +1,20 @@
 # Airbnb JavaScript Style Guide() {
+# JavaScript-ის სტილისტიკის სახელმძღვანელო Airbnb-სგან() {
 
 *A mostly reasonable approach to JavaScript*
+*ყველაზე გონივრული მიდგომა JavaScript ენაზე კოდის საწერად*
 
 > **Note**: this guide assumes you are using [Babel](https://babeljs.io), and requires that you use [babel-preset-airbnb](https://npmjs.com/babel-preset-airbnb) or the equivalent. It also assumes you are installing shims/polyfills in your app, with [airbnb-browser-shims](https://npmjs.com/airbnb-browser-shims) or the equivalent.
+> **შენიშვნა**: წინამდებარე სახელმძღვანელო ეფუძნება დაშვებას, რომ თქვენ იყენებთ [Babel](https://babeljs.io)-ს და ასევე სავალდებულოა, იყენებდეთ [babel-preset-airbnb](https://npmjs.com/babel-preset-airbnb)-ს ან მის ეკვივალენტს. გარდა ამისა, საჭიროა თქვენს აპლიკაციაში მოახდინოთ [airbnb-browser-shims](https://npmjs.com/airbnb-browser-shims)-ის ან მისი ეკვივალენტი shims/polyfills-ის ინსტალაცია.
 
 [![Downloads](https://img.shields.io/npm/dm/eslint-config-airbnb.svg)](https://www.npmjs.com/package/eslint-config-airbnb)
+[![ჩამოტვირთვები](https://img.shields.io/npm/dm/eslint-config-airbnb.svg)](https://www.npmjs.com/package/eslint-config-airbnb)
 [![Downloads](https://img.shields.io/npm/dm/eslint-config-airbnb-base.svg)](https://www.npmjs.com/package/eslint-config-airbnb-base)
+[![ჩამოტვირთვები](https://img.shields.io/npm/dm/eslint-config-airbnb-base.svg)](https://www.npmjs.com/package/eslint-config-airbnb-base)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/airbnb/javascript?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 This guide is available in other languages too. See [Translation](#translation)
+წინამდებარე სახელმძღვანელო ხელმისაწვდომია მრავალ ენაზე. იხილეთ [თარგმანები](#translation).
 
 Other Style Guides
 
@@ -19,6 +25,7 @@ Other Style Guides
   - [Ruby](https://github.com/airbnb/ruby)
 
 ## Table of Contents
+## სარჩევი
 
   1. [Types](#types)
   1. [References](#references)
@@ -61,9 +68,11 @@ Other Style Guides
   1. [Amendments](#amendments)
 
 ## Types
+## ტიპები
 
   <a name="types--primitives"></a><a name="1.1"></a>
   - [1.1](#types--primitives) **Primitives**: When you access a primitive type you work directly on its value.
+  - [1.1](#types--primitives) **მარტივი ტიპები (პრიმიტივები)**: მარტივ ტიპთან ურთიერთობისას უშუალოდ მის მნიშვნელობაზე ზემოქმედებთ.
 
     - `string`
     - `number`
@@ -85,9 +94,11 @@ Other Style Guides
     ```
 
     - Symbols and BigInts cannot be faithfully polyfilled, so they should not be used when targeting browsers/environments that don’t support them natively.
+    - Symbol და BigInt ტიპები ჯერ არ გახლავთ სრულად დანერგილი, ამიტომ მათი გამოყენება, როდესაც საქმე გაქვთ ისეთ ბრაუზერებთან/გარემოებთან, რომლებიც მათ მხარს არ უჭერენ, მიზანშეწონილი არ არის.
 
   <a name="types--complex"></a><a name="1.2"></a>
   - [1.2](#types--complex)  **Complex**: When you access a complex type you work on a reference to its value.
+  - [1.2](#types--complex)  **რთული (კომპლექსური) ტიპები**: რთულ ტიპთან ურთიერთობისას მის მნიშვნელობაზე ირიბად ზემოქმედებთ.
 
     - `object`
     - `array`
@@ -105,37 +116,47 @@ Other Style Guides
     ```
 
 **[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## References
+## ცვლადები
 
   <a name="references--prefer-const"></a><a name="2.1"></a>
   - [2.1](#references--prefer-const) Use `const` for all of your references; avoid using `var`. eslint: [`prefer-const`](https://eslint.org/docs/rules/prefer-const), [`no-const-assign`](https://eslint.org/docs/rules/no-const-assign)
+  - [2.1](#references--prefer-const) ცვლადების გამოსაცხადებლად გამოიყენეთ `const` დირექტივა; მოერიდეთ `var`-ის გამოყენებას. eslint: [`prefer-const`](https://eslint.org/docs/rules/prefer-const), [`no-const-assign`](https://eslint.org/docs/rules/no-const-assign)
 
     > Why? This ensures that you can’t reassign your references, which can lead to bugs and difficult to comprehend code.
+    > რატომ? ამ შემთხვევაში არ გექნებათ ცვლადებისათვის მნიშვნელობების ხელახლა მინიჭების საშუალება, რითაც თავიდან აიცილებთ პოტენციურ პროგრამულ ხარვეზებს და კოდიც მეტად მარტივად გასაგები გამოვა.
 
     ```javascript
     // bad
+    // ცუდია
     var a = 1;
     var b = 2;
 
     // good
+    // კარგია
     const a = 1;
     const b = 2;
     ```
 
   <a name="references--disallow-var"></a><a name="2.2"></a>
   - [2.2](#references--disallow-var) If you must reassign references, use `let` instead of `var`. eslint: [`no-var`](https://eslint.org/docs/rules/no-var)
+  - [2.2](#references--disallow-var) თუ გჭირდებათ ცვლადების იმგვარად გამოცხადება, რომ მათთვის მნიშვნელობების ხელახლა მინიჭება შესაძლებელი იყოს, `var`-ის ნაცვლად გამოიყენეთ `let` დირექტივა. eslint: [`no-var`](https://eslint.org/docs/rules/no-var)
 
     > Why? `let` is block-scoped rather than function-scoped like `var`.
+    > რატომ? `let` დირექტივა ვრცელდება ბლოკის ფარგლებში (*block-scoped*), განსხვავებით `var`-ისგან, რომელიც ფუნქციის ფარგლებში ვრცელდება (*function-scoped*).
 
     ```javascript
     // bad
+    // ცუდია
     var count = 1;
     if (true) {
       count += 1;
     }
 
     // good, use the let.
+    // კარგია, გამოიყენეთ let.
     let count = 1;
     if (true) {
       count += 1;
@@ -144,9 +165,11 @@ Other Style Guides
 
   <a name="references--block-scope"></a><a name="2.3"></a>
   - [2.3](#references--block-scope) Note that both `let` and `const` are block-scoped, whereas `var` is function-scoped.
+  - [2.3](#references--block-scope) გახსოვდეთ, რომ `let`-იც და `const`-იც ვრცელდება ბლოკის ფარგლებში (*block-scoped*), მაშინ როცა `var`-ი ფუნქციის ფარგლებში ვრცელდება (*function-scoped*).
 
     ```javascript
     // const and let only exist in the blocks they are defined in.
+    // const-ის და let-ის გამოყენებით დეკლარირებული ცვლადები მხოლოდ იმ ბლოკის ფარგლებში არსებობენ, რომელშიც მათი განსაზღვრა მოხდა.
     {
       let a = 1;
       const b = 1;
@@ -158,26 +181,32 @@ Other Style Guides
     ```
 
     In the above code, you can see that referencing `a` and `b` will produce a ReferenceError, while `c` contains the number. This is because `a` and `b` are block scoped, while `c` is scoped to the containing function.
+    როგორც ზემოთ მოცემულ კოდში ხედავთ, `a` და `b` ცვლადების გამოყენება გამოიწვევს `ReferenceError` ტიპის შეცდომას, ხოლო `c` ცვლადი დააბრუნებს რიცხვით მნიშვნელობას. ამის მიზეზი ის გახლავთ, რომ `a` და `b` ცვლადები მოქცეულნი არიან ბლოკის ფარგლებში (*block-scoped*), მაშინ როცა `c` ცვლადი მოქცეულია ფუნქციის ფარგლებში (*function-scoped*).
 
 **[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Objects
+## ობიექტები
 
   <a name="objects--no-new"></a><a name="3.1"></a>
   - [3.1](#objects--no-new) Use the literal syntax for object creation. eslint: [`no-new-object`](https://eslint.org/docs/rules/no-new-object)
+  - [3.1](#objects--no-new) ობიექტის შესაქმნელად გამოიყენეთ ფიგურული ფრჩხილები (`literal syntax`). eslint: [`no-new-object`](https://eslint.org/docs/rules/no-new-object)
 
     ```javascript
-    // bad
+    // ცუდია
     const item = new Object();
 
-    // good
+    // კარგია
     const item = {};
     ```
 
   <a name="es6-computed-properties"></a><a name="3.4"></a>
   - [3.2](#es6-computed-properties) Use computed property names when creating objects with dynamic property names.
+  - [3.2](#es6-computed-properties) როცა ქმნით ისეთ ობიექტებს, რომლებსაც თვისებათა დინამიური სახელები გააჩნიათ, ყველა თვისების ფორმულირება მოახდინეთ ობიექტის ტანშივე.
 
     > Why? They allow you to define all the properties of an object in one place.
+    > რატომ? ეს საშუალებას მოგცემთ, ობიექტის ყველა თვისება ერთ სივრცეში განსაზღვროთ.
 
     ```javascript
 
@@ -185,14 +214,14 @@ Other Style Guides
       return `a key named ${k}`;
     }
 
-    // bad
+    // ცუდია
     const obj = {
       id: 5,
       name: 'San Francisco',
     };
     obj[getKey('enabled')] = true;
 
-    // good
+    // კარგია
     const obj = {
       id: 5,
       name: 'San Francisco',
@@ -202,9 +231,10 @@ Other Style Guides
 
   <a name="es6-object-shorthand"></a><a name="3.5"></a>
   - [3.3](#es6-object-shorthand) Use object method shorthand. eslint: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand)
+  - [3.3](#es6-object-shorthand) გამოიყენეთ ობიექტის მეთოდის შემოკლებული (სტენოგრაფიული) ჩანაწერი. eslint: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand)
 
     ```javascript
-    // bad
+    // ცუდია
     const atom = {
       value: 1,
 
@@ -213,7 +243,7 @@ Other Style Guides
       },
     };
 
-    // good
+    // კარგია
     const atom = {
       value: 1,
 
@@ -225,18 +255,20 @@ Other Style Guides
 
   <a name="es6-object-concise"></a><a name="3.6"></a>
   - [3.4](#es6-object-concise) Use property value shorthand. eslint: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand)
+  - [3.4](#es6-object-concise) გამოიყენეთ თვისების მნიშვნელობის შემოკლებული (სტენოგრაფიული) ჩანაწერი. eslint: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand)
 
     > Why? It is shorter and descriptive.
+    > რატომ? ის უფრო მოკლე და თვალსაჩინოა.
 
     ```javascript
     const lukeSkywalker = 'Luke Skywalker';
 
-    // bad
+    // ცუდია
     const obj = {
       lukeSkywalker: lukeSkywalker,
     };
 
-    // good
+    // კარგია
     const obj = {
       lukeSkywalker,
     };
@@ -244,14 +276,16 @@ Other Style Guides
 
   <a name="objects--grouped-shorthand"></a><a name="3.7"></a>
   - [3.5](#objects--grouped-shorthand) Group your shorthand properties at the beginning of your object declaration.
+  - [3.5](#objects--grouped-shorthand) შემოკლებულად (სტენოგრაფიულად) ჩაწერილი თვისებები განათავსეთ ობიექტის დასაწყისში.
 
     > Why? It’s easier to tell which properties are using the shorthand.
+    > რატომ? ეს ამარტივებს იმის გარკვევას, თუ რომელი თვისებებია ჩაწერილი შემოკლებულად.
 
     ```javascript
     const anakinSkywalker = 'Anakin Skywalker';
     const lukeSkywalker = 'Luke Skywalker';
 
-    // bad
+    // ცუდია
     const obj = {
       episodeOne: 1,
       twoJediWalkIntoACantina: 2,
@@ -261,7 +295,7 @@ Other Style Guides
       anakinSkywalker,
     };
 
-    // good
+    // კარგია
     const obj = {
       lukeSkywalker,
       anakinSkywalker,
@@ -274,18 +308,20 @@ Other Style Guides
 
   <a name="objects--quoted-props"></a><a name="3.8"></a>
   - [3.6](#objects--quoted-props) Only quote properties that are invalid identifiers. eslint: [`quote-props`](https://eslint.org/docs/rules/quote-props)
+  - [3.6](#objects--quoted-props) ბრჭყალებში მოაქციეთ მხოლოდ ის თვისებები, რომლებიც არაჯეროვანი (*არასწორი*) იდენტიფიკატორებია. eslint: [`quote-props`](https://eslint.org/docs/rules/quote-props)
 
     > Why? In general we consider it subjectively easier to read. It improves syntax highlighting, and is also more easily optimized by many JS engines.
+    > რატომ? საზოგადოდ, ჩვენი დაკვირვებით, ასეთი კოდი უფრო მარტივია წასაკითხად. ეს აუმჯობესებს სინტაქსის ხაზგასმას (*highlighting*) და, ასევე მრავალი JS-ძრავა უფრო მარტივად ახორციელებს ასეთი კოდის წარმადობის გაუმჯობესებას (*ოპტიმიზაციას*).
 
     ```javascript
-    // bad
+    // ცუდია
     const bad = {
       'foo': 3,
       'bar': 4,
       'data-blah': 5,
     };
 
-    // good
+    // კარგია
     const good = {
       foo: 3,
       bar: 4,
@@ -295,83 +331,90 @@ Other Style Guides
 
   <a name="objects--prototype-builtins"></a>
   - [3.7](#objects--prototype-builtins) Do not call `Object.prototype` methods directly, such as `hasOwnProperty`, `propertyIsEnumerable`, and `isPrototypeOf`. eslint: [`no-prototype-builtins`](https://eslint.org/docs/rules/no-prototype-builtins)
+  - [3.7](#objects--prototype-builtins) `Object.prototype` მეთოდები, — როგორებიცაა: `hasOwnProperty`, `propertyIsEnumerable` და `isPrototypeOf`, — არ გამოიძახოთ პირდაპირ. eslint: [`no-prototype-builtins`](https://eslint.org/docs/rules/no-prototype-builtins)
 
     > Why? These methods may be shadowed by properties on the object in question - consider `{ hasOwnProperty: false }` - or, the object may be a null object (`Object.create(null)`). In modern browsers that support ES2022, or with a polyfill such as <https://npmjs.com/object.hasown>, `Object.hasOwn` can also be used as an alternative to `Object.prototype.hasOwnProperty.call`.
+    > რატომ? ეს მეთოდები შესაძლებელია გადაფარულ იქნეს ობიექტის თვესებების მიერ, — მაგალითად: `{ hasOwnProperty: false }`, — ან შესაძლოა ობიექტი იყოს ნულოვანი (`Object.create(null)`).
 
     ```javascript
-    // bad
+    // ცუდია
     console.log(object.hasOwnProperty(key));
 
-    // good
+    // კარგია
     console.log(Object.prototype.hasOwnProperty.call(object, key));
 
-    // better
-    const has = Object.prototype.hasOwnProperty; // cache the lookup once, in module scope.
+    // უკეთესია
+    const has = Object.prototype.hasOwnProperty; // cache the lookup once, in module scope. // ქეშირება მოდულის ფარგლებში.
     console.log(has.call(object, key));
 
-    // best
-    console.log(Object.hasOwn(object, key)); // only supported in browsers that support ES2022
+    // საუკეთესოა
+    console.log(Object.hasOwn(object, key)); // only supported in browsers that support ES2022 // ხელმისაწვდომია მხოლოდ იმ ბრაუზერებში, რომლებიც მხარს უჭერენ ES2022-ს
 
-    /* or */
+    /* ან */
     import has from 'has'; // https://www.npmjs.com/package/has
     console.log(has(object, key));
-    /* or */
+    /* ან */
     console.log(Object.hasOwn(object, key)); // https://www.npmjs.com/package/object.hasown
     ```
 
   <a name="objects--rest-spread"></a>
   - [3.8](#objects--rest-spread) Prefer the object spread syntax over [`Object.assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) to shallow-copy objects. Use the object rest parameter syntax to get a new object with certain properties omitted. eslint: [`prefer-object-spread`](https://eslint.org/docs/rules/prefer-object-spread)
+  - [3.8](#objects--rest-spread) ობიექტთა ზედაპირული კოპირებისათვის უპირატესობა მიანიჭეთ ობიექტის განვრცობის (*spread*) სინტაქსს, ნაცვლად [`Object.assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)-ისა. გამოიყენეთ ობიექტის დანარჩენ თვისებათა (*rest parameter*) სინტაქსი, რათა მიიღოთ ახალი ობიექტი გარკვეული თვისებების გამოტოვებით.
 
     ```javascript
-    // very bad
+    // ძალიან ცუდია
     const original = { a: 1, b: 2 };
-    const copy = Object.assign(original, { c: 3 }); // this mutates `original` ಠ_ಠ
-    delete copy.a; // so does this
+    const copy = Object.assign(original, { c: 3 }); // this mutates `original` ಠ_ಠ // ეს ცვლის `original`-ს ಠ_ಠ
+    delete copy.a; // ესეც
 
-    // bad
+    // ცუდია
     const original = { a: 1, b: 2 };
     const copy = Object.assign({}, original, { c: 3 }); // copy => { a: 1, b: 2, c: 3 }
 
-    // good
+    // კარგია
     const original = { a: 1, b: 2 };
     const copy = { ...original, c: 3 }; // copy => { a: 1, b: 2, c: 3 }
 
     const { a, ...noA } = copy; // noA => { b: 2, c: 3 }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Arrays
+## მასივები
 
   <a name="arrays--literals"></a><a name="4.1"></a>
   - [4.1](#arrays--literals) Use the literal syntax for array creation. eslint: [`no-array-constructor`](https://eslint.org/docs/rules/no-array-constructor)
+  - [4.1](#arrays--literals) მასივების შესაქმნელად გამოიყენეთ კვადრატული ფრჩხილები (`literal syntax`). eslint: [`no-array-constructor`](https://eslint.org/docs/rules/no-array-constructor)
 
     ```javascript
-    // bad
+    // ცუდია
     const items = new Array();
 
-    // good
+    // კარგია
     const items = [];
     ```
 
   <a name="arrays--push"></a><a name="4.2"></a>
   - [4.2](#arrays--push) Use [Array#push](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push) instead of direct assignment to add items to an array.
+  - [4.2](#arrays--push) მასივში ელემენტების დასამატებლად, ნაცვლად მნიშვნელობის უშუალო გადაცემისა, გამოიყენეთ [Array#push](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push) [მეთოდი].
 
     ```javascript
     const someStack = [];
 
-    // bad
+    // ცუდია
     someStack[someStack.length] = 'abracadabra';
 
-    // good
+    // კარგია
     someStack.push('abracadabra');
     ```
 
   <a name="es6-array-spreads"></a><a name="4.3"></a>
   - [4.3](#es6-array-spreads) Use array spreads `...` to copy arrays.
+  - [4.3](#es6-array-spreads) მასივთა კოპირებისათვის გამოიყენეთ `...` მასივის განვრცობის (*spread*) სინტაქსი.
 
     ```javascript
-    // bad
+    // ცუდია
     const len = items.length;
     const itemsCopy = [];
     let i;
@@ -380,73 +423,77 @@ Other Style Guides
       itemsCopy[i] = items[i];
     }
 
-    // good
+    // კარგია
     const itemsCopy = [...items];
     ```
 
   <a name="arrays--from"></a>
   <a name="arrays--from-iterable"></a><a name="4.4"></a>
   - [4.4](#arrays--from-iterable) To convert an iterable object to an array, use spreads `...` instead of [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
+  - [4.4](#arrays--from-iterable) გამეორებადი (*iterable*) ობიექტის მასივად გარდაქმნისათვის, [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) [მეთოდის] ნაცვლად, გამოიყენეთ `...` მასივის განვრცობის (*spread*) სინტაქსი.
 
     ```javascript
     const foo = document.querySelectorAll('.foo');
 
-    // good
+    // კარგია
     const nodes = Array.from(foo);
 
-    // best
+    // საუკეთესოა
     const nodes = [...foo];
     ```
 
   <a name="arrays--from-array-like"></a>
   - [4.5](#arrays--from-array-like) Use [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) for converting an array-like object to an array.
+  - [4.5](#arrays--from-array-like) მასივის მსგავსი ობიექტის მასივად გარდაქმნისათვის გამოიყენეთ [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) [მეთოდი].
 
     ```javascript
     const arrLike = { 0: 'foo', 1: 'bar', 2: 'baz', length: 3 };
 
-    // bad
+    // ცუდია
     const arr = Array.prototype.slice.call(arrLike);
 
-    // good
+    // კარგია
     const arr = Array.from(arrLike);
     ```
 
   <a name="arrays--mapping"></a>
   - [4.6](#arrays--mapping) Use [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) instead of spread `...` for mapping over iterables, because it avoids creating an intermediate array.
+  - [4.6](#arrays--mapping) გამეორებადი (*iterable*) ობიექტების *მაპინგისათვის* (mapping), `...` განვრცობის (*spread*) [სინტაქსის] ნაცვლად, გამოიყენეთ [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) [მეთოდი], რადგან ამით თავს აარიდებთ შუალედური მასივის შექმნას.
 
     ```javascript
-    // bad
+    // ცუდია
     const baz = [...foo].map(bar);
 
-    // good
+    // კარგია
     const baz = Array.from(foo, bar);
     ```
 
   <a name="arrays--callback-return"></a><a name="4.5"></a>
   - [4.7](#arrays--callback-return) Use return statements in array method callbacks. It’s ok to omit the return if the function body consists of a single statement returning an expression without side effects, following [8.2](#arrows--implicit-return). eslint: [`array-callback-return`](https://eslint.org/docs/rules/array-callback-return)
+  - [4.7](#arrays--callback-return) გამოიყენეთ `return` განცხადებები მასივის მეთოდების ფუნქციებში (*callbacks*). `return`-ის გამოტოვება დასაშვებია, თუკი ფუნქციის ტანი შედგება ერთი განცხადებისაგან, რომელიც აბრუნებს გამოსახულებას გვერდითი ეფექტების გარეშე. იხილეთ [8.2](#arrows--implicit-return). eslint: [`array-callback-return`](https://eslint.org/docs/rules/array-callback-return)
 
     ```javascript
-    // good
+    // კარგია
     [1, 2, 3].map((x) => {
       const y = x + 1;
       return x * y;
     });
 
-    // good
+    // კარგია
     [1, 2, 3].map((x) => x + 1);
 
-    // bad - no returned value means `acc` becomes undefined after the first iteration
+    // bad - no returned value means `acc` becomes undefined after the first iteration // ცუდია - არ ხდება მნიშვნელობის დაბრუნება, შესაბამისად, `acc` გახდება undefined პირველი გამეორების (იტერაციის) შემდეგ
     [[0, 1], [2, 3], [4, 5]].reduce((acc, item, index) => {
       const flatten = acc.concat(item);
     });
 
-    // good
+    // კარგია
     [[0, 1], [2, 3], [4, 5]].reduce((acc, item, index) => {
       const flatten = acc.concat(item);
       return flatten;
     });
 
-    // bad
+    // ცუდია
     inbox.filter((msg) => {
       const { subject, author } = msg;
       if (subject === 'Mockingbird') {
@@ -456,7 +503,7 @@ Other Style Guides
       }
     });
 
-    // good
+    // კარგია
     inbox.filter((msg) => {
       const { subject, author } = msg;
       if (subject === 'Mockingbird') {
@@ -469,9 +516,10 @@ Other Style Guides
 
   <a name="arrays--bracket-newline"></a>
   - [4.8](#arrays--bracket-newline) Use line breaks after opening array brackets and before closing array brackets, if an array has multiple lines
+  - [4.8](#arrays--bracket-newline) თუ მასივი რამდენიმე ხაზს მოიცავს, მასივის გამხსნელი ფრჩხილის შემდეგ და დამხურავ ფრჩხილამდე მოახდინეთ ხაზის შეწყვეტა (ახალ ხაზზე გადატანა).
 
     ```javascript
-    // bad
+    // ცუდია
     const arr = [
       [0, 1], [2, 3], [4, 5],
     ];
@@ -486,7 +534,7 @@ Other Style Guides
       1, 2,
     ];
 
-    // good
+    // კარგია
     const arr = [[0, 1], [2, 3], [4, 5]];
 
     const objectInArray = [
@@ -504,17 +552,20 @@ Other Style Guides
     ];
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Destructuring
+## დესტრუქტურიზაცია
 
   <a name="destructuring--object"></a><a name="5.1"></a>
   - [5.1](#destructuring--object) Use object destructuring when accessing and using multiple properties of an object. eslint: [`prefer-destructuring`](https://eslint.org/docs/rules/prefer-destructuring)
+  - [5.1](#destructuring--object) იმისათვის, რომ მისწვდეთ ან გამოიყენოთ ობიექტის მრავალი თვისება, გამოიყენეთ ობიექტის დესტრუქტურიზაცია. eslint: [`prefer-destructuring`](https://eslint.org/docs/rules/prefer-destructuring)
 
     > Why? Destructuring saves you from creating temporary references for those properties, and from repetitive access of the object. Repeating object access creates more repetitive code, requires more reading, and creates more opportunities for mistakes. Destructuring objects also provides a single site of definition of the object structure that is used in the block, rather than requiring reading the entire block to determine what is used.
+    > რატომ? დესტრუქტურიზაცია გიხსნით ამ თვისებებისათვის დროებითი ცვლადების შექმნისა და ობიექტზე ხელახალი მიწვდომის საჭიროებისაგან. ობიექტზე ხელახალი მიწვდომა კოდს მეტად გამეორებადს (*repetitive*) ხდის; მსგავსი კოდი მოითხოვს მეტ კითხვას და ზრდის შეცდომების დაშვების ალბათობას. ობიექტთა დესტრუქტურიზაცია ასევე უზრუნველყოფს ობიექტის, — რომელიც გამოიყენება ბლოკში, — სტრუქტურის ერთ ადგილზე განსაზღვრის შესაძლებლობას, რითაც თავიდან აირიდებთ მთლიანი ბლოკის წაკითხვის აუცილებლობას იმის დასადგენათ, თუ რა არის გამოყენებული.
 
     ```javascript
-    // bad
+    // ცუდია
     function getFullName(user) {
       const firstName = user.firstName;
       const lastName = user.lastName;
@@ -522,13 +573,13 @@ Other Style Guides
       return `${firstName} ${lastName}`;
     }
 
-    // good
+    // კარგია
     function getFullName(user) {
       const { firstName, lastName } = user;
       return `${firstName} ${lastName}`;
     }
 
-    // best
+    // საუკეთესოა
     function getFullName({ firstName, lastName }) {
       return `${firstName} ${lastName}`;
     }
@@ -536,104 +587,113 @@ Other Style Guides
 
   <a name="destructuring--array"></a><a name="5.2"></a>
   - [5.2](#destructuring--array) Use array destructuring. eslint: [`prefer-destructuring`](https://eslint.org/docs/rules/prefer-destructuring)
+  - [5.2](#destructuring--array) გამოიყენეთ მასივის დესტრუქტურიზაცია. eslint: [`prefer-destructuring`](https://eslint.org/docs/rules/prefer-destructuring)
 
     ```javascript
     const arr = [1, 2, 3, 4];
 
-    // bad
+    // ცუდია
     const first = arr[0];
     const second = arr[1];
 
-    // good
+    // კარგია
     const [first, second] = arr;
     ```
 
   <a name="destructuring--object-over-array"></a><a name="5.3"></a>
   - [5.3](#destructuring--object-over-array) Use object destructuring for multiple return values, not array destructuring.
+  - [5.3](#destructuring--object-over-array) გამოიყენეთ ობიექტის დესტრუქტურიზაცია მრავალი დაბრუნებული მნიშვნელობისათვის; მაგრამ იგივეს ნუ იზამთ მასივის შემთხვევაში.
 
     > Why? You can add new properties over time or change the order of things without breaking call sites.
+    > რატომ? დროთა განმავლობაში შეძლებთ ახალი თვისებების დამატებას ან თანმიმდევრობის შეცვლას სტრუქტურათა არევ-დარევის გარეშე.
 
     ```javascript
-    // bad
+    // ცუდია
     function processInput(input) {
-      // then a miracle occurs
+      // შემდეგ ხდება საოცარი რამ
       return [left, right, top, bottom];
     }
 
-    // the caller needs to think about the order of return data
+    // the caller needs to think about the order of return data // გიწევთ დაბრუნებულ მონაცემთა თანმიმდევრობაზე ფიქრი
     const [left, __, top] = processInput(input);
 
-    // good
+    // კარგია
     function processInput(input) {
-      // then a miracle occurs
+      // then a miracle occurs // შემდეგ ხდება საოცარი რამ
       return { left, right, top, bottom };
     }
 
-    // the caller selects only the data they need
+    // the caller selects only the data they need // შეგიძლიათ ამოიღოთ მხოლოდ თქვენთვის საჭირო მონაცემები
     const { left, top } = processInput(input);
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Strings
+## სტრიქონები
 
   <a name="strings--quotes"></a><a name="6.1"></a>
   - [6.1](#strings--quotes) Use single quotes `''` for strings. eslint: [`quotes`](https://eslint.org/docs/rules/quotes)
+  - [6.1](#strings--quotes) სტრიქონებისათვის გამოიყენეთ ერთმაგი ბრჭყალები `''`. eslint: [`quotes`](https://eslint.org/docs/rules/quotes)
 
     ```javascript
-    // bad
+    // ცუდია
     const name = "Capt. Janeway";
 
-    // bad - template literals should contain interpolation or newlines
+    // bad - template literals should contain interpolation or newlines // ცუდია - შაბლონური სტრიქონი უნდა შეიცავდეს ინტერპოლაციას (ჩანართს) ან ახალ ხაზებს
     const name = `Capt. Janeway`;
 
-    // good
+    // კარგია
     const name = 'Capt. Janeway';
     ```
 
   <a name="strings--line-length"></a><a name="6.2"></a>
   - [6.2](#strings--line-length) Strings that cause the line to go over 100 characters should not be written across multiple lines using string concatenation.
+  - [6.2](#strings--line-length) 100 ან მეტი სიმბოლოსაგან შემდგარი სტრიქონების ჩაწერა მრავალ ხაზზე სტრიქონის შეერთების (კონკატენციის) გამოყენებით არ უნდა მოხდეს.
 
     > Why? Broken strings are painful to work with and make code less searchable.
+    > რატომ? წყვეტილ (ფრაგმენტირებულ) სტრიქონებთან მუშაობა მოუხერხებელია და ართულებს კოდში [ამა თუ იმ მონაკვეთის] მოძიებას.
 
     ```javascript
-    // bad
+    // ცუდია
     const errorMessage = 'This is a super long error that was thrown because \
     of Batman. When you stop to think about how Batman had anything to do \
     with this, you would get nowhere \
     fast.';
 
-    // bad
+    // ცუდია
     const errorMessage = 'This is a super long error that was thrown because ' +
       'of Batman. When you stop to think about how Batman had anything to do ' +
       'with this, you would get nowhere fast.';
 
-    // good
+    // კარგია
     const errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
     ```
 
   <a name="es6-template-literals"></a><a name="6.4"></a>
   - [6.3](#es6-template-literals) When programmatically building up strings, use template strings instead of concatenation. eslint: [`prefer-template`](https://eslint.org/docs/rules/prefer-template) [`template-curly-spacing`](https://eslint.org/docs/rules/template-curly-spacing)
+  - [6.3](#es6-template-literals) სტრიქონთა პროგრამულად (*დინამიურად*) შედგენისას შეერთების (კონკატენციის) ნაცვლად გამოიყენეთ შაბლონური სტრიქონები. eslint: [`prefer-template`](https://eslint.org/docs/rules/prefer-template) [`template-curly-spacing`](https://eslint.org/docs/rules/template-curly-spacing)
 
     > Why? Template strings give you a readable, concise syntax with proper newlines and string interpolation features.
+    > რატომ? შაბლონური სტრიქონები გთავაზობთ მარტივად წაკითხვად, მოკლე (ლაკონურ) სინტაქსს; უზრუნველყოფს ფუნქციონალს ახალი ხაზების ჯეროვნად გამოხატვისა და სტრიქონის ინტერპოლაციისათვის.
 
     ```javascript
-    // bad
+    // ცუდია
     function sayHi(name) {
       return 'How are you, ' + name + '?';
     }
 
-    // bad
+    // ცუდია
     function sayHi(name) {
       return ['How are you, ', name, '?'].join();
     }
 
-    // bad
+    // ცუდია
     function sayHi(name) {
       return `How are you, ${ name }?`;
     }
 
-    // good
+    // კარგია
     function sayHi(name) {
       return `How are you, ${name}?`;
     }
@@ -641,27 +701,32 @@ Other Style Guides
 
   <a name="strings--eval"></a><a name="6.5"></a>
   - [6.4](#strings--eval) Never use `eval()` on a string; it opens too many vulnerabilities. eslint: [`no-eval`](https://eslint.org/docs/rules/no-eval)
+  - [6.4](#strings--eval) სტრიქონზე არასოდეს გამოიყენოთ `eval()` [მეთოდი], რადგან იგი [გზას] უხსნის ძალიან ბევრ სისუსტეს (მოწყვლადობას).
 
   <a name="strings--escaping"></a>
   - [6.5](#strings--escaping) Do not unnecessarily escape characters in strings. eslint: [`no-useless-escape`](https://eslint.org/docs/rules/no-useless-escape)
+  - [6.5](#strings--escaping) სტრიქონებში ზედმეტად არ გამოიყენოთ `escape`-სიმბოლოები. eslint: [`no-useless-escape`](https://eslint.org/docs/rules/no-useless-escape)
 
     > Why? Backslashes harm readability, thus they should only be present when necessary.
+    > რატომ? უკუმიმართულებით დახრილი ხაზები (`\`) აუარესებს წაკითხვადობას, მაშასადამე, მათი არსებობა დასაშვებია მხოლოდ საჭიროების შემთხვევაში.
 
     ```javascript
-    // bad
+    // ცუდია
     const foo = '\'this\' \i\s \"quoted\"';
 
-    // good
+    // კარგია
     const foo = '\'this\' is "quoted"';
     const foo = `my name is '${name}'`;
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Functions
+## ფუნქციები
 
   <a name="functions--declarations"></a><a name="7.1"></a>
   - [7.1](#functions--declarations) Use named function expressions instead of function declarations. eslint: [`func-style`](https://eslint.org/docs/rules/func-style), [`func-names`](https://eslint.org/docs/latest/rules/func-names)
+  - [7.1](#functions--declarations) გამოიყენეთ ფუნქციის სახელდებული გამოსახულებები, ნაცვლად ფუნქციის გამოცხადებებისა (*დეკლარირებებისა*). eslint: [`func-style`](https://eslint.org/docs/rules/func-style), [`func-names`](https://eslint.org/docs/latest/rules/func-names)
 
     > Why? Function declarations are hoisted, which means that it’s easy - too easy - to reference the function before it is defined in the file. This harms readability and maintainability. If you find that a function’s definition is large or complex enough that it is interfering with understanding the rest of the file, then perhaps it’s time to extract it to its own module! Don’t forget to explicitly name the expression, regardless of whether or not the name is inferred from the containing variable (which is often the case in modern browsers or when using compilers such as Babel). This eliminates any assumptions made about the Error’s call stack. ([Discussion](https://github.com/airbnb/javascript/issues/794))
 
