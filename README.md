@@ -729,7 +729,7 @@ Other Style Guides
   - [7.1](#functions--declarations) გამოიყენეთ ფუნქციის სახელდებული გამოსახულებები, ნაცვლად ფუნქციის გამოცხადებებისა. eslint: [`func-style`](https://eslint.org/docs/rules/func-style), [`func-names`](https://eslint.org/docs/latest/rules/func-names)
 
     > Why? Function declarations are hoisted, which means that it’s easy - too easy - to reference the function before it is defined in the file. This harms readability and maintainability. If you find that a function’s definition is large or complex enough that it is interfering with understanding the rest of the file, then perhaps it’s time to extract it to its own module! Don’t forget to explicitly name the expression, regardless of whether or not the name is inferred from the containing variable (which is often the case in modern browsers or when using compilers such as Babel). This eliminates any assumptions made about the Error’s call stack. ([Discussion](https://github.com/airbnb/javascript/issues/794))
-    > რატომ? ფუნქციის გამოცხადებებზე მოქმედებს ე.წ. „აწევის“[^16] მექანიზმი, რაც ნიშნავს, რომ ფაილში ფუნქციაზე მითითება მის განსაზღვრამდეც მარტივად — მეტისმეტად მარტივადაც კი — არის შესაძლებელი. ეს აუარესებს კოდის წაკითხვადობას და ართულებს მის მოვლა-შენახვას. თუკი აღმოაჩენთ, რომ ფუნქციის განსაზღვრება იმდენად დიდი ან რთულია, რომ ხელს გიშლით ფაილის დანარჩენი ნაწილის აღქმაში, ალბათ, დროა, იგი ცალკე მოდულად გამოაცალკევოთ! ნუ დაგავიწყდებათ გამოსახულებისათვის ცხადი სახელის მინიჭება, მიუხედავად იმისა, გამომდინარეობს თუ არა [ეს] სახელი იმ ცვლადისგან, რომელსაც [ფუნქცია] მიენიჭა (რაც ხშირი [შემთხვევაა] თანამედროვე ბრაუზერებში ან ისეთი კომპილატორების გამოყენებისას, როგორიც Babel გახლავთ). ამგვარად, აღმოიფხვრება ყოველგვარი ვარაუდი Error-ის გამოძახებათა სტეკთან[^17] დაკავშირებით. ([მსჯელობა](https://github.com/airbnb/javascript/issues/794))
+    > რატომ? ფუნქციის გამოცხადებებზე მოქმედებს ე.წ. „აწევის“[^16] მექანიზმი, რაც ნიშნავს, რომ ფაილში ფუნქციაზე მითითება მის განსაზღვრამდეც მარტივად — მეტისმეტად მარტივადაც კი — არის შესაძლებელი. ეს აუარესებს კოდის წაკითხვადობას და ართულებს მის მოვლა-შენახვას. თუკი აღმოაჩენთ, რომ ფუნქციის განსაზღვრება იმდენად დიდი ან რთულია, რომ ხელს გიშლით ფაილის დანარჩენი ნაწილის აღქმაში, ალბათ, დროა, იგი ცალკე მოდულად გამოაცალკევოთ! ნუ დაგავიწყდებათ გამოსახულებისათვის ცხადი სახელის მინიჭება, მიუხედავად იმისა, გამომდინარეობს თუ არა [ეს] სახელი იმ ცვლადისგან, რომელსაც [ფუნქცია] მიენიჭა (რაც ხშირი [შემთხვევაა] თანამედროვე ბრაუზერებში ან ისეთი კომპილატორების გამოყენებისას, როგორიც Babel გახლავთ). ამგვარად, აღმოიფხვრება ყოველგვარი ვარაუდი Error-ის[^21] გამოძახებათა სტეკთან[^17] დაკავშირებით. ([მსჯელობა](https://github.com/airbnb/javascript/issues/794))
 
     ```javascript
     // ცუდია
@@ -4224,10 +4224,12 @@ We encourage you to fork this guide and change the rules to fit your team’s st
 [^16]:
     მექანიზმი, რომლის მეშვეობითაც [JavaScript-ის] ინტერპრეტატორი ფუნქციისა და ცვლადის გამოცხადებებს მოქმედების არეალის დასაწყისში „სწევს“ (ინგლ.: Hoisting)
 [^17]:
-    (ინგლ.: Call stack)
+    „დასტა“: მონაცემთა აბსტრაქტული ტიპი, რომელშიაც ჩანაწერები ემატება და მუშავდება ბოლოდან (ინგლ.: Stack)
 [^18]:
     (ინგლ.: Immediately Invoked Function Expression — IIFE)
 [^19]:
     ობიექტის ან მნიშვნელობის უშუალო შეცვლა (ინგლ.: Mutation)
 [^20]:
     (ინგლ.: Variadic function)
+[^21]:
+    შეცდომა; უწესივრობა, რომლის გამოც კომპიუტერი ვერ ასრულებს ბრძანებას (ინგლ.: Error)
