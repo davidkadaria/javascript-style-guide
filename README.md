@@ -729,20 +729,22 @@ Other Style Guides
   - [7.1](#functions--declarations) გამოიყენეთ ფუნქციის სახელდებული გამოსახულებები, ნაცვლად ფუნქციის გამოცხადებებისა. eslint: [`func-style`](https://eslint.org/docs/rules/func-style), [`func-names`](https://eslint.org/docs/latest/rules/func-names)
 
     > Why? Function declarations are hoisted, which means that it’s easy - too easy - to reference the function before it is defined in the file. This harms readability and maintainability. If you find that a function’s definition is large or complex enough that it is interfering with understanding the rest of the file, then perhaps it’s time to extract it to its own module! Don’t forget to explicitly name the expression, regardless of whether or not the name is inferred from the containing variable (which is often the case in modern browsers or when using compilers such as Babel). This eliminates any assumptions made about the Error’s call stack. ([Discussion](https://github.com/airbnb/javascript/issues/794))
+    > რატომ? ფუნქციის გამოცხადებებზე მოქმედებს ე.წ. „აწევის“[^16] მექანიზმი, რაც ნიშნავს, რომ ფაილში ფუნქციაზე მითითება მის განსაზღვრამდეც მარტივად — მეტისმეტად მარტივადაც კი — არის შესაძლებელი. ეს აუარესებს კოდის წაკითხვადობას და ართულებს მის მოვლა-შენახვას. თუკი აღმოაჩენთ, რომ ფუნქციის განსაზღვრება იმდენად დიდი ან რთულია, რომ ხელს გიშლით ფაილის დანარჩენი ნაწილის აღქმაში, ალბათ, დროა, იგი ცალკე მოდულად გამოაცალკევოთ! ნუ დაგავიწყდებათ გამოსახულებისათვის ცხადი სახელის მინიჭება, მიუხედავად იმისა, გამომდინარეობს თუ არა [ეს] სახელი იმ ცვლადისგან, რომელსაც [ფუნქცია] მიენიჭა (რაც ხშირი [შემთხვევაა] თანამედროვე ბრაუზერებში ან ისეთი კომპილატორების გამოყენებისას, როგორიც Babel გახლავთ). ამგვარად, აღმოიფხვრება ყოველგვარი ვარაუდი Error-ის გამოძახებათა სტეკთან[^17] დაკავშირებით. ([მსჯელობა](https://github.com/airbnb/javascript/issues/794))
 
     ```javascript
-    // bad
+    // ცუდია
     function foo() {
       // ...
     }
 
-    // bad
+    // ცუდია
     const foo = function () {
       // ...
     };
 
-    // good
+    // კარგია
     // lexical name distinguished from the variable-referenced invocation(s)
+    // ლექსიკური სახელი განსხვავებულია ცვლადის მეშვეობით [განხორციელებული] გამოძახებ(ებ)ისგან
     const short = function longUniqueMoreDescriptiveLexicalFoo() {
       // ...
     };
@@ -750,11 +752,14 @@ Other Style Guides
 
   <a name="functions--iife"></a><a name="7.2"></a>
   - [7.2](#functions--iife) Wrap immediately invoked function expressions in parentheses. eslint: [`wrap-iife`](https://eslint.org/docs/rules/wrap-iife)
+  - [7.2](#functions--iife) მყისიერად გამოძახებადი ფუნქციის გამოსახულებები[^18] მოაქციეთ ფრჩხილებში. eslint: [`wrap-iife`](https://eslint.org/docs/rules/wrap-iife)
 
     > Why? An immediately invoked function expression is a single unit - wrapping both it, and its invocation parens, in parens, cleanly expresses this. Note that in a world with modules everywhere, you almost never need an IIFE.
+    > რატომ? მყისიერად გამოძახებადი ფუნქციის გამოსახულება ერთიანი ერთეულია — ფრჩხილებში როგორც მისი, ისე მისი გამოძახების ფრჩხილების მოქცევა ამას ნათლად გამოხატავს. გაითვალისწინეთ, რომ მოდულებისგან შემდგარ სამყაროში IIFE თითქმის არასოდეს დაგჭირდებათ.
 
     ```javascript
     // immediately-invoked function expression (IIFE)
+    // მყისიერად გამოძახებადი ფუნქციის გამოსახულება (IIFE)
     (function () {
       console.log('Welcome to the Internet. Please follow me.');
     }());
@@ -762,19 +767,21 @@ Other Style Guides
 
   <a name="functions--in-blocks"></a><a name="7.3"></a>
   - [7.3](#functions--in-blocks) Never declare a function in a non-function block (`if`, `while`, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears. eslint: [`no-loop-func`](https://eslint.org/docs/rules/no-loop-func)
+  - [7.3](#functions--in-blocks) არასოდეს გამოაცხადოთ ფუნქცია არაფუნქციურ ბლოკში (`if`, `while` და ა.შ.) — ამის ნაცვლად, ფუნქცია მიანიჭეთ ცვლადს. ბრაუზერები ამის [გაკეთების] საშუალებას მოგცემენ, თუმცა თითოეული მათგანი ამას სხვადასხვაგვარად განმარტავს, რაც ცუდის მომასწავებელია. eslint: [`no-loop-func`](https://eslint.org/docs/rules/no-loop-func)
 
   <a name="functions--note-on-blocks"></a><a name="7.4"></a>
   - [7.4](#functions--note-on-blocks) **Note:** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement.
+  - [7.4](#functions--note-on-blocks) **შენიშვნა:** ECMA-262 [სტანდარტი] ბლოკს (`block`) განსაზღვრავს, როგორც განცხადებათა ჩამონათვალს. ფუნქციის გამოცხადება არ გახლავთ განცხადება.
 
     ```javascript
-    // bad
+    // ცუდია
     if (currentUser) {
       function test() {
         console.log('Nope.');
       }
     }
 
-    // good
+    // კარგია
     let test;
     if (currentUser) {
       test = () => {
@@ -785,14 +792,15 @@ Other Style Guides
 
   <a name="functions--arguments-shadow"></a><a name="7.5"></a>
   - [7.5](#functions--arguments-shadow) Never name a parameter `arguments`. This will take precedence over the `arguments` object that is given to every function scope.
+  - [7.5](#functions--arguments-shadow) პარამეტრს არასოდეს დაარქვათ `arguments`. იგი უპირატესობას მოიპოვებს [თავად ენის] `arguments` ობიექტზე, რომელიც ყოველი ფუნქციის მოქმედების არეალს [ავტომატურად] გადაეცემა.
 
     ```javascript
-    // bad
+    // ცუდია
     function foo(name, options, arguments) {
       // ...
     }
 
-    // good
+    // კარგია
     function foo(name, options, args) {
       // ...
     }
@@ -800,17 +808,19 @@ Other Style Guides
 
   <a name="es6-rest"></a><a name="7.6"></a>
   - [7.6](#es6-rest) Never use `arguments`, opt to use rest syntax `...` instead. eslint: [`prefer-rest-params`](https://eslint.org/docs/rules/prefer-rest-params)
+  - [7.6](#es6-rest) არასოდეს გამოიყენოთ `arguments` — მის ნაცვლად აირჩიეთ დანარჩენ პარამეტრთა სინტაქსი `...`. eslint: [`prefer-rest-params`](https://eslint.org/docs/rules/prefer-rest-params)
 
     > Why? `...` is explicit about which arguments you want pulled. Plus, rest arguments are a real Array, and not merely Array-like like `arguments`.
+    > რატომ? `...` ცხადად განსაზღვრავს, თუ რომელი არგუმენტების მიღება გსურთ. ამასთან, ამგვარად მიღებული არგუმენტები ნამდვილი მასივია (`Array`) და არა უბრალოდ მასივის მსგავსი [ობიექტი], როგორიც `arguments` გახლავთ.
 
     ```javascript
-    // bad
+    // ცუდია
     function concatenateAll() {
       const args = Array.prototype.slice.call(arguments);
       return args.join('');
     }
 
-    // good
+    // კარგია
     function concatenateAll(...args) {
       return args.join('');
     }
@@ -818,18 +828,22 @@ Other Style Guides
 
   <a name="es6-default-parameters"></a><a name="7.7"></a>
   - [7.7](#es6-default-parameters) Use default parameter syntax rather than mutating function arguments.
+  - [7.7](#es6-default-parameters) გამოიყენეთ ნაგულისხმევი პარამეტრების სინტაქსი, ნაცვლად ფუნქციის არგუმენტების მუტაციისა[^19].
 
     ```javascript
-    // really bad
+    // ძალიან ცუდია
     function handleThings(opts) {
       // No! We shouldn’t mutate function arguments.
+      // არა! ფუნქციის არგუმენტების მუტაცია არ უნდა მოვახდინოთ.
       // Double bad: if opts is falsy it'll be set to an object which may
       // be what you want but it can introduce subtle bugs.
+      // ორმაგად ცუდია: თუ opts მცდარია (falsy), მას მიენიჭება ობიექტი, რაც,
+      // შესაძლოა, გინდოდათ კიდეც, თუმცა ამან შეიძლება შეუმჩნეველი ხარვეზები წარმოშვას.
       opts = opts || {};
       // ...
     }
 
-    // still bad
+    // მაინც ცუდია
     function handleThings(opts) {
       if (opts === void 0) {
         opts = {};
@@ -837,7 +851,7 @@ Other Style Guides
       // ...
     }
 
-    // good
+    // კარგია
     function handleThings(opts = {}) {
       // ...
     }
@@ -845,12 +859,14 @@ Other Style Guides
 
   <a name="functions--default-side-effects"></a><a name="7.8"></a>
   - [7.8](#functions--default-side-effects) Avoid side effects with default parameters.
+  - [7.8](#functions--default-side-effects) მოერიდეთ გვერდით ეფექტებს ნაგულისხმევ პარამეტრებში.
 
     > Why? They are confusing to reason about.
+    > რატომ? ისინი დამაბნეველია და ართულებს კოდზე მსჯელობას.
 
     ```javascript
     let b = 1;
-    // bad
+    // ცუდია
     function count(a = b++) {
       console.log(a);
     }
@@ -862,14 +878,15 @@ Other Style Guides
 
   <a name="functions--defaults-last"></a><a name="7.9"></a>
   - [7.9](#functions--defaults-last) Always put default parameters last. eslint: [`default-param-last`](https://eslint.org/docs/rules/default-param-last)
+  - [7.9](#functions--defaults-last) ნაგულისხმევი პარამეტრები მუდამ ბოლოში განათავსეთ. eslint: [`default-param-last`](https://eslint.org/docs/rules/default-param-last)
 
     ```javascript
-    // bad
+    // ცუდია
     function handleThings(opts = {}, name) {
       // ...
     }
 
-    // good
+    // კარგია
     function handleThings(name, opts = {}) {
       // ...
     }
@@ -877,45 +894,51 @@ Other Style Guides
 
   <a name="functions--constructor"></a><a name="7.10"></a>
   - [7.10](#functions--constructor) Never use the Function constructor to create a new function. eslint: [`no-new-func`](https://eslint.org/docs/rules/no-new-func)
+  - [7.10](#functions--constructor) ახალი ფუნქციის შესაქმნელად არასოდეს გამოიყენოთ `Function` კონსტრუქტორი. eslint: [`no-new-func`](https://eslint.org/docs/rules/no-new-func)
 
     > Why? Creating a function in this way evaluates a string similarly to `eval()`, which opens vulnerabilities.
+    > რატომ? ამგვარად შექმნილი ფუნქცია სტრიქონს ისევე ასრულებს, როგორც `eval()`, რაც [გზას] უხსნის სისუსტეებს.
 
     ```javascript
-    // bad
+    // ცუდია
     const add = new Function('a', 'b', 'return a + b');
 
-    // still bad
+    // მაინც ცუდია
     const subtract = Function('a', 'b', 'return a - b');
     ```
 
   <a name="functions--signature-spacing"></a><a name="7.11"></a>
   - [7.11](#functions--signature-spacing) Spacing in a function signature. eslint: [`space-before-function-paren`](https://eslint.org/docs/rules/space-before-function-paren) [`space-before-blocks`](https://eslint.org/docs/rules/space-before-blocks)
+  - [7.11](#functions--signature-spacing) ინტერვალები ფუნქციის სიგნატურაში. eslint: [`space-before-function-paren`](https://eslint.org/docs/rules/space-before-function-paren) [`space-before-blocks`](https://eslint.org/docs/rules/space-before-blocks)
 
     > Why? Consistency is good, and you shouldn’t have to add or remove a space when adding or removing a name.
+    > რატომ? თანმიმდევრულობა კარგი [რამ] გახლავთ და, ამასთან, [ფუნქციისთვის] სახელის დამატებისას ან მოცილებისას ინტერვალის დამატება ან მოცილება არ უნდა გიწევდეთ.
 
     ```javascript
-    // bad
+    // ცუდია
     const f = function(){};
     const g = function (){};
     const h = function() {};
 
-    // good
+    // კარგია
     const x = function () {};
     const y = function a() {};
     ```
 
   <a name="functions--mutate-params"></a><a name="7.12"></a>
   - [7.12](#functions--mutate-params) Never mutate parameters. eslint: [`no-param-reassign`](https://eslint.org/docs/rules/no-param-reassign)
+  - [7.12](#functions--mutate-params) არასოდეს მოახდინოთ პარამეტრების მუტაცია. eslint: [`no-param-reassign`](https://eslint.org/docs/rules/no-param-reassign)
 
     > Why? Manipulating objects passed in as parameters can cause unwanted variable side effects in the original caller.
+    > რატომ? პარამეტრების სახით გადაცემული ობიექტების [უშუალო] შეცვლამ შესაძლოა გამომძახებელ [კოდში] ცვლადებთან დაკავშირებული არასასურველი გვერდითი ეფექტები გამოიწვიოს.
 
     ```javascript
-    // bad
+    // ცუდია
     function f1(obj) {
       obj.key = 1;
     }
 
-    // good
+    // კარგია
     function f2(obj) {
       const key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1;
     }
@@ -923,11 +946,13 @@ Other Style Guides
 
   <a name="functions--reassign-params"></a><a name="7.13"></a>
   - [7.13](#functions--reassign-params) Never reassign parameters. eslint: [`no-param-reassign`](https://eslint.org/docs/rules/no-param-reassign)
+  - [7.13](#functions--reassign-params) არასოდეს მიანიჭოთ პარამეტრებს ხელახლა მნიშვნელობა. eslint: [`no-param-reassign`](https://eslint.org/docs/rules/no-param-reassign)
 
     > Why? Reassigning parameters can lead to unexpected behavior, especially when accessing the `arguments` object. It can also cause optimization issues, especially in V8.
+    > რატომ? პარამეტრებისათვის მნიშვნელობების ხელახლა მინიჭებამ შესაძლოა მოულოდნელი ქცევა გამოიწვიოს, განსაკუთრებით მაშინ, როდესაც `arguments` ობიექტს მიწვდებით. ამან, ასევე, შესაძლოა ოპტიმიზაციასთან დაკავშირებული პრობლემები წარმოშვას, განსაკუთრებით V8-ში.
 
     ```javascript
-    // bad
+    // ცუდია
     function f1(a) {
       a = 1;
       // ...
@@ -938,7 +963,7 @@ Other Style Guides
       // ...
     }
 
-    // good
+    // კარგია
     function f3(a) {
       const b = a || 1;
       // ...
@@ -951,37 +976,40 @@ Other Style Guides
 
   <a name="functions--spread-vs-apply"></a><a name="7.14"></a>
   - [7.14](#functions--spread-vs-apply) Prefer the use of the spread syntax `...` to call variadic functions. eslint: [`prefer-spread`](https://eslint.org/docs/rules/prefer-spread)
+  - [7.14](#functions--spread-vs-apply) არგუმენტთა ცვლადი რაოდენობის მქონე ფუნქციების[^20] გამოსაძახებლად უმჯობესია, გამოიყენოთ განვრცობის სინტაქსი `...`. eslint: [`prefer-spread`](https://eslint.org/docs/rules/prefer-spread)
 
     > Why? It’s cleaner, you don’t need to supply a context, and you can not easily compose `new` with `apply`.
+    > რატომ? ეს უფრო სუფთა [მიდგომაა], კონტექსტის მითითება არ გჭირდებათ და, ამასთან, `new`-სა და `apply`-ს მარტივად ვერ შეუთავსებთ ერთმანეთს.
 
     ```javascript
-    // bad
+    // ცუდია
     const x = [1, 2, 3, 4, 5];
     console.log.apply(console, x);
 
-    // good
+    // კარგია
     const x = [1, 2, 3, 4, 5];
     console.log(...x);
 
-    // bad
+    // ცუდია
     new (Function.prototype.bind.apply(Date, [null, 2016, 8, 5]));
 
-    // good
+    // კარგია
     new Date(...[2016, 8, 5]);
     ```
 
   <a name="functions--signature-invocation-indentation"></a>
   - [7.15](#functions--signature-invocation-indentation) Functions with multiline signatures, or invocations, should be indented just like every other multiline list in this guide: with each item on a line by itself, with a trailing comma on the last item. eslint: [`function-paren-newline`](https://eslint.org/docs/rules/function-paren-newline)
+  - [7.15](#functions--signature-invocation-indentation) მრავალხაზიანი სიგნატურის ან გამოძახების მქონე ფუნქციები ისევე უნდა დაშორდეს ერთმანეთს, როგორც წინამდებარე სახელმძღვანელოში მოცემული ყველა სხვა მრავალხაზიანი ჩამონათვალი: თითოეული ელემენტი ცალკე ხაზზე [უნდა] განთავსდეს, ხოლო ბოლო ელემენტს მძიმე [უნდა] მოსდევდეს. eslint: [`function-paren-newline`](https://eslint.org/docs/rules/function-paren-newline)
 
     ```javascript
-    // bad
+    // ცუდია
     function foo(bar,
                  baz,
                  quux) {
       // ...
     }
 
-    // good
+    // კარგია
     function foo(
       bar,
       baz,
@@ -990,12 +1018,12 @@ Other Style Guides
       // ...
     }
 
-    // bad
+    // ცუდია
     console.log(foo,
       bar,
       baz);
 
-    // good
+    // კარგია
     console.log(
       foo,
       bar,
@@ -1003,7 +1031,7 @@ Other Style Guides
     );
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Arrow Functions
 
@@ -4193,3 +4221,13 @@ We encourage you to fork this guide and change the rules to fit your team’s st
     იგივე კონკატენაცია (ინგლ.: Concatenation)
 [^15]:
     იგივე მოწყვლადობა (ინგლ.: Vulnerability)
+[^16]:
+    მექანიზმი, რომლის მეშვეობითაც [JavaScript-ის] ინტერპრეტატორი ფუნქციისა და ცვლადის გამოცხადებებს მოქმედების არეალის დასაწყისში „სწევს“ (ინგლ.: Hoisting)
+[^17]:
+    (ინგლ.: Call stack)
+[^18]:
+    (ინგლ.: Immediately Invoked Function Expression — IIFE)
+[^19]:
+    ობიექტის ან მნიშვნელობის უშუალო შეცვლა (ინგლ.: Mutation)
+[^20]:
+    (ინგლ.: Variadic function)
