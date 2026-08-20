@@ -1762,6 +1762,7 @@ Other Style Guides
 
   <a name="properties--dot"></a><a name="12.1"></a>
   - [12.1](#properties--dot) Use dot notation when accessing properties. eslint: [`dot-notation`](https://eslint.org/docs/rules/dot-notation)
+  - [12.1](#properties--dot) თვისებებზე წვდომისას გამოიყენეთ წერტილოვანი ნოტაცია. eslint: [`dot-notation`](https://eslint.org/docs/rules/dot-notation)
 
     ```javascript
     const luke = {
@@ -1769,15 +1770,16 @@ Other Style Guides
       age: 28,
     };
 
-    // bad
+    // ცუდია
     const isJedi = luke['jedi'];
 
-    // good
+    // კარგია
     const isJedi = luke.jedi;
     ```
 
   <a name="properties--bracket"></a><a name="12.2"></a>
   - [12.2](#properties--bracket) Use bracket notation `[]` when accessing properties with a variable.
+  - [12.2](#properties--bracket) ცვლადის მეშვეობით თვისებებზე წვდომისას გამოიყენეთ კვადრატული ფრჩხილების ნოტაცია `[]`.
 
     ```javascript
     const luke = {
@@ -1794,16 +1796,17 @@ Other Style Guides
 
   <a name="es2016-properties--exponentiation-operator"></a>
   - [12.3](#es2016-properties--exponentiation-operator) Use exponentiation operator `**` when calculating exponentiations. eslint: [`prefer-exponentiation-operator`](https://eslint.org/docs/rules/prefer-exponentiation-operator).
+  - [12.3](#es2016-properties--exponentiation-operator) ხარისხის გამოთვლისას გამოიყენეთ ახარისხების ოპერატორი `**`. eslint: [`prefer-exponentiation-operator`](https://eslint.org/docs/rules/prefer-exponentiation-operator).
 
     ```javascript
-    // bad
+    // ცუდია
     const binary = Math.pow(2, 10);
 
-    // good
+    // კარგია
     const binary = 2 ** 10;
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Variables
 
