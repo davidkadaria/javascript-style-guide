@@ -1812,33 +1812,38 @@ Other Style Guides
 
   <a name="variables--const"></a><a name="13.1"></a>
   - [13.1](#variables--const) Always use `const` or `let` to declare variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that. eslint: [`no-undef`](https://eslint.org/docs/rules/no-undef) [`prefer-const`](https://eslint.org/docs/rules/prefer-const)
+  - [13.1](#variables--const) ცვლადების გამოსაცხადებლად მუდამ გამოიყენეთ `const` ან `let`. წინააღმდეგ შემთხვევაში მიიღებთ გლობალურ ცვლადებს, ჩვენ კი გვსურს, გლობალური სახელთა სივრცის[^32] დაბინძურებას მოვერიდოთ — ამის შესახებ ჯერ კიდევ კაპიტანმა პლანეტამ გაგვაფრთხილა. eslint: [`no-undef`](https://eslint.org/docs/rules/no-undef) [`prefer-const`](https://eslint.org/docs/rules/prefer-const)
 
     ```javascript
-    // bad
+    // ცუდია
     superPower = new SuperPower();
 
-    // good
+    // კარგია
     const superPower = new SuperPower();
     ```
 
   <a name="variables--one-const"></a><a name="13.2"></a>
   - [13.2](#variables--one-const) Use one `const` or `let` declaration per variable or assignment. eslint: [`one-var`](https://eslint.org/docs/rules/one-var)
+  - [13.2](#variables--one-const) თითო ცვლადზე ან მინიჭებაზე თითო `const` ან `let` გამოცხადება გამოიყენეთ. eslint: [`one-var`](https://eslint.org/docs/rules/one-var)
 
     > Why? It’s easier to add new variable declarations this way, and you never have to worry about swapping out a `;` for a `,` or introducing punctuation-only diffs. You can also step through each declaration with the debugger, instead of jumping through all of them at once.
 
+    > რატომ? ასე უფრო ადვილია ცვლადის ახალი გამოცხადებების დამატება; ამასთან, აღარასოდეს მოგიწევთ ღელვა `;`-ის `,`-ით შეცვლაზე, ანდა მხოლოდ პუნქტუაციური ცვლილებების diff-ში შეტანაზე. თანაც, დებაგერით[^33] თითოეულ გამოცხადებას სათითაოდ ჩაუვლით და არა ყველა მათგანს ერთბაშად გადაახტებით.
+
     ```javascript
-    // bad
+    // ცუდია
     const items = getItems(),
         goSportsTeam = true,
         dragonball = 'z';
 
-    // bad
+    // ცუდია
     // (compare to above, and try to spot the mistake)
+    // (შეადარეთ ზემოთ მოცემულს და შეეცადეთ, შეცდომა იპოვოთ)
     const items = getItems(),
         goSportsTeam = true;
         dragonball = 'z';
 
-    // good
+    // კარგია
     const items = getItems();
     const goSportsTeam = true;
     const dragonball = 'z';
@@ -1846,23 +1851,26 @@ Other Style Guides
 
   <a name="variables--const-let-group"></a><a name="13.3"></a>
   - [13.3](#variables--const-let-group) Group all your `const`s and then group all your `let`s.
+  - [13.3](#variables--const-let-group) ჯერ ყველა თქვენი `const` დააჯგუფეთ, შემდეგ კი — ყველა `let`.
 
     > Why? This is helpful when later on you might need to assign a variable depending on one of the previously assigned variables.
 
+    > რატომ? ეს გამოგადგებათ, როდესაც მოგვიანებით, შესაძლოა, დაგჭირდეთ ცვლადისთვის მნიშვნელობის მინიჭება რომელიმე უკვე მინიჭებული ცვლადის მიხედვით.
+
     ```javascript
-    // bad
+    // ცუდია
     let i, len, dragonball,
         items = getItems(),
         goSportsTeam = true;
 
-    // bad
+    // ცუდია
     let i;
     const items = getItems();
     let dragonball;
     const goSportsTeam = true;
     let len;
 
-    // good
+    // კარგია
     const goSportsTeam = true;
     const items = getItems();
     let dragonball;
@@ -1872,11 +1880,14 @@ Other Style Guides
 
   <a name="variables--define-where-used"></a><a name="13.4"></a>
   - [13.4](#variables--define-where-used) Assign variables where you need them, but place them in a reasonable place.
+  - [13.4](#variables--define-where-used) ცვლადებს მნიშვნელობა იქ მიანიჭეთ, სადაც ისინი გჭირდებათ, ოღონდ გონივრულ ადგილას მოათავსეთ.
 
     > Why? `let` and `const` are block scoped and not function scoped.
 
+    > რატომ? `let`-ისა და `const`-ის მოქმედების არეალი ბლოკია და არა ფუნქცია.
+
     ```javascript
-    // bad - unnecessary function call
+    // ცუდია — ფუნქციის ზედმეტი გამოძახება
     function checkName(hasName) {
       const name = getName();
 
@@ -1892,7 +1903,7 @@ Other Style Guides
       return name;
     }
 
-    // good
+    // კარგია
     function checkName(hasName) {
       if (hasName === 'test') {
         return false;
@@ -1911,16 +1922,23 @@ Other Style Guides
 
   <a name="variables--no-chain-assignment"></a><a name="13.5"></a>
   - [13.5](#variables--no-chain-assignment) Don’t chain variable assignments. eslint: [`no-multi-assign`](https://eslint.org/docs/rules/no-multi-assign)
+  - [13.5](#variables--no-chain-assignment) ნუ გადააბამთ ცვლადების მინიჭებებს ჯაჭვურად. eslint: [`no-multi-assign`](https://eslint.org/docs/rules/no-multi-assign)
 
     > Why? Chaining variable assignments creates implicit global variables.
 
+    > რატომ? ცვლადების მინიჭებათა ჯაჭვი უჩუმრად წარმოშობს გლობალურ ცვლადებს.
+
     ```javascript
-    // bad
+    // ცუდია
     (function example() {
       // JavaScript interprets this as
       // let a = ( b = ( c = 1 ) );
       // The let keyword only applies to variable a; variables b and c become
       // global variables.
+      // JavaScript-ი ამას ასე განმარტავს:
+      // let a = ( b = ( c = 1 ) );
+      // საკვანძო სიტყვა let მხოლოდ a ცვლადს ეხება; b და c
+      // გლობალური ცვლადები ხდება.
       let a = b = c = 1;
     }());
 
@@ -1928,7 +1946,7 @@ Other Style Guides
     console.log(b); // 1
     console.log(c); // 1
 
-    // good
+    // კარგია
     (function example() {
       let a = 1;
       let b = a;
@@ -1940,15 +1958,19 @@ Other Style Guides
     console.log(c); // throws ReferenceError
 
     // the same applies for `const`
+    // იგივე ეხება `const`-საც
     ```
 
   <a name="variables--unary-increment-decrement"></a><a name="13.6"></a>
   - [13.6](#variables--unary-increment-decrement) Avoid using unary increments and decrements (`++`, `--`). eslint [`no-plusplus`](https://eslint.org/docs/rules/no-plusplus)
+  - [13.6](#variables--unary-increment-decrement) მოერიდეთ უნარული ინკრემენტებისა[^34] და დეკრემენტების[^35] (`++`, `--`) გამოყენებას. eslint [`no-plusplus`](https://eslint.org/docs/rules/no-plusplus)
 
     > Why? Per the eslint documentation, unary increment and decrement statements are subject to automatic semicolon insertion and can cause silent errors with incrementing or decrementing values within an application. It is also more expressive to mutate your values with statements like `num += 1` instead of `num++` or `num ++`. Disallowing unary increment and decrement statements also prevents you from pre-incrementing/pre-decrementing values unintentionally which can also cause unexpected behavior in your programs.
 
+    > რატომ? eslint-ის დოკუმენტაციის თანახმად, უნარული ინკრემენტისა და დეკრემენტის განცხადებები ექვემდებარება წერტილ-მძიმის ავტომატურ ჩასმას და აპლიკაციაში მნიშვნელობათა გაზრდა-შემცირებისას უჩუმარ შეცდომებს იწვევს ხოლმე. ამასთან, მნიშვნელობების შეცვლა ისეთი განცხადებებით, როგორიცაა `num += 1` — და არა `num++` ან `num ++` — უფრო მეტყველიცაა. უნარული ინკრემენტისა და დეკრემენტის განცხადებების აკრძალვა ასევე დაგიცავთ მნიშვნელობათა უნებლიე წინასწარი გაზრდა-შემცირებისაგან, რასაც პროგრამებში მოულოდნელი ქცევის გამოწვევა შეუძლია.
+
     ```javascript
-    // bad
+    // ცუდია
 
     const array = [1, 2, 3];
     let num = 1;
@@ -1965,7 +1987,7 @@ Other Style Guides
       }
     }
 
-    // good
+    // კარგია
 
     const array = [1, 2, 3];
     let num = 1;
@@ -1978,51 +2000,60 @@ Other Style Guides
 
 <a name="variables--linebreak"></a>
   - [13.7](#variables--linebreak) Avoid linebreaks before or after `=` in an assignment. If your assignment violates [`max-len`](https://eslint.org/docs/rules/max-len), surround the value in parens. eslint [`operator-linebreak`](https://eslint.org/docs/rules/operator-linebreak).
+  - [13.7](#variables--linebreak) მინიჭებისას მოერიდეთ `=`-ის წინ ან შემდეგ ახალ ხაზზე გადატანას. თუკი თქვენი მინიჭება არღვევს [`max-len`](https://eslint.org/docs/rules/max-len) წესს, მნიშვნელობა ფრჩხილებს შორის მოათავსეთ. eslint [`operator-linebreak`](https://eslint.org/docs/rules/operator-linebreak).
 
     > Why? Linebreaks surrounding `=` can obfuscate the value of an assignment.
 
+    > რატომ? `=`-ის გარშემო ახალ ხაზზე გადატანებს მინიჭებული მნიშვნელობის ბუნდოვნად წარმოჩენა შეუძლია.
+
     ```javascript
-    // bad
+    // ცუდია
     const foo =
       superLongLongLongLongLongLongLongLongFunctionName();
 
-    // bad
+    // ცუდია
     const foo
       = 'superLongLongLongLongLongLongLongLongString';
 
-    // good
+    // კარგია
     const foo = (
       superLongLongLongLongLongLongLongLongFunctionName()
     );
 
-    // good
+    // კარგია
     const foo = 'superLongLongLongLongLongLongLongLongString';
     ```
 
 <a name="variables--no-unused-vars"></a>
   - [13.8](#variables--no-unused-vars) Disallow unused variables. eslint: [`no-unused-vars`](https://eslint.org/docs/rules/no-unused-vars)
+  - [13.8](#variables--no-unused-vars) გამოუყენებელი ცვლადები დაუშვებელია. eslint: [`no-unused-vars`](https://eslint.org/docs/rules/no-unused-vars)
 
     > Why? Variables that are declared and not used anywhere in the code are most likely an error due to incomplete refactoring. Such variables take up space in the code and can lead to confusion by readers.
 
+    > რატომ? ცვლადები, რომლებიც გამოცხადებულია, მაგრამ კოდში არსად გამოიყენება, დიდი ალბათობით, დაუსრულებელი რეფაქტორირებით გამოწვეული შეცდომაა. ასეთი ცვლადები კოდში ადგილს იკავებენ და მკითხველის დაბნევაც შეუძლიათ.
+
     ```javascript
-    // bad
+    // ცუდია
 
     const some_unused_var = 42;
 
     // Write-only variables are not considered as used.
+    // მხოლოდ ჩასაწერად გამოყენებული ცვლადები გამოყენებულად არ ითვლება.
     let y = 10;
     y = 5;
 
     // A read for a modification of itself is not considered as used.
+    // წაკითხვა საკუთარი თავის შესაცვლელად გამოყენებად არ ითვლება.
     let z = 0;
     z = z + 1;
 
     // Unused function arguments.
+    // ფუნქციის გამოუყენებელი არგუმენტები.
     function getX(x, y) {
         return x;
     }
 
-    // good
+    // კარგია
 
     function getXPlusY(x, y) {
       return x + y;
@@ -2035,11 +2066,14 @@ Other Style Guides
 
     // 'type' is ignored even if unused because it has a rest property sibling.
     // This is a form of extracting an object that omits the specified keys.
+    // 'type' იგნორირებულია გამოუყენებლობის მიუხედავად, რადგანაც მას დანარჩენ თვისებათა მეზობელი ჰყავს.
+    // ეს ობიექტის ამოღების ისეთი ხერხია, რომელიც მითითებულ გასაღებებს გამოტოვებს.
     const { type, ...coords } = data;
     // 'coords' is now the 'data' object without its 'type' property.
+    // 'coords' ახლა იგივე 'data' ობიექტია, ოღონდ 'type' თვისების გარეშე.
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Hoisting
 
@@ -4331,3 +4365,11 @@ We encourage you to fork this guide and change the rules to fit your team’s st
     ფუნქცია, რომელიც არგუმენტად იღებს ან აბრუნებს სხვა ფუნქციას (ინგლ.: Higher-order function)
 [^31]:
     ფუნქცია, რომელიც ერთსა და იმავე შესატან მონაცემებზე მუდამ ერთსა და იმავე შედეგს აბრუნებს და გვერდით ეფექტებს არ იწვევს (ინგლ.: Pure function)
+[^32]:
+    სივრცე, რომლის ფარგლებშიც თითოეული სახელი უნიკალურია (ინგლ.: Namespace)
+[^33]:
+    პროგრამა კოდში შეცდომების მოსაძებნად და გამოსასწორებლად (ინგლ.: Debugger)
+[^34]:
+    მნიშვნელობის გაზრდა — ჩვეულებრივ, ერთით (ინგლ.: Increment)
+[^35]:
+    მნიშვნელობის შემცირება — ჩვეულებრივ, ერთით (ინგლ.: Decrement)
