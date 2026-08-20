@@ -1221,11 +1221,14 @@ Other Style Guides
 
   <a name="constructors--use-class"></a><a name="9.1"></a>
   - [9.1](#constructors--use-class) Always use `class`. Avoid manipulating `prototype` directly.
+  - [9.1](#constructors--use-class) მუდამ გამოიყენეთ `class`. მოერიდეთ `prototype`-ის უშუალო მანიპულირებას.
 
     > Why? `class` syntax is more concise and easier to reason about.
 
+    > რატომ? `class` სინტაქსი უფრო ლაკონიური და ადვილად გასააზრებელია.
+
     ```javascript
-    // bad
+    // ცუდია
     function Queue(contents = []) {
       this.queue = [...contents];
     }
@@ -1235,7 +1238,7 @@ Other Style Guides
       return value;
     };
 
-    // good
+    // კარგია
     class Queue {
       constructor(contents = []) {
         this.queue = [...contents];
@@ -1250,11 +1253,14 @@ Other Style Guides
 
   <a name="constructors--extends"></a><a name="9.2"></a>
   - [9.2](#constructors--extends) Use `extends` for inheritance.
+  - [9.2](#constructors--extends) მემკვიდრეობითობისთვის გამოიყენეთ `extends`.
 
     > Why? It is a built-in way to inherit prototype functionality without breaking `instanceof`.
 
+    > რატომ? ეს არის პროტოტიპის ფუნქციონალის მემკვიდრეობით მიღების ჩაშენებული საშუალება, რომელიც არ არღვევს `instanceof`-ს.
+
     ```javascript
-    // bad
+    // ცუდია
     const inherits = require('inherits');
     function PeekableQueue(contents) {
       Queue.apply(this, contents);
@@ -1264,7 +1270,7 @@ Other Style Guides
       return this.queue[0];
     };
 
-    // good
+    // კარგია
     class PeekableQueue extends Queue {
       peek() {
         return this.queue[0];
@@ -1274,9 +1280,10 @@ Other Style Guides
 
   <a name="constructors--chaining"></a><a name="9.3"></a>
   - [9.3](#constructors--chaining) Methods can return `this` to help with method chaining.
+  - [9.3](#constructors--chaining) მეთოდებმა შეიძლება დააბრუნონ `this`, რაც მეთოდების ურთიერთგადაჯაჭვულობას უწყობს ხელს.
 
     ```javascript
-    // bad
+    // ცუდია
     Jedi.prototype.jump = function () {
       this.jumping = true;
       return true;
@@ -1290,7 +1297,7 @@ Other Style Guides
     luke.jump(); // => true
     luke.setHeight(20); // => undefined
 
-    // good
+    // კარგია
     class Jedi {
       jump() {
         this.jumping = true;
@@ -1311,6 +1318,7 @@ Other Style Guides
 
   <a name="constructors--tostring"></a><a name="9.4"></a>
   - [9.4](#constructors--tostring) It’s okay to write a custom `toString()` method, just make sure it works successfully and causes no side effects.
+  - [9.4](#constructors--tostring) საკუთარი `toString()` მეთოდის დაწერა დასაშვებია; უბრალოდ, დარწმუნდით, რომ იგი გამართულად მუშაობს და არ იწვევს გვერდით ეფექტებს.
 
     ```javascript
     class Jedi {
@@ -1330,9 +1338,10 @@ Other Style Guides
 
   <a name="constructors--no-useless"></a><a name="9.5"></a>
   - [9.5](#constructors--no-useless) Classes have a default constructor if one is not specified. An empty constructor function or one that just delegates to a parent class is unnecessary. eslint: [`no-useless-constructor`](https://eslint.org/docs/rules/no-useless-constructor)
+  - [9.5](#constructors--no-useless) თუკი კონსტრუქტორი მითითებული არ არის, კლასებს ნაგულისხმევი კონსტრუქტორი აქვთ. ცარიელი კონსტრუქტორი, ანდა ისეთი, რომელიც მხოლოდ მშობელ კლასს მიმართავს, ზედმეტია. eslint: [`no-useless-constructor`](https://eslint.org/docs/rules/no-useless-constructor)
 
     ```javascript
-    // bad
+    // ცუდია
     class Jedi {
       constructor() {}
 
@@ -1341,14 +1350,14 @@ Other Style Guides
       }
     }
 
-    // bad
+    // ცუდია
     class Rey extends Jedi {
       constructor(...args) {
         super(...args);
       }
     }
 
-    // good
+    // კარგია
     class Rey extends Jedi {
       constructor(...args) {
         super(...args);
@@ -1359,22 +1368,25 @@ Other Style Guides
 
   <a name="classes--no-duplicate-members"></a>
   - [9.6](#classes--no-duplicate-members) Avoid duplicate class members. eslint: [`no-dupe-class-members`](https://eslint.org/docs/rules/no-dupe-class-members)
+  - [9.6](#classes--no-duplicate-members) მოერიდეთ კლასის წევრების დუბლირებას. eslint: [`no-dupe-class-members`](https://eslint.org/docs/rules/no-dupe-class-members)
 
     > Why? Duplicate class member declarations will silently prefer the last one - having duplicates is almost certainly a bug.
 
+    > რატომ? კლასის წევრის დუბლირებული დეკლარაციებიდან უჩუმრად უკანასკნელი იქნება არჩეული — დუბლიკატების არსებობა კი თითქმის ყოველთვის ხარვეზია.
+
     ```javascript
-    // bad
+    // ცუდია
     class Foo {
       bar() { return 1; }
       bar() { return 2; }
     }
 
-    // good
+    // კარგია
     class Foo {
       bar() { return 1; }
     }
 
-    // good
+    // კარგია
     class Foo {
       bar() { return 2; }
     }
@@ -1382,30 +1394,31 @@ Other Style Guides
 
   <a name="classes--methods-use-this"></a>
   - [9.7](#classes--methods-use-this) Class methods should use `this` or be made into a static method unless an external library or framework requires using specific non-static methods. Being an instance method should indicate that it behaves differently based on properties of the receiver. eslint: [`class-methods-use-this`](https://eslint.org/docs/rules/class-methods-use-this)
+  - [9.7](#classes--methods-use-this) კლასის მეთოდები უნდა იყენებდნენ `this`-ს, ანდა სტატიკურ მეთოდებად უნდა გარდაიქმნან — გარდა იმ შემთხვევებისა, როდესაც გარე ბიბლიოთეკა ან ფრეიმვორკი კონკრეტული არასტატიკური მეთოდების გამოყენებას მოითხოვს. ის ფაქტი, რომ მეთოდი ინსტანციის[^25] დაქვემდებარებაშია, უნდა მიანიშნებდეს, რომ იგი მიმღები ობიექტის თვისებების მიხედვით განსხვავებულად იქცევა. eslint: [`class-methods-use-this`](https://eslint.org/docs/rules/class-methods-use-this)
 
     ```javascript
-    // bad
+    // ცუდია
     class Foo {
       bar() {
         console.log('bar');
       }
     }
 
-    // good - this is used
+    // კარგია — this-ი გამოყენებულია
     class Foo {
       bar() {
         console.log(this.bar);
       }
     }
 
-    // good - constructor is exempt
+    // კარგია — კონსტრუქტორი გამონაკლისია
     class Foo {
       constructor() {
         // ...
       }
     }
 
-    // good - static methods aren't expected to use this
+    // კარგია — სტატიკური მეთოდებისაგან this-ის გამოყენება მოსალოდნელი არ არის
     class Foo {
       static bar() {
         console.log('bar');
@@ -1413,7 +1426,7 @@ Other Style Guides
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Modules
 
@@ -4257,3 +4270,5 @@ We encourage you to fork this guide and change the rules to fit your team’s st
     დაბრუნება ცხადი `return` განცხადების გარეშე (ინგლ.: Implicit return)
 [^24]:
     სინტაქსი, რომელიც კოდს უფრო ადვილად წასაკითხს ხდის (ინგლ.: Syntactic sugar)
+[^25]:
+    კლასის საფუძველზე შექმნილი ობიექტი (ინგლ.: Instance)
