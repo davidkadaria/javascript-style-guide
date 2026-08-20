@@ -1432,48 +1432,59 @@ Other Style Guides
 
   <a name="modules--use-them"></a><a name="10.1"></a>
   - [10.1](#modules--use-them) Always use modules (`import`/`export`) over a non-standard module system. You can always transpile to your preferred module system.
+  - [10.1](#modules--use-them) მუდამ გამოიყენეთ მოდულები (`import`/`export`) და არა რომელიმე არასტანდარტული მოდულების სისტემა. სასურველ მოდულების სისტემაში ტრანსპილაცია[^26] ყოველთვის შეგეძლებათ.
 
     > Why? Modules are the future, let’s start using the future now.
 
+    > რატომ? მომავალი მოდულებს ეკუთვნის — მოდით, მომავლის გამოყენება ახლავე დავიწყოთ.
+
     ```javascript
-    // bad
+    // ცუდია
     const AirbnbStyleGuide = require('./AirbnbStyleGuide');
     module.exports = AirbnbStyleGuide.es6;
 
-    // ok
+    // დასაშვებია
     import AirbnbStyleGuide from './AirbnbStyleGuide';
     export default AirbnbStyleGuide.es6;
 
-    // best
+    // საუკეთესოა
     import { es6 } from './AirbnbStyleGuide';
     export default es6;
     ```
 
   <a name="modules--no-wildcard"></a><a name="10.2"></a>
   - [10.2](#modules--no-wildcard) Do not use wildcard imports.
+  - [10.2](#modules--no-wildcard) ნუ გამოიყენებთ ვაილდ-კარდის[^27] იმპორტებს.
 
     > Why? This makes sure you have a single default export.
 
+    > რატომ? ეს უზრუნველყოფს, რომ გქონდეთ ერთადერთი ნაგულისხმევი ექსპორტი.
+
     ```javascript
-    // bad
+    // ცუდია
     import * as AirbnbStyleGuide from './AirbnbStyleGuide';
 
-    // good
+    // კარგია
     import AirbnbStyleGuide from './AirbnbStyleGuide';
     ```
 
   <a name="modules--no-export-from-import"></a><a name="10.3"></a>
   - [10.3](#modules--no-export-from-import) And do not export directly from an import.
+  - [10.3](#modules--no-export-from-import) და ნურც უშუალოდ იმპორტიდან მოახდენთ ექსპორტს.
 
     > Why? Although the one-liner is concise, having one clear way to import and one clear way to export makes things consistent.
 
+    > რატომ? მართალია, ერთხაზიანი ჩანაწერი ლაკონიურია, მაგრამ იმპორტის ერთი მკაფიო გზისა და ექსპორტის ერთი მკაფიო გზის ქონა თანმიმდევრულობას უზრუნველყოფს.
+
     ```javascript
-    // bad
+    // ცუდია
     // filename es6.js
+    // ფაილის სახელი: es6.js
     export { es6 as default } from './AirbnbStyleGuide';
 
-    // good
+    // კარგია
     // filename es6.js
+    // ფაილის სახელი: es6.js
     import { es6 } from './AirbnbStyleGuide';
     export default es6;
     ```
@@ -1481,18 +1492,22 @@ Other Style Guides
   <a name="modules--no-duplicate-imports"></a>
   - [10.4](#modules--no-duplicate-imports) Only import from a path in one place.
  eslint: [`no-duplicate-imports`](https://eslint.org/docs/rules/no-duplicate-imports)
+  - [10.4](#modules--no-duplicate-imports) ერთი და იმავე მისამართიდან იმპორტი მხოლოდ ერთ ადგილას მოახდინეთ. eslint: [`no-duplicate-imports`](https://eslint.org/docs/rules/no-duplicate-imports)
     > Why? Having multiple lines that import from the same path can make code harder to maintain.
 
+    > რატომ? რამდენიმე ხაზის არსებობა, რომლებიც ერთი და იმავე მისამართიდან ახდენენ იმპორტს, კოდის მოვლა-პატრონობას ართულებს.
+
     ```javascript
-    // bad
+    // ცუდია
     import foo from 'foo';
     // … some other imports … //
+    // … სხვა იმპორტები … //
     import { named1, named2 } from 'foo';
 
-    // good
+    // კარგია
     import foo, { named1, named2 } from 'foo';
 
-    // good
+    // კარგია
     import foo, {
       named1,
       named2,
@@ -1502,14 +1517,17 @@ Other Style Guides
   <a name="modules--no-mutable-exports"></a>
   - [10.5](#modules--no-mutable-exports) Do not export mutable bindings.
  eslint: [`import/no-mutable-exports`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-mutable-exports.md)
+  - [10.5](#modules--no-mutable-exports) ნუ მოახდენთ ცვალებადი დაკავშირებების[^28] ექსპორტს. eslint: [`import/no-mutable-exports`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-mutable-exports.md)
     > Why? Mutation should be avoided in general, but in particular when exporting mutable bindings. While this technique may be needed for some special cases, in general, only constant references should be exported.
 
+    > რატომ? მუტაციას ზოგადადაც უნდა მოერიდოთ, განსაკუთრებით კი — ცვალებადი დაკავშირებების ექსპორტისას. ცალკეულ შემთხვევებში ეს ხერხი შესაძლოა საჭირო გახდეს, თუმცა, ზოგადად, მხოლოდ უცვლელი მიმართვები უნდა იქნეს ექსპორტირებული.
+
     ```javascript
-    // bad
+    // ცუდია
     let foo = 3;
     export { foo };
 
-    // good
+    // კარგია
     const foo = 3;
     export { foo };
     ```
@@ -1517,29 +1535,35 @@ Other Style Guides
   <a name="modules--prefer-default-export"></a>
   - [10.6](#modules--prefer-default-export) In modules with a single export, prefer default export over named export.
  eslint: [`import/prefer-default-export`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/prefer-default-export.md)
+  - [10.6](#modules--prefer-default-export) მოდულებში, რომლებსაც ერთადერთი ექსპორტი აქვთ, უმჯობესია, ნაგულისხმევი ექსპორტი გამოიყენოთ და არა სახელდებული. eslint: [`import/prefer-default-export`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/prefer-default-export.md)
     > Why? To encourage more files that only ever export one thing, which is better for readability and maintainability.
 
+    > რატომ? ეს ხელს უწყობს იმას, რომ თითოეულმა ფაილმა მხოლოდ თითო რამის ექსპორტი მოახდინოს, რაც წაკითხვადობისა და მოვლა-პატრონობისთვის უკეთესია.
+
     ```javascript
-    // bad
+    // ცუდია
     export function foo() {}
 
-    // good
+    // კარგია
     export default function foo() {}
     ```
 
   <a name="modules--imports-first"></a>
   - [10.7](#modules--imports-first) Put all `import`s above non-import statements.
  eslint: [`import/first`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/first.md)
+  - [10.7](#modules--imports-first) ყველა `import` განცხადება მოათავსეთ დანარჩენ განცხადებებზე მაღლა. eslint: [`import/first`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/first.md)
     > Why? Since `import`s are hoisted, keeping them all at the top prevents surprising behavior.
 
+    > რატომ? რადგანაც `import`-ები ე.წ. „აწევის“ მექანიზმს ექვემდებარებიან, ყველა მათგანის თავში მოთავსება მოულოდნელ ქცევას აგვარიდებს.
+
     ```javascript
-    // bad
+    // ცუდია
     import foo from 'foo';
     foo.init();
 
     import bar from 'bar';
 
-    // good
+    // კარგია
     import foo from 'foo';
     import bar from 'bar';
 
@@ -1549,14 +1573,17 @@ Other Style Guides
   <a name="modules--multiline-imports-over-newlines"></a>
   - [10.8](#modules--multiline-imports-over-newlines) Multiline imports should be indented just like multiline array and object literals.
  eslint: [`object-curly-newline`](https://eslint.org/docs/rules/object-curly-newline)
+  - [10.8](#modules--multiline-imports-over-newlines) მრავალხაზიანი იმპორტები ისეთივე აბზაცებით უნდა დაიწეროს, როგორითაც მასივისა და ობიექტის მრავალხაზიანი ჩანაწერები. eslint: [`object-curly-newline`](https://eslint.org/docs/rules/object-curly-newline)
 
     > Why? The curly braces follow the same indentation rules as every other curly brace block in the style guide, as do the trailing commas.
 
+    > რატომ? ფიგურული ფრჩხილები აბზაცის იმავე წესებს მიჰყვება, რომლებსაც ამ სახელმძღვანელოში ყველა სხვა ფიგურული ფრჩხილების ბლოკი; ასევეა ბოლო მძიმეების შემთხვევაშიც.
+
     ```javascript
-    // bad
+    // ცუდია
     import {longNameA, longNameB, longNameC, longNameD, longNameE} from 'path';
 
-    // good
+    // კარგია
     import {
       longNameA,
       longNameB,
@@ -1569,14 +1596,17 @@ Other Style Guides
   <a name="modules--no-webpack-loader-syntax"></a>
   - [10.9](#modules--no-webpack-loader-syntax) Disallow Webpack loader syntax in module import statements.
  eslint: [`import/no-webpack-loader-syntax`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-webpack-loader-syntax.md)
+  - [10.9](#modules--no-webpack-loader-syntax) მოდულის იმპორტის განცხადებებში Webpack-ის loader-სინტაქსი დაუშვებელია. eslint: [`import/no-webpack-loader-syntax`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-webpack-loader-syntax.md)
     > Why? Since using Webpack syntax in the imports couples the code to a module bundler. Prefer using the loader syntax in `webpack.config.js`.
 
+    > რატომ? იმპორტებში Webpack-ის სინტაქსის გამოყენება კოდს მოდულების ბანდლერზე[^29] აბამს. უმჯობესია, loader-სინტაქსი `webpack.config.js`-ში გამოიყენოთ.
+
     ```javascript
-    // bad
+    // ცუდია
     import fooSass from 'css!sass!foo.scss';
     import barCss from 'style!css!bar.css';
 
-    // good
+    // კარგია
     import fooSass from 'foo.scss';
     import barCss from 'bar.css';
     ```
@@ -1584,21 +1614,24 @@ Other Style Guides
   <a name="modules--import-extensions"></a>
   - [10.10](#modules--import-extensions) Do not include JavaScript filename extensions
  eslint: [`import/extensions`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/extensions.md)
+  - [10.10](#modules--import-extensions) ნუ მიუთითებთ JavaScript-ფაილების გაფართოებებს. eslint: [`import/extensions`](https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/extensions.md)
     > Why? Including extensions inhibits refactoring, and inappropriately hardcodes implementation details of the module you're importing in every consumer.
 
+    > რატომ? გაფართოებების მითითება რეფაქტორირებას აფერხებს და იმპორტირებული მოდულის რეალიზაციის დეტალებს ხისტად წერს ყველა იმ კოდში, რომელიც მას იყენებს.
+
     ```javascript
-    // bad
+    // ცუდია
     import foo from './foo.js';
     import bar from './bar.jsx';
     import baz from './baz/index.jsx';
 
-    // good
+    // კარგია
     import foo from './foo';
     import bar from './bar';
     import baz from './baz';
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Iterators and Generators
 
@@ -4272,3 +4305,11 @@ We encourage you to fork this guide and change the rules to fit your team’s st
     სინტაქსი, რომელიც კოდს უფრო ადვილად წასაკითხს ხდის (ინგლ.: Syntactic sugar)
 [^25]:
     კლასის საფუძველზე შექმნილი ობიექტი (ინგლ.: Instance)
+[^26]:
+    კოდის ავტომატური გარდაქმნა ენის ერთი ვერსიიდან მეორეში (ინგლ.: Transpiling)
+[^27]:
+    სპეციალური სიმბოლო, რომელიც ერთ ან რამდენიმე სიმბოლოს ცვლის – ხშ. კითხვის ნიშანი (?), ვარსკვლავი (*) და სხვ. (ინგლ.: Wildcard)
+[^28]:
+    ორი ან რამდენიმე პროგრამული ობიექტის დაკავშირება დროის ამა თუ იმ მონაკვეთში (ინგლ.: binding)
+[^29]:
+    ინსტრუმენტი, რომელიც მოდულებს ერთ ფაილად კრავს (ინგლ.: Module bundler)
