@@ -1037,19 +1037,24 @@ Other Style Guides
 
   <a name="arrows--use-them"></a><a name="8.1"></a>
   - [8.1](#arrows--use-them) When you must use an anonymous function (as when passing an inline callback), use arrow function notation. eslint: [`prefer-arrow-callback`](https://eslint.org/docs/rules/prefer-arrow-callback), [`arrow-spacing`](https://eslint.org/docs/rules/arrow-spacing)
+  - [8.1](#arrows--use-them) როდესაც ანონიმური ფუნქციის გამოყენება გიწევთ (მაგალითად, callback-ფუნქციის ადგილზევე გადაცემისას), გამოიყენეთ ისრისებური ფუნქციის[^22] ნოტაცია. eslint: [`prefer-arrow-callback`](https://eslint.org/docs/rules/prefer-arrow-callback), [`arrow-spacing`](https://eslint.org/docs/rules/arrow-spacing)
 
     > Why? It creates a version of the function that executes in the context of `this`, which is usually what you want, and is a more concise syntax.
 
+    > რატომ? იგი ქმნის ფუნქციის ისეთ ვერსიას, რომელიც `this`-ის კონტექსტში სრულდება — ჩვეულებრივ, სწორედ ეს გვინდა ხოლმე; ამასთან, მისი სინტაქსი უფრო ლაკონიურია.
+
     > Why not? If you have a fairly complicated function, you might move that logic out into its own named function expression.
 
+    > რატომ არა? თუკი საკმაოდ რთული ფუნქცია გაქვთ, უმჯობესია, აღნიშნული ლოგიკა ცალკე, ფუნქციის სახელდებულ გამოსახულებაში გაიტანოთ.
+
     ```javascript
-    // bad
+    // ცუდია
     [1, 2, 3].map(function (x) {
       const y = x + 1;
       return x * y;
     });
 
-    // good
+    // კარგია
     [1, 2, 3].map((x) => {
       const y = x + 1;
       return x * y;
@@ -1058,44 +1063,49 @@ Other Style Guides
 
   <a name="arrows--implicit-return"></a><a name="8.2"></a>
   - [8.2](#arrows--implicit-return) If the function body consists of a single statement returning an [expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) without side effects, omit the braces and use the implicit return. Otherwise, keep the braces and use a `return` statement. eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens), [`arrow-body-style`](https://eslint.org/docs/rules/arrow-body-style)
+  - [8.2](#arrows--implicit-return) თუკი ფუნქციის ტანი შედგება ერთი განცხადებისაგან, რომელიც გვერდითი ეფექტების გარეშე აბრუნებს [გამოსახულებას](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions), გამოტოვეთ ფიგურული ფრჩხილები და გამოიყენეთ ნაგულისხმევი დაბრუნება[^23]. წინააღმდეგ შემთხვევაში დაიტოვეთ ფრჩხილები და გამოიყენეთ `return` განცხადება. eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens), [`arrow-body-style`](https://eslint.org/docs/rules/arrow-body-style)
 
     > Why? Syntactic sugar. It reads well when multiple functions are chained together.
 
+    > რატომ? ეს სინტაქსური გამარტივებაა[^24]. ასეთი ჩანაწერი ადვილად იკითხება, როდესაც რამდენიმე ფუნქცია ჯაჭვურად არის გადაბმული.
+
     ```javascript
-    // bad
+    // ცუდია
     [1, 2, 3].map((number) => {
       const nextNumber = number + 1;
       `A string containing the ${nextNumber}.`;
     });
 
-    // good
+    // კარგია
     [1, 2, 3].map((number) => `A string containing the ${number + 1}.`);
 
-    // good
+    // კარგია
     [1, 2, 3].map((number) => {
       const nextNumber = number + 1;
       return `A string containing the ${nextNumber}.`;
     });
 
-    // good
+    // კარგია
     [1, 2, 3].map((number, index) => ({
       [index]: number,
     }));
 
     // No implicit return with side effects
+    // გვერდითი ეფექტების შემთხვევაში ნაგულისხმევი დაბრუნება დაუშვებელია
     function foo(callback) {
       const val = callback();
       if (val === true) {
         // Do something if callback returns true
+        // გააკეთეთ რამე, თუკი callback-ი true-ს აბრუნებს
       }
     }
 
     let bool = false;
 
-    // bad
+    // ცუდია
     foo(() => bool = true);
 
-    // good
+    // კარგია
     foo(() => {
       bool = true;
     });
@@ -1103,18 +1113,21 @@ Other Style Guides
 
   <a name="arrows--paren-wrap"></a><a name="8.3"></a>
   - [8.3](#arrows--paren-wrap) In case the expression spans over multiple lines, wrap it in parentheses for better readability.
+  - [8.3](#arrows--paren-wrap) თუკი გამოსახულება რამდენიმე ხაზზეა გადაჭიმული, უკეთესი წაკითხვადობისათვის მოათავსეთ იგი ფრჩხილებს შორის.
 
     > Why? It shows clearly where the function starts and ends.
 
+    > რატომ? ასე ნათლად ჩანს, სად იწყება და სად მთავრდება ფუნქცია.
+
     ```javascript
-    // bad
+    // ცუდია
     ['get', 'post', 'put'].map((httpMethod) => Object.prototype.hasOwnProperty.call(
         httpMagicObjectWithAVeryLongName,
         httpMethod,
       )
     );
 
-    // good
+    // კარგია
     ['get', 'post', 'put'].map((httpMethod) => (
       Object.prototype.hasOwnProperty.call(
         httpMagicObjectWithAVeryLongName,
@@ -1125,33 +1138,36 @@ Other Style Guides
 
   <a name="arrows--one-arg-parens"></a><a name="8.4"></a>
   - [8.4](#arrows--one-arg-parens) Always include parentheses around arguments for clarity and consistency. eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens)
+  - [8.4](#arrows--one-arg-parens) სიცხადისა და თანმიმდევრულობისათვის არგუმენტები მუდამ მრგვალ ფრჩხილებში ჩასვით. eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens)
 
     > Why? Minimizes diff churn when adding or removing arguments.
 
+    > რატომ? ეს მინიმუმამდე ამცირებს ზედმეტ ცვლილებებს diff-ში არგუმენტთა დამატებისას თუ წაშლისას.
+
     ```javascript
-    // bad
+    // ცუდია
     [1, 2, 3].map(x => x * x);
 
-    // good
+    // კარგია
     [1, 2, 3].map((x) => x * x);
 
-    // bad
+    // ცუდია
     [1, 2, 3].map(number => (
       `A long string with the ${number}. It’s so long that we don’t want it to take up space on the .map line!`
     ));
 
-    // good
+    // კარგია
     [1, 2, 3].map((number) => (
       `A long string with the ${number}. It’s so long that we don’t want it to take up space on the .map line!`
     ));
 
-    // bad
+    // ცუდია
     [1, 2, 3].map(x => {
       const y = x + 1;
       return x * y;
     });
 
-    // good
+    // კარგია
     [1, 2, 3].map((x) => {
       const y = x + 1;
       return x * y;
@@ -1160,18 +1176,19 @@ Other Style Guides
 
   <a name="arrows--confusing"></a><a name="8.5"></a>
   - [8.5](#arrows--confusing) Avoid confusing arrow function syntax (`=>`) with comparison operators (`<=`, `>=`). eslint: [`no-confusing-arrow`](https://eslint.org/docs/rules/no-confusing-arrow)
+  - [8.5](#arrows--confusing) მოერიდეთ ისრისებური ფუნქციის სინტაქსის (`=>`) აღრევას შედარების ოპერატორებთან (`<=`, `>=`). eslint: [`no-confusing-arrow`](https://eslint.org/docs/rules/no-confusing-arrow)
 
     ```javascript
-    // bad
+    // ცუდია
     const itemHeight = (item) => item.height <= 256 ? item.largeSize : item.smallSize;
 
-    // bad
+    // ცუდია
     const itemHeight = (item) => item.height >= 256 ? item.largeSize : item.smallSize;
 
-    // good
+    // კარგია
     const itemHeight = (item) => (item.height <= 256 ? item.largeSize : item.smallSize);
 
-    // good
+    // კარგია
     const itemHeight = (item) => {
       const { height, largeSize, smallSize } = item;
       return height <= 256 ? largeSize : smallSize;
@@ -1180,16 +1197,17 @@ Other Style Guides
 
   <a name="whitespace--implicit-arrow-linebreak"></a>
   - [8.6](#whitespace--implicit-arrow-linebreak) Enforce the location of arrow function bodies with implicit returns. eslint: [`implicit-arrow-linebreak`](https://eslint.org/docs/rules/implicit-arrow-linebreak)
+  - [8.6](#whitespace--implicit-arrow-linebreak) მკაცრად განსაზღვრეთ, სად განთავსდება ნაგულისხმევი დაბრუნების მქონე ისრისებური ფუნქციის ტანი. eslint: [`implicit-arrow-linebreak`](https://eslint.org/docs/rules/implicit-arrow-linebreak)
 
     ```javascript
-    // bad
+    // ცუდია
     (foo) =>
       bar;
 
     (foo) =>
       (bar);
 
-    // good
+    // კარგია
     (foo) => bar;
     (foo) => (bar);
     (foo) => (
@@ -1197,7 +1215,7 @@ Other Style Guides
     )
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Classes & Constructors
 
@@ -4233,3 +4251,9 @@ We encourage you to fork this guide and change the rules to fit your team’s st
     (ინგლ.: Variadic function)
 [^21]:
     შეცდომა; უწესივრობა, რომლის გამოც კომპიუტერი ვერ ასრულებს ბრძანებას (ინგლ.: Error)
+[^22]:
+    (ინგლ.: Arrow function)
+[^23]:
+    დაბრუნება ცხადი `return` განცხადების გარეშე (ინგლ.: Implicit return)
+[^24]:
+    სინტაქსი, რომელიც კოდს უფრო ადვილად წასაკითხს ხდის (ინგლ.: Syntactic sugar)
