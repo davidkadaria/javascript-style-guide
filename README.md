@@ -1637,115 +1637,126 @@ Other Style Guides
 
   <a name="iterators--nope"></a><a name="11.1"></a>
   - [11.1](#iterators--nope) Don’t use iterators. Prefer JavaScript’s higher-order functions instead of loops like `for-in` or `for-of`. eslint: [`no-iterator`](https://eslint.org/docs/rules/no-iterator) [`no-restricted-syntax`](https://eslint.org/docs/rules/no-restricted-syntax)
+  - [11.1](#iterators--nope) ნუ გამოიყენებთ იტერატორებს. უმჯობესია, JavaScript-ის მაღალი რიგის ფუნქციები[^30] გამოიყენოთ ნაცვლად ისეთი ციკლებისა, როგორებიცაა `for-in` ან `for-of`. eslint: [`no-iterator`](https://eslint.org/docs/rules/no-iterator) [`no-restricted-syntax`](https://eslint.org/docs/rules/no-restricted-syntax)
 
     > Why? This enforces our immutable rule. Dealing with pure functions that return values is easier to reason about than side effects.
 
+    > რატომ? ეს განამტკიცებს ჩვენს უცვლელობის წესს. მნიშვნელობების დამბრუნებელ სუფთა ფუნქციებთან[^31] მუშაობის გააზრება უფრო ადვილია, ვიდრე გვერდითი ეფექტებისა.
+
     > Use `map()` / `every()` / `filter()` / `find()` / `findIndex()` / `reduce()` / `some()` / ... to iterate over arrays, and `Object.keys()` / `Object.values()` / `Object.entries()` to produce arrays so you can iterate over objects.
+
+    > მასივებზე იტერაციისათვის გამოიყენეთ `map()` / `every()` / `filter()` / `find()` / `findIndex()` / `reduce()` / `some()` / ..., ხოლო `Object.keys()` / `Object.values()` / `Object.entries()` — მასივების მისაღებად, რათა ობიექტებზეც შეძლოთ იტერაცია.
 
     ```javascript
     const numbers = [1, 2, 3, 4, 5];
 
-    // bad
+    // ცუდია
     let sum = 0;
     for (let num of numbers) {
       sum += num;
     }
     sum === 15;
 
-    // good
+    // კარგია
     let sum = 0;
     numbers.forEach((num) => {
       sum += num;
     });
     sum === 15;
 
-    // best (use the functional force)
+    // საუკეთესოა — გამოიყენეთ ფუნქციური მიდგომის ძალა
     const sum = numbers.reduce((total, num) => total + num, 0);
     sum === 15;
 
-    // bad
+    // ცუდია
     const increasedByOne = [];
     for (let i = 0; i < numbers.length; i++) {
       increasedByOne.push(numbers[i] + 1);
     }
 
-    // good
+    // კარგია
     const increasedByOne = [];
     numbers.forEach((num) => {
       increasedByOne.push(num + 1);
     });
 
-    // best (keeping it functional)
+    // საუკეთესოა — ფუნქციური სტილის შენარჩუნებით
     const increasedByOne = numbers.map((num) => num + 1);
     ```
 
   <a name="generators--nope"></a><a name="11.2"></a>
   - [11.2](#generators--nope) Don’t use generators for now.
+  - [11.2](#generators--nope) ამ ეტაპზე ნუ გამოიყენებთ გენერატორებს.
 
     > Why? They don’t transpile well to ES5.
 
+    > რატომ? ისინი ჯეროვნად არ ტრანსპილირდება ES5-ში.
+
   <a name="generators--spacing"></a>
   - [11.3](#generators--spacing) If you must use generators, or if you disregard [our advice](#generators--nope), make sure their function signature is spaced properly. eslint: [`generator-star-spacing`](https://eslint.org/docs/rules/generator-star-spacing)
+  - [11.3](#generators--spacing) თუკი გენერატორების გამოყენება გიწევთ, ანდა [ჩვენს რჩევას](#generators--nope) არად აგდებთ, დარწმუნდით, რომ მათი ფუნქციის სიგნატურაში ინტერვალები სწორად არის დასმული. eslint: [`generator-star-spacing`](https://eslint.org/docs/rules/generator-star-spacing)
 
     > Why? `function` and `*` are part of the same conceptual keyword - `*` is not a modifier for `function`, `function*` is a unique construct, different from `function`.
 
+    > რატომ? `function` და `*` ერთი და იმავე კონცეპტუალური საკვანძო სიტყვის ნაწილებია — `*` არ გახლავთ `function`-ის მოდიფიკატორი; `function*` უნიკალური კონსტრუქციაა, `function`-ისგან განსხვავებული.
+
     ```javascript
-    // bad
+    // ცუდია
     function * foo() {
       // ...
     }
 
-    // bad
+    // ცუდია
     const bar = function * () {
       // ...
     };
 
-    // bad
+    // ცუდია
     const baz = function *() {
       // ...
     };
 
-    // bad
+    // ცუდია
     const quux = function*() {
       // ...
     };
 
-    // bad
+    // ცუდია
     function*foo() {
       // ...
     }
 
-    // bad
+    // ცუდია
     function *foo() {
       // ...
     }
 
-    // very bad
+    // ძალიან ცუდია
     function
     *
     foo() {
       // ...
     }
 
-    // very bad
+    // ძალიან ცუდია
     const wat = function
     *
     () {
       // ...
     };
 
-    // good
+    // კარგია
     function* foo() {
       // ...
     }
 
-    // good
+    // კარგია
     const foo = function* () {
       // ...
     };
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Properties
 
@@ -4313,3 +4324,7 @@ We encourage you to fork this guide and change the rules to fit your team’s st
     ორი ან რამდენიმე პროგრამული ობიექტის დაკავშირება დროის ამა თუ იმ მონაკვეთში (ინგლ.: binding)
 [^29]:
     ინსტრუმენტი, რომელიც მოდულებს ერთ ფაილად კრავს (ინგლ.: Module bundler)
+[^30]:
+    ფუნქცია, რომელიც არგუმენტად იღებს ან აბრუნებს სხვა ფუნქციას (ინგლ.: Higher-order function)
+[^31]:
+    ფუნქცია, რომელიც ერთსა და იმავე შესატან მონაცემებზე მუდამ ერთსა და იმავე შედეგს აბრუნებს და გვერდით ეფექტებს არ იწვევს (ინგლ.: Pure function)
