@@ -169,7 +169,7 @@ Other Style Guides
 
     ```javascript
     // const and let only exist in the blocks they are defined in.
-    // const-ის და let-ის გამოყენებით დეკლარირებული ცვლადები მხოლოდ იმ ბლოკის ფარგლებში არსებობენ, რომელშიც მათი განსაზღვრა მოხდა.
+    // const-ის და let-ის გამოყენებით გამოცხადებული ცვლადები მხოლოდ იმ ბლოკის ფარგლებში არსებობენ, რომელშიც მათი განსაზღვრა მოხდა.
     {
       let a = 1;
       const b = 1;
@@ -1372,7 +1372,7 @@ Other Style Guides
 
     > Why? Duplicate class member declarations will silently prefer the last one - having duplicates is almost certainly a bug.
 
-    > რატომ? კლასის წევრის დუბლირებული დეკლარაციებიდან უჩუმრად უკანასკნელი იქნება არჩეული — დუბლიკატების არსებობა კი თითქმის ყოველთვის ხარვეზია.
+    > რატომ? კლასის წევრის დუბლირებული გამოცხადებებიდან უჩუმრად უკანასკნელი იქნება არჩეული — დუბლიკატების არსებობა კი თითქმის ყოველთვის ხარვეზია.
 
     ```javascript
     // ცუდია
