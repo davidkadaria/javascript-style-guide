@@ -2076,13 +2076,17 @@ Other Style Guides
 **[⬆ ზემოთ](#table-of-contents)**
 
 ## Hoisting
+## „აწევის“ მექანიზმი
 
   <a name="hoisting--about"></a><a name="14.1"></a>
   - [14.1](#hoisting--about) `var` declarations get hoisted to the top of their closest enclosing function scope, their assignment does not. `const` and `let` declarations are blessed with a new concept called [Temporal Dead Zones (TDZ)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#temporal_dead_zone_tdz). It’s important to know why [typeof is no longer safe](https://web.archive.org/web/20200121061528/http://es-discourse.com/t/why-typeof-is-no-longer-safe/15).
+  - [14.1](#hoisting--about) `var` გამოცხადებები საკუთარი უახლოესი გარემომცველი ფუნქციის მოქმედების არეალის თავში „აიწევა“, მათი მინიჭებები კი — არა. `const`-ისა და `let`-ის გამოცხადებებს წილად ერგოთ ახალი კონცეფცია, სახელწოდებით [დროებითი მკვდარი ზონა (*Temporal Dead Zones, TDZ*)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#temporal_dead_zone_tdz). მნიშვნელოვანია, იცოდეთ, თუ [რატომ აღარ გახლავთ `typeof` უსაფრთხო](https://web.archive.org/web/20200121061528/http://es-discourse.com/t/why-typeof-is-no-longer-safe/15).
 
     ```javascript
     // we know this wouldn’t work (assuming there
     // is no notDefined global variable)
+    // ვიცით, რომ ეს არ იმუშავებს (თუ ვივარაუდებთ,
+    // რომ გლობალური ცვლადი notDefined არ არსებობს)
     function example() {
       console.log(notDefined); // => throws a ReferenceError
     }
@@ -2091,6 +2095,10 @@ Other Style Guides
     // reference the variable will work due to
     // variable hoisting. Note: the assignment
     // value of `true` is not hoisted.
+    // ცვლადის გამოცხადება მასზე მითითების შემდეგაც
+    // იმუშავებს ცვლადების „აწევის“ მექანიზმის წყალობით.
+    // გაითვალისწინეთ: მისანიჭებელი მნიშვნელობა
+    // `true` არ „აიწევა“.
     function example() {
       console.log(declaredButNotAssigned); // => undefined
       var declaredButNotAssigned = true;
@@ -2099,6 +2107,9 @@ Other Style Guides
     // the interpreter is hoisting the variable
     // declaration to the top of the scope,
     // which means our example could be rewritten as:
+    // ინტერპრეტატორი ცვლადის გამოცხადებას მოქმედების
+    // არეალის თავში „სწევს“, რაც ნიშნავს, რომ ჩვენი
+    // მაგალითი ასეც შეიძლება გადაიწეროს:
     function example() {
       let declaredButNotAssigned;
       console.log(declaredButNotAssigned); // => undefined
@@ -2106,6 +2117,7 @@ Other Style Guides
     }
 
     // using const and let
+    // const-ისა და let-ის გამოყენებით
     function example() {
       console.log(declaredButNotAssigned); // => throws a ReferenceError
       console.log(typeof declaredButNotAssigned); // => throws a ReferenceError
@@ -2115,6 +2127,7 @@ Other Style Guides
 
   <a name="hoisting--anon-expressions"></a><a name="14.2"></a>
   - [14.2](#hoisting--anon-expressions) Anonymous function expressions hoist their variable name, but not the function assignment.
+  - [14.2](#hoisting--anon-expressions) ანონიმური ფუნქციის გამოსახულებები საკუთარი ცვლადის სახელს „სწევენ“ და არა ფუნქციის მინიჭებას.
 
     ```javascript
     function example() {
@@ -2130,6 +2143,7 @@ Other Style Guides
 
   <a name="hoisting--named-expresions"></a><a name="hoisting--named-expressions"></a><a name="14.3"></a>
   - [14.3](#hoisting--named-expressions) Named function expressions hoist the variable name, not the function name or the function body.
+  - [14.3](#hoisting--named-expressions) ფუნქციის სახელდებული გამოსახულებები ცვლადის სახელს „სწევენ“ და არა ფუნქციის სახელს ან მის ტანს.
 
     ```javascript
     function example() {
@@ -2146,6 +2160,8 @@ Other Style Guides
 
     // the same is true when the function name
     // is the same as the variable name.
+    // იგივე ითქმის შემთხვევაზე, როდესაც ფუნქციის
+    // სახელი ცვლადის სახელს ემთხვევა.
     function example() {
       console.log(named); // => undefined
 
@@ -2159,6 +2175,7 @@ Other Style Guides
 
   <a name="hoisting--declarations"></a><a name="14.4"></a>
   - [14.4](#hoisting--declarations) Function declarations hoist their name and the function body.
+  - [14.4](#hoisting--declarations) ფუნქციის გამოცხადებები საკუთარ სახელსაც „სწევენ“ და ფუნქციის ტანსაც.
 
     ```javascript
     function example() {
@@ -2172,21 +2189,28 @@ Other Style Guides
 
   <a name="no-use-before-define"></a>
   - [14.5](#no-use-before-define) Variables, classes, and functions should be defined before they can be used. eslint: [`no-use-before-define`](https://eslint.org/docs/latest/rules/no-use-before-define)
+  - [14.5](#no-use-before-define) ცვლადები, კლასები და ფუნქციები მათ გამოყენებამდე უნდა განისაზღვროს. eslint: [`no-use-before-define`](https://eslint.org/docs/latest/rules/no-use-before-define)
 
     > Why? When variables, classes, or functions are declared after being used, it can harm readability since a reader won't know what a thing that's referenced is. It's much clearer for a reader to first encounter the source of a thing (whether imported from another module, or defined in the file) before encountering a use of the thing.
 
+    > რატომ? როდესაც ცვლადები, კლასები ან ფუნქციები მათ გამოყენებაზე გვიან ცხადდება, ეს აუარესებს წაკითხვადობას, რადგანაც მკითხველი ვერ გაიგებს, თუ რას წარმოადგენს ის, რასაც კოდი მიუთითებს. მკითხველისთვის ბევრად უფრო ნათელია, ჯერ ამა თუ იმ ერთეულის წყაროს გადააწყდეს (სხვა მოდულიდან იქნება იგი იმპორტირებული თუ ფაილშივე განსაზღვრული) და მხოლოდ ამის შემდეგ — მის გამოყენებას.
+
     ```javascript
-    // bad
+    // ცუდია
 
     // Variable a is being used before it is being defined.
+    // ცვლადი a გამოყენებულია მის განსაზღვრამდე.
     console.log(a); // this will be undefined, since while the declaration is hoisted, the initialization is not
+    // ეს იქნება undefined, რადგანაც გამოცხადება „აიწევა“, ინიციალიზაცია კი — არა
     var a = 10;
 
     // Function fun is being called before being defined.
+    // ფუნქცია fun გამოძახებულია მის განსაზღვრამდე.
     fun();
     function fun() {}
 
     // Class A is being used before being defined.
+    // კლასი A გამოყენებულია მის განსაზღვრამდე.
     new A(); // ReferenceError: Cannot access 'A' before initialization
     class A {
     }
@@ -2195,6 +2219,10 @@ Other Style Guides
     // The variables 'a' and 'b' are in a Temporal Dead Zone where JavaScript
     // knows they exist (declaration is hoisted) but they are not accessible
     // (as they are not yet initialized).
+    // `let` და `const` „აიწევა“, თუმცა მათ ნაგულისხმევი ინიციალიზაცია არ გააჩნიათ.
+    // ცვლადები 'a' და 'b' დროებით მკვდარ ზონაში იმყოფებიან, სადაც JavaScript-მა
+    // იცის, რომ ისინი არსებობენ (გამოცხადება „აწეულია“), მაგრამ ხელმისაწვდომები
+    // არ არიან (რადგანაც ჯერ ინიციალიზებული არ არის).
 
     console.log(a); // ReferenceError: Cannot access 'a' before initialization
     console.log(b); // ReferenceError: Cannot access 'b' before initialization
@@ -2202,7 +2230,7 @@ Other Style Guides
     const b = 5;
 
 
-    // good
+    // კარგია
 
     var a = 10;
     console.log(a); // 10
@@ -2221,8 +2249,9 @@ Other Style Guides
     ```
 
   - For more information refer to [JavaScript Scoping & Hoisting](https://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting/) by [Ben Cherry](https://www.adequatelygood.com/).
+  - დამატებითი ინფორმაციისათვის იხილეთ [ბენ ჩერის](https://www.adequatelygood.com/) სტატია [JavaScript Scoping & Hoisting](https://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting/).
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Comparison Operators & Equality
 
