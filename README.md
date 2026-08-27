@@ -2254,57 +2254,68 @@ Other Style Guides
 **[⬆ ზემოთ](#table-of-contents)**
 
 ## Comparison Operators & Equality
+## შედარების ოპერატორები და ტოლობა
 
   <a name="comparison--eqeqeq"></a><a name="15.1"></a>
   - [15.1](#comparison--eqeqeq) Use `===` and `!==` over `==` and `!=`. eslint: [`eqeqeq`](https://eslint.org/docs/rules/eqeqeq)
+  - [15.1](#comparison--eqeqeq) გამოიყენეთ `===` და `!==` `==`-ისა და `!=`-ის ნაცვლად. eslint: [`eqeqeq`](https://eslint.org/docs/rules/eqeqeq)
 
   <a name="comparison--if"></a><a name="15.2"></a>
   - [15.2](#comparison--if) Conditional statements such as the `if` statement evaluate their expression using coercion with the `ToBoolean` abstract method and always follow these simple rules:
+  - [15.2](#comparison--if) პირობითი განცხადებები, როგორიც `if` განცხადება გახლავთ, საკუთარ გამოსახულებას აფასებენ ტიპის იძულებითი გარდაქმნით[^36], აბსტრაქტული მეთოდის — `ToBoolean`-ის — მეშვეობით, და მუდამ მიჰყვებიან შემდეგ მარტივ წესებს:
 
     - **Objects** evaluate to **true**
+    - **ობიექტები** ფასდება, როგორც **true**
     - **Undefined** evaluates to **false**
+    - **Undefined** ფასდება, როგორც **false**
     - **Null** evaluates to **false**
+    - **Null** ფასდება, როგორც **false**
     - **Booleans** evaluate to **the value of the boolean**
+    - **ლოგიკური (boolean) მნიშვნელობები** ფასდება, როგორც **თავად ეს მნიშვნელობა**
     - **Numbers** evaluate to **false** if **+0, -0, or NaN**, otherwise **true**
+    - **რიცხვები** ფასდება, როგორც **false**, თუკი ისინი **+0, -0 ან NaN** გახლავთ; სხვა შემთხვევაში — **true**
     - **Strings** evaluate to **false** if an empty string `''`, otherwise **true**
+    - **სტრიქონები** ფასდება, როგორც **false**, თუკი სტრიქონი ცარიელია (`''`); სხვა შემთხვევაში — **true**
 
     ```javascript
     if ([0] && []) {
       // true
       // an array (even an empty one) is an object, objects will evaluate to true
+      // მასივი (ცარიელიც კი) ობიექტია, ობიექტები კი, როგორც true, ისე ფასდება
     }
     ```
 
   <a name="comparison--shortcuts"></a><a name="15.3"></a>
   - [15.3](#comparison--shortcuts) Use shortcuts for booleans, but explicit comparisons for strings and numbers.
+  - [15.3](#comparison--shortcuts) ლოგიკური მნიშვნელობებისთვის გამოიყენეთ შემოკლებული ჩანაწერი, ხოლო სტრიქონებისა და რიცხვებისთვის — ცხადი შედარებები.
 
     ```javascript
-    // bad
+    // ცუდია
     if (isValid === true) {
       // ...
     }
 
-    // good
+    // კარგია
     if (isValid) {
       // ...
     }
 
-    // bad
+    // ცუდია
     if (name) {
       // ...
     }
 
-    // good
+    // კარგია
     if (name !== '') {
       // ...
     }
 
-    // bad
+    // ცუდია
     if (collection.length) {
       // ...
     }
 
-    // good
+    // კარგია
     if (collection.length > 0) {
       // ...
     }
@@ -2312,14 +2323,18 @@ Other Style Guides
 
   <a name="comparison--moreinfo"></a><a name="15.4"></a>
   - [15.4](#comparison--moreinfo) For more information see [Truth, Equality, and JavaScript](https://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll.
+  - [15.4](#comparison--moreinfo) დამატებითი ინფორმაციისათვის იხილეთ ანგუს კროლის სტატია [Truth, Equality, and JavaScript](https://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108).
 
   <a name="comparison--switch-blocks"></a><a name="15.5"></a>
   - [15.5](#comparison--switch-blocks) Use braces to create blocks in `case` and `default` clauses that contain lexical declarations (e.g. `let`, `const`, `function`, and `class`). eslint: [`no-case-declarations`](https://eslint.org/docs/rules/no-case-declarations)
+  - [15.5](#comparison--switch-blocks) ფიგურული ფრჩხილებით შექმენით ბლოკები ისეთ `case` და `default` პუნქტებში, რომლებიც ლექსიკურ გამოცხადებებს (მაგ.: `let`, `const`, `function` და `class`) შეიცავს. eslint: [`no-case-declarations`](https://eslint.org/docs/rules/no-case-declarations)
 
     > Why? Lexical declarations are visible in the entire `switch` block but only get initialized when assigned, which only happens when its `case` is reached. This causes problems when multiple `case` clauses attempt to define the same thing.
 
+    > რატომ? ლექსიკური გამოცხადებები მთელ `switch` ბლოკში ჩანს, თუმცა ისინი ინიციალიზდება მხოლოდ მინიჭებისას, რაც, თავის მხრივ, მხოლოდ შესაბამის `case`-მდე მიღწევისას ხდება. ეს პრობლემებს წარმოშობს მაშინ, როდესაც ერთი და იმავე რამის განსაზღვრას რამდენიმე `case` პუნქტი ცდილობს.
+
     ```javascript
-    // bad
+    // ცუდია
     switch (foo) {
       case 1:
         let x = 1;
@@ -2336,7 +2351,7 @@ Other Style Guides
         class C {}
     }
 
-    // good
+    // კარგია
     switch (foo) {
       case 1: {
         let x = 1;
@@ -2363,36 +2378,39 @@ Other Style Guides
 
   <a name="comparison--nested-ternaries"></a><a name="15.6"></a>
   - [15.6](#comparison--nested-ternaries) Ternaries should not be nested and generally be single line expressions. eslint: [`no-nested-ternary`](https://eslint.org/docs/rules/no-nested-ternary)
+  - [15.6](#comparison--nested-ternaries) ტერნარული ოპერატორები[^37] ერთმანეთში ჩადგმული არ უნდა იყოს და, ზოგადად, ისინი ერთხაზიან გამოსახულებებად უნდა ჩაიწეროს. eslint: [`no-nested-ternary`](https://eslint.org/docs/rules/no-nested-ternary)
 
     ```javascript
-    // bad
+    // ცუდია
     const foo = maybe1 > maybe2
       ? 'bar'
       : value1 > value2 ? 'baz' : null;
 
     // split into 2 separated ternary expressions
+    // გაყოფილია ორ დამოუკიდებელ ტერნარულ გამოსახულებად
     const maybeNull = value1 > value2 ? 'baz' : null;
 
-    // better
+    // უკეთესია
     const foo = maybe1 > maybe2
       ? 'bar'
       : maybeNull;
 
-    // best
+    // საუკეთესოა
     const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
     ```
 
   <a name="comparison--unneeded-ternary"></a><a name="15.7"></a>
   - [15.7](#comparison--unneeded-ternary) Avoid unneeded ternary statements. eslint: [`no-unneeded-ternary`](https://eslint.org/docs/rules/no-unneeded-ternary)
+  - [15.7](#comparison--unneeded-ternary) მოერიდეთ ზედმეტ ტერნარულ განცხადებებს. eslint: [`no-unneeded-ternary`](https://eslint.org/docs/rules/no-unneeded-ternary)
 
     ```javascript
-    // bad
+    // ცუდია
     const foo = a ? a : b;
     const bar = c ? true : false;
     const baz = c ? false : true;
     const quux = a != null ? a : b;
 
-    // good
+    // კარგია
     const foo = a || b;
     const bar = !!c;
     const baz = !c;
@@ -2402,68 +2420,79 @@ Other Style Guides
   <a name="comparison--no-mixed-operators"></a>
   - [15.8](#comparison--no-mixed-operators) When mixing operators, enclose them in parentheses. The only exception is the standard arithmetic operators: `+`, `-`, and `**` since their precedence is broadly understood. We recommend enclosing `/` and `*` in parentheses because their precedence can be ambiguous when they are mixed.
   eslint: [`no-mixed-operators`](https://eslint.org/docs/rules/no-mixed-operators)
+  - [15.8](#comparison--no-mixed-operators) ოპერატორების შერევისას მოაქციეთ ისინი ფრჩხილებში. ერთადერთი გამონაკლისი სტანდარტული არითმეტიკული ოპერატორებია: `+`, `-` და `**`, რადგანაც მათი პრიორიტეტი საყოველთაოდ ცნობილია. გირჩევთ, `/` და `*` მაინც მოაქციოთ ფრჩხილებში, რადგანაც მათი შერევისას ოპერაციათა თანმიმდევრობა შესაძლოა ბუნდოვანი აღმოჩნდეს. eslint: [`no-mixed-operators`](https://eslint.org/docs/rules/no-mixed-operators)
 
     > Why? This improves readability and clarifies the developer’s intention.
 
+    > რატომ? ეს აუმჯობესებს წაკითხვადობას და დეველოპერის ჩანაფიქრს უფრო ნათელს ხდის.
+
     ```javascript
-    // bad
+    // ცუდია
     const foo = a && b < 0 || c > 0 || d + 1 === 0;
 
-    // bad
+    // ცუდია
     const bar = a ** b - 5 % d;
 
-    // bad
+    // ცუდია
     // one may be confused into thinking (a || b) && c
+    // ვინმემ, შესაძლოა, ეს შეცდომით (a || b) && c-დ გაიგოს
     if (a || b && c) {
       return d;
     }
 
-    // bad
+    // ცუდია
     const bar = a + b / c * d;
 
-    // good
+    // კარგია
     const foo = (a && b < 0) || c > 0 || (d + 1 === 0);
 
-    // good
+    // კარგია
     const bar = a ** b - (5 % d);
 
-    // good
+    // კარგია
     if (a || (b && c)) {
       return d;
     }
 
-    // good
+    // კარგია
     const bar = a + (b / c) * d;
     ```
 
   <a name="nullish-coalescing-operator"></a>
   - [15.9](#nullish-coalescing-operator) The nullish coalescing operator (`??`) is a logical operator that returns its right-hand side operand when its left-hand side operand is `null` or `undefined`. Otherwise, it returns the left-hand side operand.
+  - [15.9](#nullish-coalescing-operator) null-ის შერწყმის ოპერატორი[^38] (`??`) ლოგიკური ოპერატორია, რომელიც მარჯვენა ოპერანდს მაშინ აბრუნებს, როდესაც მისი მარცხენა ოპერანდი `null` ან `undefined` გახლავთ. სხვა შემთხვევაში იგი მარცხენა ოპერანდს აბრუნებს.
 
     > Why? It provides precision by distinguishing null/undefined from other falsy values, enhancing code clarity and predictability.
 
+    > რატომ? იგი სიზუსტეს გვთავაზობს, რადგანაც null-სა და undefined-ს განასხვავებს სხვა „მცდარი“ (*falsy*) მნიშვნელობებისგან, რითაც ზრდის კოდის სიცხადესა და პროგნოზირებადობას.
+
     ```javascript
-    // bad
+    // ცუდია
     const value = 0 ?? 'default';
     // returns 0, not 'default'
+    // აბრუნებს 0-ს და არა 'default'-ს
 
-    // bad
+    // ცუდია
     const value = '' ?? 'default';
     // returns '', not 'default'
+    // აბრუნებს ''-ს და არა 'default'-ს
 
-    // good
+    // კარგია
     const value = null ?? 'default';
     // returns 'default'
+    // აბრუნებს 'default'-ს
 
-    // good
+    // კარგია
     const user = {
       name: 'John',
       age: null
     };
     const age = user.age ?? 18;
     // returns 18
+    // აბრუნებს 18-ს
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Blocks
 
@@ -4402,3 +4431,9 @@ We encourage you to fork this guide and change the rules to fit your team’s st
     მნიშვნელობის გაზრდა — ჩვეულებრივ, ერთით (ინგლ.: Increment)
 [^35]:
     მნიშვნელობის შემცირება — ჩვეულებრივ, ერთით (ინგლ.: Decrement)
+[^36]:
+    მნიშვნელობის ავტომატური (არაცხადი) გარდაქმნა ერთი ტიპიდან მეორეში (ინგლ.: Coercion)
+[^37]:
+    ოპერატორი სამი ოპერანდით: პირობა ? მნიშვნელობა1 : მნიშვნელობა2 (ინგლ.: Ternary operator)
+[^38]:
+    ლოგიკური ოპერატორი `??`, რომელიც null-ისა და undefined-ის შემთხვევაში სათადარიგო მნიშვნელობის დაბრუნების საშუალებას იძლევა (ინგლ.: Nullish coalescing operator)
