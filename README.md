@@ -2690,14 +2690,18 @@ Other Style Guides
 **[⬆ ზემოთ](#table-of-contents)**
 
 ## Comments
+## კომენტარები
 
   <a name="comments--multiline"></a><a name="17.1"></a>
   - [18.1](#comments--multiline) Use `/** ... */` for multiline comments.
+  - [18.1](#comments--multiline) მრავალხაზიანი კომენტარებისთვის გამოიყენეთ `/** ... */`.
 
     ```javascript
-    // bad
+    // ცუდია
     // make() returns a new element
     // based on the passed in tag name
+    // make() ახალ ელემენტს აბრუნებს
+    // გადაცემული ტეგის სახელის მიხედვით
     //
     // @param {String} tag
     // @return {Element} element
@@ -2708,10 +2712,12 @@ Other Style Guides
       return element;
     }
 
-    // good
+    // კარგია
     /**
      * make() returns a new element
      * based on the passed-in tag name
+     * make() ახალ ელემენტს აბრუნებს
+     * გადაცემული ტეგის სახელის მიხედვით
      */
     function make(tag) {
 
@@ -2723,37 +2729,43 @@ Other Style Guides
 
   <a name="comments--singleline"></a><a name="17.2"></a>
   - [18.2](#comments--singleline) Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment unless it’s on the first line of a block.
+  - [18.2](#comments--singleline) ერთხაზიანი კომენტარებისთვის გამოიყენეთ `//`. ერთხაზიანი კომენტარები ცალკე ხაზზე, კომენტარის საგნის ზემოთ მოათავსეთ. კომენტარის წინ ცარიელი ხაზი დატოვეთ, თუკი იგი ბლოკის პირველ ხაზზე არ იმყოფება.
 
     ```javascript
-    // bad
+    // ცუდია
     const active = true;  // is current tab
+    const active = true;  // მიმდინარე ტაბია
 
-    // good
+    // კარგია
     // is current tab
+    // მიმდინარე ტაბია
     const active = true;
 
-    // bad
+    // ცუდია
     function getType() {
       console.log('fetching type...');
       // set the default type to 'no type'
+      // ნაგულისხმევ ტიპად 'no type' ვაყენებთ
       const type = this.type || 'no type';
 
       return type;
     }
 
-    // good
+    // კარგია
     function getType() {
       console.log('fetching type...');
 
       // set the default type to 'no type'
+      // ნაგულისხმევ ტიპად 'no type' ვაყენებთ
       const type = this.type || 'no type';
 
       return type;
     }
 
-    // also good
+    // ასევე კარგია
     function getType() {
       // set the default type to 'no type'
+      // ნაგულისხმევ ტიპად 'no type' ვაყენებთ
       const type = this.type || 'no type';
 
       return type;
@@ -2762,20 +2774,25 @@ Other Style Guides
 
   <a name="comments--spaces"></a>
   - [18.3](#comments--spaces) Start all comments with a space to make it easier to read. eslint: [`spaced-comment`](https://eslint.org/docs/rules/spaced-comment)
+  - [18.3](#comments--spaces) ყველა კომენტარი ინტერვალით დაიწყეთ, რათა მისი წაკითხვა უფრო ადვილი იყოს. eslint: [`spaced-comment`](https://eslint.org/docs/rules/spaced-comment)
 
     ```javascript
-    // bad
+    // ცუდია
     //is current tab
+    //მიმდინარე ტაბია
     const active = true;
 
-    // good
+    // კარგია
     // is current tab
+    // მიმდინარე ტაბია
     const active = true;
 
-    // bad
+    // ცუდია
     /**
      *make() returns a new element
      *based on the passed-in tag name
+     *make() ახალ ელემენტს აბრუნებს
+     *გადაცემული ტეგის სახელის მიხედვით
      */
     function make(tag) {
 
@@ -2784,10 +2801,12 @@ Other Style Guides
       return element;
     }
 
-    // good
+    // კარგია
     /**
      * make() returns a new element
      * based on the passed-in tag name
+     * make() ახალ ელემენტს აბრუნებს
+     * გადაცემული ტეგის სახელის მიხედვით
      */
     function make(tag) {
 
@@ -2799,9 +2818,11 @@ Other Style Guides
 
   <a name="comments--actionitems"></a><a name="17.3"></a>
   - [18.4](#comments--actionitems) Prefixing your comments with `FIXME` or `TODO` helps other developers quickly understand if you’re pointing out a problem that needs to be revisited, or if you’re suggesting a solution to the problem that needs to be implemented. These are different than regular comments because they are actionable. The actions are `FIXME: -- need to figure this out` or `TODO: -- need to implement`.
+  - [18.4](#comments--actionitems) კომენტარებისთვის `FIXME` ან `TODO` თავსართის დართვა სხვა დეველოპერებს ეხმარება, სწრაფად გაარკვიონ, პრობლემაზე მიუთითებთ, რომელსაც მოგვიანებით უნდა დაუბრუნდნენ, თუ პრობლემის გადაწყვეტას სთავაზობთ, რომელიც განხორციელებას საჭიროებს. ასეთი კომენტარები ჩვეულებრივი კომენტარებისგან იმით განსხვავდება, რომ ქმედებას მოითხოვს. ეს ქმედებებია: `FIXME: -- need to figure this out` (ეს უნდა გავარკვიოთ) ან `TODO: -- need to implement` (ეს უნდა განვახორციელოთ).
 
   <a name="comments--fixme"></a><a name="17.4"></a>
   - [18.5](#comments--fixme) Use `// FIXME:` to annotate problems.
+  - [18.5](#comments--fixme) პრობლემების აღსანიშნავად გამოიყენეთ `// FIXME:`.
 
     ```javascript
     class Calculator extends Abacus {
@@ -2809,6 +2830,7 @@ Other Style Guides
         super();
 
         // FIXME: shouldn’t use a global here
+        // FIXME: აქ გლობალური ცვლადი არ უნდა გამოვიყენოთ
         total = 0;
       }
     }
@@ -2816,6 +2838,7 @@ Other Style Guides
 
   <a name="comments--todo"></a><a name="17.5"></a>
   - [18.6](#comments--todo) Use `// TODO:` to annotate solutions to problems.
+  - [18.6](#comments--todo) პრობლემათა გადაწყვეტების აღსანიშნავად გამოიყენეთ `// TODO:`.
 
     ```javascript
     class Calculator extends Abacus {
@@ -2823,12 +2846,13 @@ Other Style Guides
         super();
 
         // TODO: total should be configurable by an options param
+        // TODO: total-ის კონფიგურირება options პარამეტრით უნდა შეიძლებოდეს
         this.total = 0;
       }
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Whitespace
 
