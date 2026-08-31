@@ -2615,31 +2615,34 @@ Other Style Guides
 **[⬆ ზემოთ](#table-of-contents)**
 
 ## Control Statements
+## მართვის განცხადებები
 
   <a name="control-statements"></a>
   - [17.1](#control-statements) In case your control statement (`if`, `while` etc.) gets too long or exceeds the maximum line length, each (grouped) condition could be put into a new line. The logical operator should begin the line.
+  - [17.1](#control-statements) თუკი თქვენი მართვის განცხადება (`if`, `while` და ა.შ.) ზედმეტად გრძელი გამოდის ან ხაზის მაქსიმალურ სიგრძეს აჭარბებს, თითოეული (დაჯგუფებული) პირობა შესაძლოა ახალ ხაზზე გადავიდეს. ხაზი ლოგიკური ოპერატორით უნდა იწყებოდეს.
 
     > Why? Requiring operators at the beginning of the line keeps the operators aligned and follows a pattern similar to method chaining. This also improves readability by making it easier to visually follow complex logic.
+    > რატომ? ოპერატორების ხაზის დასაწყისში მოთავსების მოთხოვნა მათ ერთმანეთის ქვეშ გასწორებულს ინარჩუნებს და მეთოდების ურთიერთგადაჯაჭვულობის მსგავს ნიმუშს მიჰყვება. ეს წაკითხვადობასაც აუმჯობესებს, რადგანაც რთული ლოგიკის თვალით მიდევნებას აადვილებს.
 
     ```javascript
-    // bad
+    // ცუდია
     if ((foo === 123 || bar === 'abc') && doesItLookGoodWhenItBecomesThatLong() && isThisReallyHappening()) {
       thing1();
     }
 
-    // bad
+    // ცუდია
     if (foo === 123 &&
       bar === 'abc') {
       thing1();
     }
 
-    // bad
+    // ცუდია
     if (foo === 123
       && bar === 'abc') {
       thing1();
     }
 
-    // bad
+    // ცუდია
     if (
       foo === 123 &&
       bar === 'abc'
@@ -2647,7 +2650,7 @@ Other Style Guides
       thing1();
     }
 
-    // good
+    // კარგია
     if (
       foo === 123
       && bar === 'abc'
@@ -2655,7 +2658,7 @@ Other Style Guides
       thing1();
     }
 
-    // good
+    // კარგია
     if (
       (foo === 123 || bar === 'abc')
       && doesItLookGoodWhenItBecomesThatLong()
@@ -2664,7 +2667,7 @@ Other Style Guides
       thing1();
     }
 
-    // good
+    // კარგია
     if (foo === 123 && bar === 'abc') {
       thing1();
     }
@@ -2672,18 +2675,19 @@ Other Style Guides
 
   <a name="control-statement--value-selection"></a><a name="control-statements--value-selection"></a>
   - [17.2](#control-statements--value-selection) Don't use selection operators in place of control statements.
+  - [17.2](#control-statements--value-selection) ნუ გამოიყენებთ ამომრჩევ ოპერატორებს (*selection operators*) მართვის განცხადებების ნაცვლად.
 
     ```javascript
-    // bad
+    // ცუდია
     !isRunning && startRunning();
 
-    // good
+    // კარგია
     if (!isRunning) {
       startRunning();
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Comments
 
