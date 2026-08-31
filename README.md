@@ -2855,22 +2855,24 @@ Other Style Guides
 **[⬆ ზემოთ](#table-of-contents)**
 
 ## Whitespace
+## ინტერვალები
 
   <a name="whitespace--spaces"></a><a name="18.1"></a>
   - [19.1](#whitespace--spaces) Use soft tabs (space character) set to 2 spaces. eslint: [`indent`](https://eslint.org/docs/rules/indent)
+  - [19.1](#whitespace--spaces) გამოიყენეთ 2 ინტერვალზე დაყენებული რბილი ტაბულაცია (ინტერვალის სიმბოლო). eslint: [`indent`](https://eslint.org/docs/rules/indent)
 
     ```javascript
-    // bad
+    // ცუდია
     function foo() {
     ∙∙∙∙let name;
     }
 
-    // bad
+    // ცუდია
     function bar() {
     ∙let name;
     }
 
-    // good
+    // კარგია
     function baz() {
     ∙∙let name;
     }
@@ -2878,25 +2880,26 @@ Other Style Guides
 
   <a name="whitespace--before-blocks"></a><a name="18.2"></a>
   - [19.2](#whitespace--before-blocks) Place 1 space before the leading brace. eslint: [`space-before-blocks`](https://eslint.org/docs/rules/space-before-blocks)
+  - [19.2](#whitespace--before-blocks) გამხსნელი ფიგურული ფრჩხილის წინ 1 ინტერვალი დატოვეთ. eslint: [`space-before-blocks`](https://eslint.org/docs/rules/space-before-blocks)
 
     ```javascript
-    // bad
+    // ცუდია
     function test(){
       console.log('test');
     }
 
-    // good
+    // კარგია
     function test() {
       console.log('test');
     }
 
-    // bad
+    // ცუდია
     dog.set('attr',{
       age: '1 year',
       breed: 'Bernese Mountain Dog',
     });
 
-    // good
+    // კარგია
     dog.set('attr', {
       age: '1 year',
       breed: 'Bernese Mountain Dog',
@@ -2905,24 +2908,25 @@ Other Style Guides
 
   <a name="whitespace--around-keywords"></a><a name="18.3"></a>
   - [19.3](#whitespace--around-keywords) Place 1 space before the opening parenthesis in control statements (`if`, `while` etc.). Place no space between the argument list and the function name in function calls and declarations. eslint: [`keyword-spacing`](https://eslint.org/docs/rules/keyword-spacing)
+  - [19.3](#whitespace--around-keywords) მართვის განცხადებებში (`if`, `while` და ა.შ.) გამხსნელი მრგვალი ფრჩხილის წინ 1 ინტერვალი დატოვეთ. ფუნქციის გამოძახებებსა და გამოცხადებებში არგუმენტების სიასა და ფუნქციის სახელს შორის ინტერვალი ნუ დატოვებთ. eslint: [`keyword-spacing`](https://eslint.org/docs/rules/keyword-spacing)
 
     ```javascript
-    // bad
+    // ცუდია
     if(isJedi) {
       fight ();
     }
 
-    // good
+    // კარგია
     if (isJedi) {
       fight();
     }
 
-    // bad
+    // ცუდია
     function fight () {
       console.log ('Swooosh!');
     }
 
-    // good
+    // კარგია
     function fight() {
       console.log('Swooosh!');
     }
@@ -2930,27 +2934,29 @@ Other Style Guides
 
   <a name="whitespace--infix-ops"></a><a name="18.4"></a>
   - [19.4](#whitespace--infix-ops) Set off operators with spaces. eslint: [`space-infix-ops`](https://eslint.org/docs/rules/space-infix-ops)
+  - [19.4](#whitespace--infix-ops) ოპერატორები ინტერვალებით გამოყავით. eslint: [`space-infix-ops`](https://eslint.org/docs/rules/space-infix-ops)
 
     ```javascript
-    // bad
+    // ცუდია
     const x=y+5;
 
-    // good
+    // კარგია
     const x = y + 5;
     ```
 
   <a name="whitespace--newline-at-end"></a><a name="18.5"></a>
   - [19.5](#whitespace--newline-at-end) End files with a single newline character. eslint: [`eol-last`](https://eslint.org/docs/rules/eol-last)
+  - [19.5](#whitespace--newline-at-end) ფაილები ახალი ხაზის ერთი სიმბოლოთი დაასრულეთ. eslint: [`eol-last`](https://eslint.org/docs/rules/eol-last)
 
     ```javascript
-    // bad
+    // ცუდია
     import { es6 } from './AirbnbStyleGuide';
       // ...
     export default es6;
     ```
 
     ```javascript
-    // bad
+    // ცუდია
     import { es6 } from './AirbnbStyleGuide';
       // ...
     export default es6;↵
@@ -2958,7 +2964,7 @@ Other Style Guides
     ```
 
     ```javascript
-    // good
+    // კარგია
     import { es6 } from './AirbnbStyleGuide';
       // ...
     export default es6;↵
@@ -2967,12 +2973,13 @@ Other Style Guides
   <a name="whitespace--chains"></a><a name="18.6"></a>
   - [19.6](#whitespace--chains) Use indentation when making long method chains (more than 2 method chains). Use a leading dot, which
     emphasizes that the line is a method call, not a new statement. eslint: [`newline-per-chained-call`](https://eslint.org/docs/rules/newline-per-chained-call) [`no-whitespace-before-property`](https://eslint.org/docs/rules/no-whitespace-before-property)
+  - [19.6](#whitespace--chains) მეთოდების გრძელი ჯაჭვების (2-ზე მეტი მეთოდის) შექმნისას აბზაცი გამოიყენეთ. წამყვანი წერტილი გამოიყენეთ, რაც ხაზს უსვამს, რომ ეს ხაზი მეთოდის გამოძახებაა და არა ახალი განცხადება. eslint: [`newline-per-chained-call`](https://eslint.org/docs/rules/newline-per-chained-call) [`no-whitespace-before-property`](https://eslint.org/docs/rules/no-whitespace-before-property)
 
     ```javascript
-    // bad
+    // ცუდია
     $('#items').find('.selected').highlight().end().find('.open').updateCount();
 
-    // bad
+    // ცუდია
     $('#items').
       find('.selected').
         highlight().
@@ -2980,7 +2987,7 @@ Other Style Guides
       find('.open').
         updateCount();
 
-    // good
+    // კარგია
     $('#items')
       .find('.selected')
         .highlight()
@@ -2988,13 +2995,13 @@ Other Style Guides
       .find('.open')
         .updateCount();
 
-    // bad
+    // ცუდია
     const leds = stage.selectAll('.led').data(data).enter().append('svg:svg').classed('led', true)
         .attr('width', (radius + margin) * 2).append('svg:g')
         .attr('transform', `translate(${radius + margin}, ${radius + margin})`)
         .call(tron.led);
 
-    // good
+    // კარგია
     const leds = stage.selectAll('.led')
         .data(data)
       .enter().append('svg:svg')
@@ -3004,7 +3011,7 @@ Other Style Guides
         .attr('transform', `translate(${radius + margin}, ${radius + margin})`)
         .call(tron.led);
 
-    // good
+    // კარგია
     const leds = stage.selectAll('.led').data(data);
     const svg = leds.enter().append('svg:svg');
     svg.classed('led', true).attr('width', (radius + margin) * 2);
@@ -3014,22 +3021,23 @@ Other Style Guides
 
   <a name="whitespace--after-blocks"></a><a name="18.7"></a>
   - [19.7](#whitespace--after-blocks) Leave a blank line after blocks and before the next statement.
+  - [19.7](#whitespace--after-blocks) ბლოკების შემდეგ და მომდევნო განცხადების წინ ცარიელი ხაზი დატოვეთ.
 
     ```javascript
-    // bad
+    // ცუდია
     if (foo) {
       return bar;
     }
     return baz;
 
-    // good
+    // კარგია
     if (foo) {
       return bar;
     }
 
     return baz;
 
-    // bad
+    // ცუდია
     const obj = {
       foo() {
       },
@@ -3038,7 +3046,7 @@ Other Style Guides
     };
     return obj;
 
-    // good
+    // კარგია
     const obj = {
       foo() {
       },
@@ -3049,7 +3057,7 @@ Other Style Guides
 
     return obj;
 
-    // bad
+    // ცუდია
     const arr = [
       function foo() {
       },
@@ -3058,7 +3066,7 @@ Other Style Guides
     ];
     return arr;
 
-    // good
+    // კარგია
     const arr = [
       function foo() {
       },
@@ -3072,16 +3080,17 @@ Other Style Guides
 
   <a name="whitespace--padded-blocks"></a><a name="18.8"></a>
   - [19.8](#whitespace--padded-blocks) Do not pad your blocks with blank lines. eslint: [`padded-blocks`](https://eslint.org/docs/rules/padded-blocks)
+  - [19.8](#whitespace--padded-blocks) ნუ შეავსებთ ბლოკებს ცარიელი ხაზებით. eslint: [`padded-blocks`](https://eslint.org/docs/rules/padded-blocks)
 
     ```javascript
-    // bad
+    // ცუდია
     function bar() {
 
       console.log(foo);
 
     }
 
-    // bad
+    // ცუდია
     if (baz) {
 
       console.log(quux);
@@ -3090,7 +3099,7 @@ Other Style Guides
 
     }
 
-    // bad
+    // ცუდია
     class Foo {
 
       constructor(bar) {
@@ -3098,12 +3107,12 @@ Other Style Guides
       }
     }
 
-    // good
+    // კარგია
     function bar() {
       console.log(foo);
     }
 
-    // good
+    // კარგია
     if (baz) {
       console.log(quux);
     } else {
@@ -3113,10 +3122,11 @@ Other Style Guides
 
   <a name="whitespace--no-multiple-blanks"></a>
   - [19.9](#whitespace--no-multiple-blanks) Do not use multiple blank lines to pad your code. eslint: [`no-multiple-empty-lines`](https://eslint.org/docs/rules/no-multiple-empty-lines)
+  - [19.9](#whitespace--no-multiple-blanks) კოდის შესავსებად ნუ გამოიყენებთ რამდენიმე ცარიელ ხაზს. eslint: [`no-multiple-empty-lines`](https://eslint.org/docs/rules/no-multiple-empty-lines)
 
     <!-- markdownlint-disable MD012 -->
     ```javascript
-    // bad
+    // ცუდია
     class Person {
       constructor(fullName, email, birthday) {
         this.fullName = fullName;
@@ -3145,7 +3155,7 @@ Other Style Guides
       }
     }
 
-    // good
+    // კარგია
     class Person {
       constructor(fullName, email, birthday) {
         this.fullName = fullName;
@@ -3167,24 +3177,25 @@ Other Style Guides
 
   <a name="whitespace--in-parens"></a><a name="18.9"></a>
   - [19.10](#whitespace--in-parens) Do not add spaces inside parentheses. eslint: [`space-in-parens`](https://eslint.org/docs/rules/space-in-parens)
+  - [19.10](#whitespace--in-parens) მრგვალი ფრჩხილების შიგნით ინტერვალები ნუ დაამატებთ. eslint: [`space-in-parens`](https://eslint.org/docs/rules/space-in-parens)
 
     ```javascript
-    // bad
+    // ცუდია
     function bar( foo ) {
       return foo;
     }
 
-    // good
+    // კარგია
     function bar(foo) {
       return foo;
     }
 
-    // bad
+    // ცუდია
     if ( foo ) {
       console.log(foo);
     }
 
-    // good
+    // კარგია
     if (foo) {
       console.log(foo);
     }
@@ -3192,41 +3203,45 @@ Other Style Guides
 
   <a name="whitespace--in-brackets"></a><a name="18.10"></a>
   - [19.11](#whitespace--in-brackets) Do not add spaces inside brackets. eslint: [`array-bracket-spacing`](https://eslint.org/docs/rules/array-bracket-spacing)
+  - [19.11](#whitespace--in-brackets) კვადრატული ფრჩხილების შიგნით ინტერვალები ნუ დაამატებთ. eslint: [`array-bracket-spacing`](https://eslint.org/docs/rules/array-bracket-spacing)
 
     ```javascript
-    // bad
+    // ცუდია
     const foo = [ 1, 2, 3 ];
     console.log(foo[ 0 ]);
 
-    // good
+    // კარგია
     const foo = [1, 2, 3];
     console.log(foo[0]);
     ```
 
   <a name="whitespace--in-braces"></a><a name="18.11"></a>
   - [19.12](#whitespace--in-braces) Add spaces inside curly braces. eslint: [`object-curly-spacing`](https://eslint.org/docs/rules/object-curly-spacing)
+  - [19.12](#whitespace--in-braces) ფიგურული ფრჩხილების შიგნით ინტერვალები დაამატეთ. eslint: [`object-curly-spacing`](https://eslint.org/docs/rules/object-curly-spacing)
 
     ```javascript
-    // bad
+    // ცუდია
     const foo = {clark: 'kent'};
 
-    // good
+    // კარგია
     const foo = { clark: 'kent' };
     ```
 
   <a name="whitespace--max-len"></a><a name="18.12"></a>
   - [19.13](#whitespace--max-len) Avoid having lines of code that are longer than 100 characters (including whitespace). Note: per [above](#strings--line-length), long strings are exempt from this rule, and should not be broken up. eslint: [`max-len`](https://eslint.org/docs/rules/max-len)
+  - [19.13](#whitespace--max-len) მოერიდეთ კოდის ისეთ ხაზებს, რომელთა სიგრძე 100 სიმბოლოს აღემატება (ინტერვალების ჩათვლით). შენიშვნა: [ზემოთ](#strings--line-length) აღნიშნულის თანახმად, გრძელი სტრიქონები ამ წესს არ ექვემდებარება და ისინი არ უნდა დაიშალოს. eslint: [`max-len`](https://eslint.org/docs/rules/max-len)
 
     > Why? This ensures readability and maintainability.
+    > რატომ? ეს წაკითხვადობასა და მოვლა-პატრონობის სიმარტივეს უზრუნველყოფს.
 
     ```javascript
-    // bad
+    // ცუდია
     const foo = jsonData && jsonData.foo && jsonData.foo.bar && jsonData.foo.bar.baz && jsonData.foo.bar.baz.quux && jsonData.foo.bar.baz.quux.xyzzy;
 
-    // bad
+    // ცუდია
     $.ajax({ method: 'POST', url: 'https://airbnb.com/', data: { name: 'John' } }).done(() => console.log('Congratulations!')).fail(() => console.log('You have failed this city.'));
 
-    // good
+    // კარგია
     const foo = jsonData
       && jsonData.foo
       && jsonData.foo.bar
@@ -3234,7 +3249,7 @@ Other Style Guides
       && jsonData.foo.bar.baz.quux
       && jsonData.foo.bar.baz.quux.xyzzy;
 
-    // better
+    // უკეთესია
     const foo = jsonData
       ?.foo
       ?.bar
@@ -3242,7 +3257,7 @@ Other Style Guides
       ?.quux
       ?.xyzzy;
 
-    // good
+    // კარგია
     $.ajax({
       method: 'POST',
       url: 'https://airbnb.com/',
@@ -3254,41 +3269,44 @@ Other Style Guides
 
   <a name="whitespace--block-spacing"></a>
   - [19.14](#whitespace--block-spacing) Require consistent spacing inside an open block token and the next token on the same line. This rule also enforces consistent spacing inside a close block token and previous token on the same line. eslint: [`block-spacing`](https://eslint.org/docs/rules/block-spacing)
+  - [19.14](#whitespace--block-spacing) დაიცავით თანმიმდევრული ინტერვალები ბლოკის გამხსნელ ტოკენსა და იმავე ხაზზე მდებარე მომდევნო ტოკენს შორის. ეს წესი ბლოკის დამხურავ ტოკენსა და იმავე ხაზზე მდებარე წინა ტოკენს შორისაც თანმიმდევრულ ინტერვალებს მოითხოვს. eslint: [`block-spacing`](https://eslint.org/docs/rules/block-spacing)
 
     ```javascript
-    // bad
+    // ცუდია
     function foo() {return true;}
     if (foo) { bar = 0;}
 
-    // good
+    // კარგია
     function foo() { return true; }
     if (foo) { bar = 0; }
     ```
 
   <a name="whitespace--comma-spacing"></a>
   - [19.15](#whitespace--comma-spacing) Avoid spaces before commas and require a space after commas. eslint: [`comma-spacing`](https://eslint.org/docs/rules/comma-spacing)
+  - [19.15](#whitespace--comma-spacing) მოერიდეთ ინტერვალებს მძიმეების წინ და დაიცავით ინტერვალი მძიმეების შემდეგ. eslint: [`comma-spacing`](https://eslint.org/docs/rules/comma-spacing)
 
     ```javascript
-    // bad
+    // ცუდია
     const foo = 1,bar = 2;
     const arr = [1 , 2];
 
-    // good
+    // კარგია
     const foo = 1, bar = 2;
     const arr = [1, 2];
     ```
 
   <a name="whitespace--computed-property-spacing"></a>
   - [19.16](#whitespace--computed-property-spacing) Enforce spacing inside of computed property brackets. eslint: [`computed-property-spacing`](https://eslint.org/docs/rules/computed-property-spacing)
+  - [19.16](#whitespace--computed-property-spacing) დაიცავით ინტერვალების წესი გამოთვლადი თვისებების კვადრატული ფრჩხილების შიგნით. eslint: [`computed-property-spacing`](https://eslint.org/docs/rules/computed-property-spacing)
 
     ```javascript
-    // bad
+    // ცუდია
     obj[foo ]
     obj[ 'foo']
     const x = {[ b ]: a}
     obj[foo[ bar ]]
 
-    // good
+    // კარგია
     obj[foo]
     obj['foo']
     const x = { [b]: a }
@@ -3297,84 +3315,90 @@ Other Style Guides
 
   <a name="whitespace--func-call-spacing"></a>
   - [19.17](#whitespace--func-call-spacing) Avoid spaces between functions and their invocations. eslint: [`func-call-spacing`](https://eslint.org/docs/rules/func-call-spacing)
+  - [19.17](#whitespace--func-call-spacing) მოერიდეთ ინტერვალებს ფუნქციებსა და მათ გამოძახებებს შორის. eslint: [`func-call-spacing`](https://eslint.org/docs/rules/func-call-spacing)
 
     ```javascript
-    // bad
+    // ცუდია
     func ();
 
     func
     ();
 
-    // good
+    // კარგია
     func();
     ```
 
   <a name="whitespace--key-spacing"></a>
   - [19.18](#whitespace--key-spacing) Enforce spacing between keys and values in object literal properties. eslint: [`key-spacing`](https://eslint.org/docs/rules/key-spacing)
+  - [19.18](#whitespace--key-spacing) დაიცავით ინტერვალების წესი ობიექტის ლიტერალის თვისებებში გასაღებებსა და მნიშვნელობებს შორის. eslint: [`key-spacing`](https://eslint.org/docs/rules/key-spacing)
 
     ```javascript
-    // bad
+    // ცუდია
     const obj = { foo : 42 };
     const obj2 = { foo:42 };
 
-    // good
+    // კარგია
     const obj = { foo: 42 };
     ```
 
   <a name="whitespace--no-trailing-spaces"></a>
   - [19.19](#whitespace--no-trailing-spaces) Avoid trailing spaces at the end of lines. eslint: [`no-trailing-spaces`](https://eslint.org/docs/rules/no-trailing-spaces)
+  - [19.19](#whitespace--no-trailing-spaces) მოერიდეთ ხაზების ბოლოში დარჩენილ ინტერვალებს. eslint: [`no-trailing-spaces`](https://eslint.org/docs/rules/no-trailing-spaces)
 
   <a name="whitespace--no-multiple-empty-lines"></a>
   - [19.20](#whitespace--no-multiple-empty-lines) Avoid multiple empty lines, only allow one newline at the end of files, and avoid a newline at the beginning of files. eslint: [`no-multiple-empty-lines`](https://eslint.org/docs/rules/no-multiple-empty-lines)
+  - [19.20](#whitespace--no-multiple-empty-lines) მოერიდეთ რამდენიმე ცარიელ ხაზს, ფაილის ბოლოში მხოლოდ ერთი ახალი ხაზი დაუშვით და ფაილის დასაწყისში ახალ ხაზს მოერიდეთ. eslint: [`no-multiple-empty-lines`](https://eslint.org/docs/rules/no-multiple-empty-lines)
 
     <!-- markdownlint-disable MD012 -->
     ```javascript
-    // bad - multiple empty lines
+    // ცუდია — რამდენიმე ცარიელი ხაზი
     const x = 1;
 
 
     const y = 2;
 
-    // bad - 2+ newlines at end of file
+    // ცუდია — 2+ ახალი ხაზი ფაილის ბოლოში
     const x = 1;
     const y = 2;
 
 
-    // bad - 1+ newline(s) at beginning of file
+    // ცუდია — 1+ ახალი ხაზი ფაილის დასაწყისში
 
     const x = 1;
     const y = 2;
 
-    // good
+    // კარგია
     const x = 1;
     const y = 2;
 
     ```
     <!-- markdownlint-enable MD012 -->
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Commas
+## მძიმეები
 
   <a name="commas--leading-trailing"></a><a name="19.1"></a>
   - [20.1](#commas--leading-trailing) Leading commas: **Nope.** eslint: [`comma-style`](https://eslint.org/docs/rules/comma-style)
+  - [20.1](#commas--leading-trailing) წამყვანი მძიმეები: **არა.** eslint: [`comma-style`](https://eslint.org/docs/rules/comma-style)
 
     ```javascript
-    // bad
+    // ცუდია
     const story = [
         once
       , upon
       , aTime
     ];
 
-    // good
+    // კარგია
     const story = [
       once,
       upon,
       aTime,
     ];
 
-    // bad
+    // ცუდია
     const hero = {
         firstName: 'Ada'
       , lastName: 'Lovelace'
@@ -3382,7 +3406,7 @@ Other Style Guides
       , superPower: 'computers'
     };
 
-    // good
+    // კარგია
     const hero = {
       firstName: 'Ada',
       lastName: 'Lovelace',
@@ -3393,11 +3417,13 @@ Other Style Guides
 
   <a name="commas--dangling"></a><a name="19.2"></a>
   - [20.2](#commas--dangling) Additional trailing comma: **Yup.** eslint: [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle)
+  - [20.2](#commas--dangling) დამატებითი ბოლო მძიმე: **დიახ.** eslint: [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle)
 
     > Why? This leads to cleaner git diffs. Also, transpilers like Babel will remove the additional trailing comma in the transpiled code which means you don’t have to worry about the [trailing comma problem](https://github.com/airbnb/javascript/blob/es5-deprecated/es5/README.md#commas) in legacy browsers.
+    > რატომ? ეს git-ის უფრო სუფთა diff-ებს იძლევა. ამასთან, ტრანსპილერები, როგორიც Babel გახლავთ, დამატებით ბოლო მძიმეს ტრანსპილირებულ კოდში მოაცილებენ, რაც ნიშნავს, რომ მოძველებულ ბრაუზერებში [ბოლო მძიმის პრობლემაზე](https://github.com/airbnb/javascript/blob/es5-deprecated/es5/README.md#commas) წუხილი არ მოგიწევთ.
 
     ```diff
-    // bad - git diff without trailing comma
+    // ცუდია — git diff ბოლო მძიმის გარეშე
     const hero = {
          firstName: 'Florence',
     -    lastName: 'Nightingale'
@@ -3405,7 +3431,7 @@ Other Style Guides
     +    inventorOf: ['coxcomb chart', 'modern nursing']
     };
 
-    // good - git diff with trailing comma
+    // კარგია — git diff ბოლო მძიმით
     const hero = {
          firstName: 'Florence',
          lastName: 'Nightingale',
@@ -3414,7 +3440,7 @@ Other Style Guides
     ```
 
     ```javascript
-    // bad
+    // ცუდია
     const hero = {
       firstName: 'Dana',
       lastName: 'Scully'
@@ -3425,7 +3451,7 @@ Other Style Guides
       'Superman'
     ];
 
-    // good
+    // კარგია
     const hero = {
       firstName: 'Dana',
       lastName: 'Scully',
@@ -3436,25 +3462,27 @@ Other Style Guides
       'Superman',
     ];
 
-    // bad
+    // ცუდია
     function createHero(
       firstName,
       lastName,
       inventorOf
     ) {
       // does nothing
+      // არაფერს აკეთებს
     }
 
-    // good
+    // კარგია
     function createHero(
       firstName,
       lastName,
       inventorOf,
     ) {
       // does nothing
+      // არაფერს აკეთებს
     }
 
-    // good (note that a comma must not appear after a "rest" element)
+    // კარგია (გაითვალისწინეთ, რომ „rest“ ელემენტის შემდეგ მძიმე არ უნდა იდგეს)
     function createHero(
       firstName,
       lastName,
@@ -3462,23 +3490,24 @@ Other Style Guides
       ...heroArgs
     ) {
       // does nothing
+      // არაფერს აკეთებს
     }
 
-    // bad
+    // ცუდია
     createHero(
       firstName,
       lastName,
       inventorOf
     );
 
-    // good
+    // კარგია
     createHero(
       firstName,
       lastName,
       inventorOf,
     );
 
-    // good (note that a comma must not appear after a "rest" element)
+    // კარგია (გაითვალისწინეთ, რომ „rest“ ელემენტის შემდეგ მძიმე არ უნდა იდგეს)
     createHero(
       firstName,
       lastName,
@@ -3487,124 +3516,143 @@ Other Style Guides
     );
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Semicolons
+## წერტილ-მძიმეები
 
   <a name="semicolons--required"></a><a name="20.1"></a>
   - [21.1](#semicolons--required) **Yup.** eslint: [`semi`](https://eslint.org/docs/rules/semi)
+  - [21.1](#semicolons--required) **დიახ.** eslint: [`semi`](https://eslint.org/docs/rules/semi)
 
     > Why? When JavaScript encounters a line break without a semicolon, it uses a set of rules called [Automatic Semicolon Insertion](https://tc39.github.io/ecma262/#sec-automatic-semicolon-insertion) to determine whether it should regard that line break as the end of a statement, and (as the name implies) place a semicolon into your code before the line break if it thinks so. ASI contains a few eccentric behaviors, though, and your code will break if JavaScript misinterprets your line break. These rules will become more complicated as new features become a part of JavaScript. Explicitly terminating your statements and configuring your linter to catch missing semicolons will help prevent you from encountering issues.
+    > რატომ? როდესაც JavaScript ხაზის შეწყვეტას წერტილ-მძიმის გარეშე გადააწყდება, იგი წესების ერთობლიობას იყენებს, სახელწოდებით [წერტილ-მძიმის ავტომატური ჩასმა](https://tc39.github.io/ecma262/#sec-automatic-semicolon-insertion) (*Automatic Semicolon Insertion, ASI*), რათა დაადგინოს, უნდა ჩათვალოს თუ არა ხაზის ეს შეწყვეტა განცხადების დასასრულად, და (როგორც სახელწოდებიდანვე ჩანს), თუკი ასე მიიჩნევს, ხაზის შეწყვეტის წინ თქვენს კოდში წერტილ-მძიმე ჩასვას. თუმცა ASI რამდენიმე უცნაურ ქცევას შეიცავს და თქვენი კოდი გაფუჭდება, თუკი JavaScript ხაზის თქვენეულ შეწყვეტას არასწორად განმარტავს. ეს წესები კიდევ უფრო გართულდება, როდესაც ახალი შესაძლებლობები JavaScript-ის ნაწილი გახდება. თქვენი განცხადებების ცხადად დასრულება და თქვენი ლინტერის ისე კონფიგურირება, რომ მან გამოტოვებული წერტილ-მძიმეები დაიჭიროს, პრობლემების თავიდან აცილებაში დაგეხმარებათ.
 
     ```javascript
-    // bad - raises exception
+    // ცუდია — გამონაკლისს აგდებს
     const luke = {}
     const leia = {}
     [luke, leia].forEach((jedi) => jedi.father = 'vader')
 
-    // bad - raises exception
+    // ცუდია — გამონაკლისს აგდებს
     const reaction = "No! That’s impossible!"
     (async function meanwhileOnTheFalcon() {
       // handle `leia`, `lando`, `chewie`, `r2`, `c3p0`
+      // ვამუშავებთ `leia`-ს, `lando`-ს, `chewie`-ს, `r2`-სა და `c3p0`-ს
       // ...
     }())
 
-    // bad - returns `undefined` instead of the value on the next line - always happens when `return` is on a line by itself because of ASI!
+    // ცუდია — მომდევნო ხაზზე მდებარე მნიშვნელობის ნაცვლად `undefined`-ს აბრუნებს — ASI-ის გამო ეს ყოველთვის ხდება, როდესაც `return` ცალკე ხაზზე დგას!
     function foo() {
       return
         'search your feelings, you know it to be foo'
     }
 
-    // good
+    // კარგია
     const luke = {};
     const leia = {};
     [luke, leia].forEach((jedi) => {
       jedi.father = 'vader';
     });
 
-    // good
+    // კარგია
     const reaction = 'No! That’s impossible!';
     (async function meanwhileOnTheFalcon() {
       // handle `leia`, `lando`, `chewie`, `r2`, `c3p0`
+      // ვამუშავებთ `leia`-ს, `lando`-ს, `chewie`-ს, `r2`-სა და `c3p0`-ს
       // ...
     }());
 
-    // good
+    // კარგია
     function foo() {
       return 'search your feelings, you know it to be foo';
     }
     ```
 
     [Read more](https://stackoverflow.com/questions/7365172/semicolon-before-self-invoking-function/7365214#7365214).
+    [დაწვრილებით](https://stackoverflow.com/questions/7365172/semicolon-before-self-invoking-function/7365214#7365214).
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Type Casting & Coercion
+## ტიპების ცხადი და იძულებითი გარდაქმნა
 
   <a name="coercion--explicit"></a><a name="21.1"></a>
   - [22.1](#coercion--explicit) Perform type coercion at the beginning of the statement.
+  - [22.1](#coercion--explicit) ტიპის იძულებითი გარდაქმნა განცხადების დასაწყისში შეასრულეთ.
 
   <a name="coercion--strings"></a><a name="21.2"></a>
   - [22.2](#coercion--strings) Strings: eslint: [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
+  - [22.2](#coercion--strings) სტრიქონები: eslint: [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
 
     ```javascript
     // => this.reviewScore = 9;
 
-    // bad
+    // ცუდია
     const totalScore = new String(this.reviewScore); // typeof totalScore is "object" not "string"
+    // totalScore-ის typeof არის "object" და არა "string"
 
-    // bad
+    // ცუდია
     const totalScore = this.reviewScore + ''; // invokes this.reviewScore.valueOf()
+    // this.reviewScore.valueOf()-ს იძახებს
 
-    // bad
+    // ცუდია
     const totalScore = this.reviewScore.toString(); // isn’t guaranteed to return a string
+    // სტრიქონის დაბრუნება გარანტირებული არ არის
 
-    // good
+    // კარგია
     const totalScore = String(this.reviewScore);
     ```
 
   <a name="coercion--numbers"></a><a name="21.3"></a>
   - [22.3](#coercion--numbers) Numbers: Use `Number` for type casting and `parseInt` always with a radix for parsing strings. eslint: [`radix`](https://eslint.org/docs/rules/radix) [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
+  - [22.3](#coercion--numbers) რიცხვები: ტიპის ცხადი გარდაქმნისთვის გამოიყენეთ `Number`, ხოლო სტრიქონების დასამუშავებლად (*parsing*) — `parseInt`, მუდამ რიცხვითი სისტემის ფუძის მითითებით. eslint: [`radix`](https://eslint.org/docs/rules/radix) [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
 
     > Why? The `parseInt` function produces an integer value dictated by interpretation of the contents of the string argument according to the specified radix. Leading whitespace in string is ignored. If radix is `undefined` or `0`, it is assumed to be `10` except when the number begins with the character pairs `0x` or `0X`, in which case a radix of 16 is assumed. This differs from ECMAScript 3, which merely discouraged (but allowed) octal interpretation. Many implementations have not adopted this behavior as of 2013. And, because older browsers must be supported, always specify a radix.
+    > რატომ? `parseInt` ფუნქცია მთელ რიცხვს აბრუნებს, რომელიც სტრიქონული არგუმენტის შიგთავსის მითითებული ფუძის მიხედვით განმარტებით მიიღება. სტრიქონის დასაწყისში არსებული ინტერვალები უგულებელყოფილია. თუკი ფუძე `undefined` ან `0` გახლავთ, იგულისხმება `10`, გარდა იმ შემთხვევისა, როდესაც რიცხვი `0x` ან `0X` სიმბოლოთა წყვილით იწყება — მაშინ ფუძედ 16 იგულისხმება. ეს ECMAScript 3-ისგან განსხვავდება, რომელიც რვაობით განმარტებას მხოლოდ არ ურჩევდა (მაგრამ უშვებდა). 2013 წლის მდგომარეობით, ბევრ რეალიზაციას ეს ქცევა არ დაუნერგავს. და, რადგანაც ძველი ბრაუზერების მხარდაჭერა აუცილებელია, ფუძე ყოველთვის მიუთითეთ.
 
     ```javascript
     const inputValue = '4';
 
-    // bad
+    // ცუდია
     const val = new Number(inputValue);
 
-    // bad
+    // ცუდია
     const val = +inputValue;
 
-    // bad
+    // ცუდია
     const val = inputValue >> 0;
 
-    // bad
+    // ცუდია
     const val = parseInt(inputValue);
 
-    // good
+    // კარგია
     const val = Number(inputValue);
 
-    // good
+    // კარგია
     const val = parseInt(inputValue, 10);
     ```
 
   <a name="coercion--comment-deviations"></a><a name="21.4"></a>
   - [22.4](#coercion--comment-deviations) If for whatever reason you are doing something wild and `parseInt` is your bottleneck and need to use Bitshift for [performance reasons](https://web.archive.org/web/20200414205431/https://jsperf.com/coercion-vs-casting/3), leave a comment explaining why and what you’re doing.
+  - [22.4](#coercion--comment-deviations) თუკი რაიმე მიზეზით რაღაც უჩვეულოს აკეთებთ, `parseInt` თქვენს კოდს აფერხებს და [წარმადობის მოსაზრებებით](https://web.archive.org/web/20200414205431/https://jsperf.com/coercion-vs-casting/3) ბიტური წანაცვლების გამოყენება გჭირდებათ, დატოვეთ კომენტარი, სადაც განმარტავთ, თუ რატომ და რას აკეთებთ.
 
     ```javascript
-    // good
+    // კარგია
     /**
      * parseInt was the reason my code was slow.
      * Bitshifting the String to coerce it to a
      * Number made it a lot faster.
+     * ჩემი კოდის სინელის მიზეზი parseInt იყო.
+     * სტრიქონის Number-ად იძულებითი გარდაქმნა
+     * ბიტური წანაცვლებით მას ბევრად დააჩქარებს.
      */
     const val = inputValue >> 0;
     ```
 
   <a name="coercion--bitwise"></a><a name="21.5"></a>
   - [22.5](#coercion--bitwise) **Note:** Be careful when using bitshift operations. Numbers are represented as [64-bit values](https://es5.github.io/#x4.3.19), but bitshift operations always return a 32-bit integer ([source](https://es5.github.io/#x11.7)). Bitshift can lead to unexpected behavior for integer values larger than 32 bits. [Discussion](https://github.com/airbnb/javascript/issues/109). Largest signed 32-bit Int is 2,147,483,647:
+  - [22.5](#coercion--bitwise) **შენიშვნა:** ბიტური წანაცვლების ოპერაციების გამოყენებისას ფრთხილად იყავით. რიცხვები [64-ბიტიან მნიშვნელობებად](https://es5.github.io/#x4.3.19) არის წარმოდგენილი, ბიტური წანაცვლების ოპერაციები კი მუდამ 32-ბიტიან მთელ რიცხვს აბრუნებს ([წყარო](https://es5.github.io/#x11.7)). 32 ბიტზე დიდი მთელი რიცხვებისთვის ბიტურმა წანაცვლებამ შესაძლოა მოულოდნელი ქცევა გამოიწვიოს. [განხილვა](https://github.com/airbnb/javascript/issues/109). უდიდესი ნიშნიანი 32-ბიტიანი მთელი რიცხვი 2,147,483,647-ია:
 
     ```javascript
     2147483647 >> 0; // => 2147483647
@@ -3614,34 +3662,37 @@ Other Style Guides
 
   <a name="coercion--booleans"></a><a name="21.6"></a>
   - [22.6](#coercion--booleans) Booleans: eslint: [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
+  - [22.6](#coercion--booleans) ლოგიკური მნიშვნელობები: eslint: [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
 
     ```javascript
     const age = 0;
 
-    // bad
+    // ცუდია
     const hasAge = new Boolean(age);
 
-    // good
+    // კარგია
     const hasAge = Boolean(age);
 
-    // best
+    // საუკეთესოა
     const hasAge = !!age;
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Naming Conventions
+## სახელდების კანონზომიერებები
 
   <a name="naming--descriptive"></a><a name="22.1"></a>
   - [23.1](#naming--descriptive) Avoid single letter names. Be descriptive with your naming. eslint: [`id-length`](https://eslint.org/docs/rules/id-length)
+  - [23.1](#naming--descriptive) მოერიდეთ ერთასოიან სახელებს. სახელდებისას აღწერითი იყავით. eslint: [`id-length`](https://eslint.org/docs/rules/id-length)
 
     ```javascript
-    // bad
+    // ცუდია
     function q() {
       // ...
     }
 
-    // good
+    // კარგია
     function query() {
       // ...
     }
@@ -3649,23 +3700,25 @@ Other Style Guides
 
   <a name="naming--camelCase"></a><a name="22.2"></a>
   - [23.2](#naming--camelCase) Use camelCase when naming objects, functions, and instances. eslint: [`camelcase`](https://eslint.org/docs/rules/camelcase)
+  - [23.2](#naming--camelCase) ობიექტების, ფუნქციებისა და ინსტანციების სახელდებისას გამოიყენეთ camelCase (ე.წ. „კუზიანი ნოტაცია“). eslint: [`camelcase`](https://eslint.org/docs/rules/camelcase)
 
     ```javascript
-    // bad
+    // ცუდია
     const OBJEcttsssss = {};
     const this_is_my_object = {};
     function c() {}
 
-    // good
+    // კარგია
     const thisIsMyObject = {};
     function thisIsMyFunction() {}
     ```
 
   <a name="naming--PascalCase"></a><a name="22.3"></a>
   - [23.3](#naming--PascalCase) Use PascalCase only when naming constructors or classes. eslint: [`new-cap`](https://eslint.org/docs/rules/new-cap)
+  - [23.3](#naming--PascalCase) PascalCase („პასკალის ნოტაცია“) მხოლოდ კონსტრუქტორების ან კლასების სახელდებისას გამოიყენეთ. eslint: [`new-cap`](https://eslint.org/docs/rules/new-cap)
 
     ```javascript
-    // bad
+    // ცუდია
     function user(options) {
       this.name = options.name;
     }
@@ -3674,7 +3727,7 @@ Other Style Guides
       name: 'nope',
     });
 
-    // good
+    // კარგია
     class User {
       constructor(options) {
         this.name = options.name;
@@ -3688,29 +3741,33 @@ Other Style Guides
 
   <a name="naming--leading-underscore"></a><a name="22.4"></a>
   - [23.4](#naming--leading-underscore) Do not use trailing or leading underscores. eslint: [`no-underscore-dangle`](https://eslint.org/docs/rules/no-underscore-dangle)
+  - [23.4](#naming--leading-underscore) ნუ გამოიყენებთ ქვეტირეს სახელის ბოლოში ან დასაწყისში. eslint: [`no-underscore-dangle`](https://eslint.org/docs/rules/no-underscore-dangle)
 
     > Why? JavaScript does not have the concept of privacy in terms of properties or methods. Although a leading underscore is a common convention to mean “private”, in fact, these properties are fully public, and as such, are part of your public API contract. This convention might lead developers to wrongly think that a change won’t count as breaking, or that tests aren’t needed. tl;dr: if you want something to be “private”, it must not be observably present.
+    > რატომ? JavaScript-ს თვისებებისა თუ მეთოდების პრივატულობის კონცეფცია არ გააჩნია. მართალია, სახელის დასაწყისში ქვეტირე „პრივატულის“ აღსანიშნავად გავრცელებული კანონზომიერებაა, სინამდვილეში ეს თვისებები სრულიად საჯაროა და, შესაბამისად, თქვენი საჯარო API-კონტრაქტის ნაწილს წარმოადგენს. ამ კანონზომიერებამ დეველოპერები შესაძლოა შეცდომაში შეიყვანოს და აფიქრებინოს, რომ ცვლილება თავსებადობის დარღვევად არ ჩაითვლება, ან რომ ტესტები საჭირო არ არის. მოკლედ რომ ვთქვათ: თუკი გსურთ, რომ რაღაც „პრივატული“ იყოს, იგი შესამჩნევად არ უნდა არსებობდეს.
 
     ```javascript
-    // bad
+    // ცუდია
     this.__firstName__ = 'Panda';
     this.firstName_ = 'Panda';
     this._firstName = 'Panda';
 
-    // good
+    // კარგია
     this.firstName = 'Panda';
 
-    // good, in environments where WeakMaps are available
+    // კარგია იმ გარემოებში, სადაც WeakMap-ები ხელმისაწვდომია
     // see https://compat-table.github.io/compat-table/es6/#test-WeakMap
+    // იხილეთ https://compat-table.github.io/compat-table/es6/#test-WeakMap
     const firstNames = new WeakMap();
     firstNames.set(this, 'Panda');
     ```
 
   <a name="naming--self-this"></a><a name="22.5"></a>
   - [23.5](#naming--self-this) Don’t save references to `this`. Use arrow functions or [Function#bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).
+  - [23.5](#naming--self-this) ნუ შეინახავთ `this`-ზე მითითებებს. გამოიყენეთ ისრისებური ფუნქციები ან [Function#bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).
 
     ```javascript
-    // bad
+    // ცუდია
     function foo() {
       const self = this;
       return function () {
@@ -3718,7 +3775,7 @@ Other Style Guides
       };
     }
 
-    // bad
+    // ცუდია
     function foo() {
       const that = this;
       return function () {
@@ -3726,7 +3783,7 @@ Other Style Guides
       };
     }
 
-    // good
+    // კარგია
     function foo() {
       return () => {
         console.log(this);
@@ -3736,42 +3793,60 @@ Other Style Guides
 
   <a name="naming--filename-matches-export"></a><a name="22.6"></a>
   - [23.6](#naming--filename-matches-export) A base filename should exactly match the name of its default export.
+  - [23.6](#naming--filename-matches-export) ფაილის ძირითადი სახელი ზუსტად უნდა ემთხვეოდეს მისი ნაგულისხმევი ექსპორტის სახელს.
 
     ```javascript
     // file 1 contents
+    // 1-ლი ფაილის შიგთავსი
     class CheckBox {
       // ...
     }
     export default CheckBox;
 
     // file 2 contents
+    // მე-2 ფაილის შიგთავსი
     export default function fortyTwo() { return 42; }
 
     // file 3 contents
+    // მე-3 ფაილის შიგთავსი
     export default function insideDirectory() {}
 
     // in some other file
-    // bad
+    // რომელიმე სხვა ფაილში
+    // ცუდია
     import CheckBox from './checkBox'; // PascalCase import/export, camelCase filename
+    // PascalCase იმპორტი/ექსპორტი, camelCase ფაილის სახელი
     import FortyTwo from './FortyTwo'; // PascalCase import/filename, camelCase export
+    // PascalCase იმპორტი/ფაილის სახელი, camelCase ექსპორტი
     import InsideDirectory from './InsideDirectory'; // PascalCase import/filename, camelCase export
+    // PascalCase იმპორტი/ფაილის სახელი, camelCase ექსპორტი
 
-    // bad
+    // ცუდია
     import CheckBox from './check_box'; // PascalCase import/export, snake_case filename
+    // PascalCase იმპორტი/ექსპორტი, snake_case ფაილის სახელი
     import forty_two from './forty_two'; // snake_case import/filename, camelCase export
+    // snake_case იმპორტი/ფაილის სახელი, camelCase ექსპორტი
     import inside_directory from './inside_directory'; // snake_case import, camelCase export
+    // snake_case იმპორტი, camelCase ექსპორტი
     import index from './inside_directory/index'; // requiring the index file explicitly
+    // index ფაილის ცხადად მოთხოვნა
     import insideDirectory from './insideDirectory/index'; // requiring the index file explicitly
+    // index ფაილის ცხადად მოთხოვნა
 
-    // good
+    // კარგია
     import CheckBox from './CheckBox'; // PascalCase export/import/filename
+    // PascalCase ექსპორტი/იმპორტი/ფაილის სახელი
     import fortyTwo from './fortyTwo'; // camelCase export/import/filename
+    // camelCase ექსპორტი/იმპორტი/ფაილის სახელი
     import insideDirectory from './insideDirectory'; // camelCase export/import/directory name/implicit "index"
+    // camelCase ექსპორტი/იმპორტი/დირექტორიის სახელი/ნაგულისხმევი "index"
     // ^ supports both insideDirectory.js and insideDirectory/index.js
+    // ^ მხარს უჭერს როგორც insideDirectory.js-ს, ისე insideDirectory/index.js-ს
     ```
 
   <a name="naming--camelCase-default-export"></a><a name="22.7"></a>
   - [23.7](#naming--camelCase-default-export) Use camelCase when you export-default a function. Your filename should be identical to your function’s name.
+  - [23.7](#naming--camelCase-default-export) როდესაც ფუნქციას ნაგულისხმევად აექსპორტებთ, გამოიყენეთ camelCase. თქვენი ფაილის სახელი თქვენი ფუნქციის სახელის იდენტური უნდა იყოს.
 
     ```javascript
     function makeStyleGuide() {
@@ -3783,6 +3858,7 @@ Other Style Guides
 
   <a name="naming--PascalCase-singleton"></a><a name="22.8"></a>
   - [23.8](#naming--PascalCase-singleton) Use PascalCase when you export a constructor / class / singleton / function library / bare object.
+  - [23.8](#naming--PascalCase-singleton) როდესაც კონსტრუქტორს / კლასს / სინგლტონს[^39] / ფუნქციების ბიბლიოთეკას / შიშველ ობიექტს აექსპორტებთ, გამოიყენეთ PascalCase.
 
     ```javascript
     const AirbnbStyleGuide = {
@@ -3795,35 +3871,37 @@ Other Style Guides
 
   <a name="naming--Acronyms-and-Initialisms"></a>
   - [23.9](#naming--Acronyms-and-Initialisms) Acronyms and initialisms should always be all uppercased, or all lowercased.
+  - [23.9](#naming--Acronyms-and-Initialisms) აკრონიმები და ინიციალური აბრევიატურები მუდამ ან მთლიანად დიდი ასოებით უნდა ჩაიწეროს, ან მთლიანად პატარათი.
 
     > Why? Names are for readability, not to appease a computer algorithm.
+    > რატომ? სახელები წაკითხვადობისთვისაა და არა კომპიუტერული ალგორითმის დასაკმაყოფილებლად.
 
     ```javascript
-    // bad
+    // ცუდია
     import SmsContainer from './containers/SmsContainer';
 
-    // bad
+    // ცუდია
     const HttpRequests = [
       // ...
     ];
 
-    // good
+    // კარგია
     import SMSContainer from './containers/SMSContainer';
 
-    // good
+    // კარგია
     const HTTPRequests = [
       // ...
     ];
 
-    // also good
+    // ასევე კარგია
     const httpRequests = [
       // ...
     ];
 
-    // best
+    // საუკეთესოა
     import TextMessageContainer from './containers/TextMessageContainer';
 
-    // best
+    // საუკეთესოა
     const requests = [
       // ...
     ];
@@ -3831,54 +3909,61 @@ Other Style Guides
 
   <a name="naming--uppercase"></a>
   - [23.10](#naming--uppercase) You may optionally uppercase a constant only if it (1) is exported, (2) is a `const` (it can not be reassigned), and (3) the programmer can trust it (and its nested properties) to never change.
+  - [23.10](#naming--uppercase) კონსტანტა დიდი ასოებით სურვილისამებრ მხოლოდ მაშინ შეგიძლიათ ჩაწეროთ, თუკი იგი (1) ექსპორტირებულია, (2) `const`-ია (მისი ხელახლა მინიჭება შეუძლებელია) და (3) პროგრამისტს შეუძლია ენდოს, რომ იგი (და მისი ჩადგმული თვისებები) არასოდეს შეიცვლება.
 
     > Why? This is an additional tool to assist in situations where the programmer would be unsure if a variable might ever change. UPPERCASE_VARIABLES are letting the programmer know that they can trust the variable (and its properties) not to change.
+    > რატომ? ეს დამატებითი ხელსაწყოა იმ სიტუაციებისთვის, როდესაც პროგრამისტი დარწმუნებული ვერ იქნებოდა, შეიცვლება თუ არა ოდესმე ცვლადი. UPPERCASE_VARIABLES პროგრამისტს აუწყებს, რომ მას შეუძლია ენდოს, რომ ცვლადი (და მისი თვისებები) არ შეიცვლება.
     - What about all `const` variables? - This is unnecessary, so uppercasing should not be used for constants within a file. It should be used for exported constants however.
+    - რაც შეეხება ყველა `const` ცვლადს? - ეს ზედმეტია, ამიტომ ფაილის შიგნით არსებული კონსტანტებისთვის დიდი ასოები არ უნდა გამოიყენებოდეს. თუმცა ისინი ექსპორტირებული კონსტანტებისთვის უნდა გამოიყენებოდეს.
     - What about exported objects? - Uppercase at the top level of export (e.g. `EXPORTED_OBJECT.key`) and maintain that all nested properties do not change.
+    - რაც შეეხება ექსპორტირებულ ობიექტებს? - დიდი ასოებით ექსპორტის ზედა დონეზე ჩაწერეთ (მაგ.: `EXPORTED_OBJECT.key`) და უზრუნველყავით, რომ არც ერთი ჩადგმული თვისება არ იცვლებოდეს.
 
     ```javascript
-    // bad
+    // ცუდია
     const PRIVATE_VARIABLE = 'should not be unnecessarily uppercased within a file';
 
-    // bad
+    // ცუდია
     export const THING_TO_BE_CHANGED = 'should obviously not be uppercased';
 
-    // bad
+    // ცუდია
     export let REASSIGNABLE_VARIABLE = 'do not use let with uppercase variables';
 
     // ---
 
-    // allowed but does not supply semantic value
+    // დასაშვებია, მაგრამ სემანტიკურ ღირებულებას არ მატებს
     export const apiKey = 'SOMEKEY';
 
-    // better in most cases
+    // უმეტეს შემთხვევაში უკეთესია
     export const API_KEY = 'SOMEKEY';
 
     // ---
 
-    // bad - unnecessarily uppercases key while adding no semantic value
+    // ცუდია — გასაღებს უმიზეზოდ დიდი ასოებით წერს და სემანტიკურ ღირებულებას არ მატებს
     export const MAPPING = {
       KEY: 'value'
     };
 
-    // good
+    // კარგია
     export const MAPPING = {
       key: 'value',
     };
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Accessors
+## აქსესორები
 
   <a name="accessors--not-required"></a><a name="23.1"></a>
   - [24.1](#accessors--not-required) Accessor functions for properties are not required.
+  - [24.1](#accessors--not-required) თვისებებისთვის აქსესორული ფუნქციები[^40] სავალდებულო არ არის.
 
   <a name="accessors--no-getters-setters"></a><a name="23.2"></a>
   - [24.2](#accessors--no-getters-setters) Do not use JavaScript getters/setters as they cause unexpected side effects and are harder to test, maintain, and reason about. Instead, if you do make accessor functions, use `getVal()` and `setVal('hello')`.
+  - [24.2](#accessors--no-getters-setters) ნუ გამოიყენებთ JavaScript-ის getter-ებსა და setter-ებს, რადგანაც ისინი მოულოდნელ გვერდით ეფექტებს იწვევენ და მათი ტესტირება, მოვლა და გააზრება უფრო რთულია. ამის ნაცვლად, თუკი აქსესორულ ფუნქციებს მაინც ქმნით, გამოიყენეთ `getVal()` და `setVal('hello')`.
 
     ```javascript
-    // bad
+    // ცუდია
     class Dragon {
       get age() {
         // ...
@@ -3889,7 +3974,7 @@ Other Style Guides
       }
     }
 
-    // good
+    // კარგია
     class Dragon {
       getAge() {
         // ...
@@ -3903,14 +3988,15 @@ Other Style Guides
 
   <a name="accessors--boolean-prefix"></a><a name="23.3"></a>
   - [24.3](#accessors--boolean-prefix) If the property/method is a `boolean`, use `isVal()` or `hasVal()`.
+  - [24.3](#accessors--boolean-prefix) თუკი თვისება/მეთოდი `boolean`-ია, გამოიყენეთ `isVal()` ან `hasVal()`.
 
     ```javascript
-    // bad
+    // ცუდია
     if (!dragon.age()) {
       return false;
     }
 
-    // good
+    // კარგია
     if (!dragon.hasAge()) {
       return false;
     }
@@ -3918,6 +4004,7 @@ Other Style Guides
 
   <a name="accessors--consistent"></a><a name="23.4"></a>
   - [24.4](#accessors--consistent) It’s okay to create `get()` and `set()` functions, but be consistent.
+  - [24.4](#accessors--consistent) `get()` და `set()` ფუნქციების შექმნა დასაშვებია, ოღონდ თანმიმდევრული იყავით.
 
     ```javascript
     class Jedi {
@@ -3936,60 +4023,67 @@ Other Style Guides
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Events
+## მოვლენები
 
   <a name="events--hash"></a><a name="24.1"></a>
   - [25.1](#events--hash) When attaching data payloads to events (whether DOM events or something more proprietary like Backbone events), pass an object literal (also known as a "hash") instead of a raw value. This allows a subsequent contributor to add more data to the event payload without finding and updating every handler for the event. For example, instead of:
+  - [25.1](#events--hash) როდესაც მოვლენებს მონაცემთა პაკეტს ურთავთ (იქნება ეს DOM-ის მოვლენები თუ რაიმე უფრო სპეციფიკური, როგორიც Backbone-ის მოვლენებია), ნედლი მნიშვნელობის ნაცვლად ობიექტის ლიტერალი (იგივე „ჰეში“) გადაეცით. ეს მომდევნო კონტრიბუტორს საშუალებას აძლევს, მოვლენის მონაცემთა პაკეტს მეტი მონაცემი დაუმატოს ისე, რომ ამ მოვლენის ყოველი დამმუშავებლის მოძებნა და განახლება არ მოუწიოს. მაგალითად, ნაცვლად:
 
     ```javascript
-    // bad
+    // ცუდია
     $(this).trigger('listingUpdated', listing.id);
 
     // ...
 
     $(this).on('listingUpdated', (e, listingID) => {
       // do something with listingID
+      // რაღაცას ვაკეთებთ listingID-ით
     });
     ```
 
     prefer:
+    უმჯობესია:
 
     ```javascript
-    // good
+    // კარგია
     $(this).trigger('listingUpdated', { listingID: listing.id });
 
     // ...
 
     $(this).on('listingUpdated', (e, data) => {
       // do something with data.listingID
+      // რაღაცას ვაკეთებთ data.listingID-ით
     });
     ```
 
-  **[⬆ back to top](#table-of-contents)**
+  **[⬆ ზემოთ](#table-of-contents)**
 
 ## jQuery
 
   <a name="jquery--dollar-prefix"></a><a name="25.1"></a>
   - [26.1](#jquery--dollar-prefix) Prefix jQuery object variables with a `$`.
+  - [26.1](#jquery--dollar-prefix) jQuery ობიექტების ცვლადებს `$` თავსართი დაურთეთ.
 
     ```javascript
-    // bad
+    // ცუდია
     const sidebar = $('.sidebar');
 
-    // good
+    // კარგია
     const $sidebar = $('.sidebar');
 
-    // good
+    // კარგია
     const $sidebarBtn = $('.sidebar-btn');
     ```
 
   <a name="jquery--cache"></a><a name="25.2"></a>
   - [26.2](#jquery--cache) Cache jQuery lookups.
+  - [26.2](#jquery--cache) მოახდინეთ jQuery-ის ძიებების ქეშირება.
 
     ```javascript
-    // bad
+    // ცუდია
     function setSidebar() {
       $('.sidebar').hide();
 
@@ -4000,7 +4094,7 @@ Other Style Guides
       });
     }
 
-    // good
+    // კარგია
     function setSidebar() {
       const $sidebar = $('.sidebar');
       $sidebar.hide();
@@ -4015,82 +4109,110 @@ Other Style Guides
 
   <a name="jquery--queries"></a><a name="25.3"></a>
   - [26.3](#jquery--queries) For DOM queries use Cascading `$('.sidebar ul')` or parent > child `$('.sidebar > ul')`. [jsPerf](https://web.archive.org/web/20200414183810/https://jsperf.com/jquery-find-vs-context-sel/16)
+  - [26.3](#jquery--queries) DOM-ის მოთხოვნებისთვის გამოიყენეთ კასკადური `$('.sidebar ul')` ან მშობელი > შვილი `$('.sidebar > ul')` ფორმა. [jsPerf](https://web.archive.org/web/20200414183810/https://jsperf.com/jquery-find-vs-context-sel/16)
 
   <a name="jquery--find"></a><a name="25.4"></a>
   - [26.4](#jquery--find) Use `find` with scoped jQuery object queries.
+  - [26.4](#jquery--find) მოქმედების არეალით შეზღუდულ jQuery ობიექტების მოთხოვნებთან ერთად გამოიყენეთ `find`.
 
     ```javascript
-    // bad
+    // ცუდია
     $('ul', '.sidebar').hide();
 
-    // bad
+    // ცუდია
     $('.sidebar').find('ul').hide();
 
-    // good
+    // კარგია
     $('.sidebar ul').hide();
 
-    // good
+    // კარგია
     $('.sidebar > ul').hide();
 
-    // good
+    // კარგია
     $sidebar.find('ul').hide();
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## ECMAScript 5 Compatibility
+## ECMAScript 5-თან თავსებადობა
 
   <a name="es5-compat--kangax"></a><a name="26.1"></a>
   - [27.1](#es5-compat--kangax) Refer to [Kangax](https://twitter.com/kangax/)’s ES5 [compatibility table](https://compat-table.github.io/compat-table/es5/).
+  - [27.1](#es5-compat--kangax) იხილეთ [Kangax](https://twitter.com/kangax/)-ის ES5 [თავსებადობის ცხრილი](https://compat-table.github.io/compat-table/es5/).
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 <a name="ecmascript-6-styles"></a>
 ## ECMAScript 6+ (ES 2015+) Styles
+## ECMAScript 6+ (ES 2015+) სტილები
 
   <a name="es6-styles"></a><a name="27.1"></a>
   - [28.1](#es6-styles) This is a collection of links to the various ES6+ features.
+  - [28.1](#es6-styles) ეს ES6+-ის სხვადასხვა შესაძლებლობის ბმულების კრებულია.
 
 1. [Arrow Functions](#arrow-functions)
+1. [ისრისებური ფუნქციები](#arrow-functions)
 1. [Classes](#classes--constructors)
+1. [კლასები](#classes--constructors)
 1. [Object Shorthand](#es6-object-shorthand)
+1. [ობიექტების შემოკლებული ჩანაწერი](#es6-object-shorthand)
 1. [Object Concise](#es6-object-concise)
+1. [ობიექტების ლაკონიური ჩანაწერი](#es6-object-concise)
 1. [Object Computed Properties](#es6-computed-properties)
+1. [ობიექტების გამოთვლადი თვისებები](#es6-computed-properties)
 1. [Template Strings](#es6-template-literals)
+1. [შაბლონური სტრიქონები](#es6-template-literals)
 1. [Destructuring](#destructuring)
+1. [დესტრუქტურიზაცია](#destructuring)
 1. [Default Parameters](#es6-default-parameters)
+1. [ნაგულისხმევი პარამეტრები](#es6-default-parameters)
 1. [Rest](#es6-rest)
+1. [Rest-პარამეტრი](#es6-rest)
 1. [Array Spreads](#es6-array-spreads)
+1. [მასივების გაშლა](#es6-array-spreads)
 1. [Let and Const](#references)
+1. [Let და Const](#references)
 1. [Exponentiation Operator](#es2016-properties--exponentiation-operator)
+1. [ახარისხების ოპერატორი](#es2016-properties--exponentiation-operator)
 1. [Iterators and Generators](#iterators-and-generators)
+1. [იტერატორები და გენერატორები](#iterators-and-generators)
 1. [Modules](#modules)
+1. [მოდულები](#modules)
 
   <a name="tc39-proposals"></a>
   - [28.2](#tc39-proposals) Do not use [TC39 proposals](https://github.com/tc39/proposals) that have not reached stage 3.
+  - [28.2](#tc39-proposals) ნუ გამოიყენებთ [TC39-ის წინადადებებს](https://github.com/tc39/proposals), რომლებსაც მე-3 ეტაპისთვის არ მიუღწევია.
 
     > Why? [They are not finalized](https://tc39.github.io/process-document/), and they are subject to change or to be withdrawn entirely. We want to use JavaScript, and proposals are not JavaScript yet.
+    > რატომ? [ისინი საბოლოოდ დამტკიცებული არ არის](https://tc39.github.io/process-document/) და შესაძლოა შეიცვალოს ან საერთოდ გაუქმდეს. ჩვენ JavaScript-ის გამოყენება გვსურს, წინადადებები კი ჯერ JavaScript არ არის.
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Standard Library
+## სტანდარტული ბიბლიოთეკა
 
   The [Standard Library](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects)
   contains utilities that are functionally broken but remain for legacy reasons.
+  [სტანდარტული ბიბლიოთეკა](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects)
+  შეიცავს უტილიტებს, რომლებიც ფუნქციურად გაუმართავია, თუმცა მემკვიდრეობითი მიზეზების გამო კვლავ არსებობს.
 
   <a name="standard-library--isnan"></a>
   - [29.1](#standard-library--isnan) Use `Number.isNaN` instead of global `isNaN`.
     eslint: [`no-restricted-globals`](https://eslint.org/docs/rules/no-restricted-globals)
+  - [29.1](#standard-library--isnan) გლობალური `isNaN`-ის ნაცვლად გამოიყენეთ `Number.isNaN`. eslint: [`no-restricted-globals`](https://eslint.org/docs/rules/no-restricted-globals)
 
     > Why? The global `isNaN` coerces non-numbers to numbers, returning true for anything that coerces to NaN.
     > If this behavior is desired, make it explicit.
+    > რატომ? გლობალური `isNaN` არარიცხვებს იძულებით რიცხვებად გარდაქმნის და true-ს აბრუნებს ყველაფრისთვის, რაც NaN-ად გარდაიქმნება.
+    > თუკი ეს ქცევა სასურველია, იგი ცხადი გახადეთ.
 
     ```javascript
-    // bad
+    // ცუდია
     isNaN('1.2'); // false
     isNaN('1.2.3'); // true
 
-    // good
+    // კარგია
     Number.isNaN('1.2.3'); // false
     Number.isNaN(Number('1.2.3')); // true
     ```
@@ -4098,25 +4220,30 @@ Other Style Guides
   <a name="standard-library--isfinite"></a>
   - [29.2](#standard-library--isfinite) Use `Number.isFinite` instead of global `isFinite`.
     eslint: [`no-restricted-globals`](https://eslint.org/docs/rules/no-restricted-globals)
+  - [29.2](#standard-library--isfinite) გლობალური `isFinite`-ის ნაცვლად გამოიყენეთ `Number.isFinite`. eslint: [`no-restricted-globals`](https://eslint.org/docs/rules/no-restricted-globals)
 
     > Why? The global `isFinite` coerces non-numbers to numbers, returning true for anything that coerces to a finite number.
     > If this behavior is desired, make it explicit.
+    > რატომ? გლობალური `isFinite` არარიცხვებს იძულებით რიცხვებად გარდაქმნის და true-ს აბრუნებს ყველაფრისთვის, რაც სასრულ რიცხვად გარდაიქმნება.
+    > თუკი ეს ქცევა სასურველია, იგი ცხადი გახადეთ.
 
     ```javascript
-    // bad
+    // ცუდია
     isFinite('2e3'); // true
 
-    // good
+    // კარგია
     Number.isFinite('2e3'); // false
     Number.isFinite(parseInt('2e3', 10)); // true
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Testing
+## ტესტირება
 
   <a name="testing--yup"></a><a name="28.1"></a>
   - [30.1](#testing--yup) **Yup.**
+  - [30.1](#testing--yup) **დიახ.**
 
     ```javascript
     function foo() {
@@ -4126,16 +4253,24 @@ Other Style Guides
 
   <a name="testing--for-real"></a><a name="28.2"></a>
   - [30.2](#testing--for-real) **No, but seriously**:
+  - [30.2](#testing--for-real) **არა, მაგრამ სერიოზულად**:
     - Whichever testing framework you use, you should be writing tests!
+    - რომელი სატესტო ფრეიმვორკიც არ უნდა გამოიყენოთ, ტესტები უნდა წეროთ!
     - Strive to write many small pure functions, and minimize where mutations occur.
+    - ეცადეთ, ბევრი მცირე ზომის სუფთა ფუნქცია დაწეროთ და მუტაციების ადგილები მინიმუმამდე დაიყვანოთ.
     - Be cautious about stubs and mocks - they can make your tests more brittle.
+    - ფრთხილად იყავით stub-ებთან და mock-ებთან — მათ თქვენი ტესტები უფრო მყიფე შეიძლება გახადონ.
     - We primarily use [`mocha`](https://www.npmjs.com/package/mocha) and [`jest`](https://www.npmjs.com/package/jest) at Airbnb. [`tape`](https://www.npmjs.com/package/tape) is also used occasionally for small, separate modules.
+    - Airbnb-ში ჩვენ, ძირითადად, [`mocha`](https://www.npmjs.com/package/mocha)-სა და [`jest`](https://www.npmjs.com/package/jest)-ს ვიყენებთ. მცირე, ცალკეული მოდულებისთვის ზოგჯერ [`tape`](https://www.npmjs.com/package/tape)-საც ვიყენებთ.
     - 100% test coverage is a good goal to strive for, even if it’s not always practical to reach it.
+    - ტესტებით 100%-იანი დაფარვა კარგი მიზანია, რომლისკენაც უნდა ისწრაფოდეთ, თუნდაც მისი მიღწევა ყოველთვის პრაქტიკული არ იყოს.
     - Whenever you fix a bug, *write a regression test*. A bug fixed without a regression test is almost certainly going to break again in the future.
+    - ყოველთვის, როდესაც ხარვეზს ასწორებთ, *რეგრესიული ტესტი დაწერეთ*. რეგრესიული ტესტის გარეშე გასწორებული ხარვეზი მომავალში თითქმის აუცილებლად კვლავ გამოვლინდება.
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Performance
+## წარმადობა
 
   - [On Layout & Web Performance](https://www.kellegous.com/j/2013/01/26/layout-performance/)
   - [String vs Array Concat](https://web.archive.org/web/20200414200857/https://jsperf.com/string-vs-array-concat/2)
@@ -4146,12 +4281,15 @@ Other Style Guides
   - [Long String Concatenation](https://web.archive.org/web/20200414203914/https://jsperf.com/ya-string-concat/38)
   - [Are JavaScript functions like `map()`, `reduce()`, and `filter()` optimized for traversing arrays?](https://www.quora.com/JavaScript-programming-language-Are-Javascript-functions-like-map-reduce-and-filter-already-optimized-for-traversing-array/answer/Quildreen-Motta)
   - Loading...
+  - იტვირთება...
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Resources
+## რესურსები
 
 **Learning ES6+**
+**ES6+-ის შესწავლა**
 
   - [Latest ECMA spec](https://tc39.github.io/ecma262/)
   - [ExploringJS](https://exploringjs.com/)
@@ -4160,17 +4298,21 @@ Other Style Guides
   - [JavaScript Roadmap](https://roadmap.sh/javascript)
 
 **Read This**
+**წაიკითხეთ**
 
   - [Standard ECMA-262](https://www.ecma-international.org/ecma-262/6.0/index.html)
 
 **Tools**
+**ხელსაწყოები**
 
   - Code Style Linters
+  - კოდის სტილის ლინტერები
     - [ESlint](https://eslint.org/) - [Airbnb Style .eslintrc](https://github.com/airbnb/javascript/blob/master/linters/.eslintrc)
     - [JSHint](https://jshint.com/) - [Airbnb Style .jshintrc](https://github.com/airbnb/javascript/blob/master/linters/.jshintrc)
   - Neutrino Preset - [@neutrinojs/airbnb](https://neutrinojs.org/packages/airbnb/)
 
 **Other Style Guides**
+**სტილის სხვა სახელმძღვანელოები**
 
   - [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
   - [Google JavaScript Style Guide (Old)](https://google.github.io/styleguide/javascriptguide.xml)
@@ -4179,6 +4321,7 @@ Other Style Guides
   - [StandardJS](https://standardjs.com)
 
 **Other Styles**
+**სხვა სტილები**
 
   - [Naming this in nested functions](https://gist.github.com/cjohansen/4135065) - Christian Johansen
   - [Conditional Callbacks](https://github.com/airbnb/javascript/issues/52) - Ross Allen
@@ -4186,6 +4329,7 @@ Other Style Guides
   - [Multiple var statements in JavaScript, not superfluous](https://benalman.com/news/2012/05/multiple-var-statements-javascript/) - Ben Alman
 
 **Further Reading**
+**დამატებითი საკითხავი**
 
   - [Understanding JavaScript Closures](https://javascriptweblog.wordpress.com/2010/10/25/understanding-javascript-closures/) - Angus Croll
   - [Basic JavaScript for the impatient programmer](https://www.2ality.com/2013/06/basic-javascript.html) - Dr. Axel Rauschmayer
@@ -4194,6 +4338,7 @@ Other Style Guides
   - [Frontend Guidelines](https://github.com/bendc/frontend-guidelines) - Benjamin De Cock
 
 **Books**
+**წიგნები**
 
   - [JavaScript: The Good Parts](https://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742) - Douglas Crockford
   - [JavaScript Patterns](https://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752) - Stoyan Stefanov
@@ -4213,6 +4358,7 @@ Other Style Guides
   - [You Don’t Know JS: ES6 & Beyond](https://shop.oreilly.com/product/0636920033769.do) - Kyle Simpson
 
 **Blogs**
+**ბლოგები**
 
   - [JavaScript Weekly](https://javascriptweekly.com/)
   - [JavaScript, JavaScript...](https://javascriptweblog.wordpress.com/)
@@ -4225,15 +4371,18 @@ Other Style Guides
   - [nettuts](https://code.tutsplus.com/?s=javascript)
 
 **Podcasts**
+**პოდკასტები**
 
   - [JavaScript Air](https://javascriptair.com/)
   - [JavaScript Jabber](https://devchat.tv/js-jabber/)
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## In the Wild
+## პრაქტიკაში
 
   This is a list of organizations that are using this style guide. Send us a pull request and we'll add you to the list.
+  ეს იმ ორგანიზაციების სიაა, რომლებიც ამ სტილის სახელმძღვანელოს იყენებენ. გამოგვიგზავნეთ pull request და სიაში დაგამატებთ.
 
   - **123erfasst**: [123erfasst/javascript](https://github.com/123erfasst/javascript)
   - **4Catalyzer**: [4Catalyzer/javascript](https://github.com/4Catalyzer/javascript)
@@ -4323,11 +4472,13 @@ Other Style Guides
   - **Zit Software**: [zit-software/javascript](https://github.com/zit-software/javascript)
   - **ZocDoc**: [ZocDoc/javascript](https://github.com/ZocDoc/javascript)
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Translation
+## თარგმანი
 
   This style guide is also available in other languages:
+  ეს სტილის სახელმძღვანელო სხვა ენებზეც არის ხელმისაწვდომი:
 
   - ![br](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Brazil.png) **Brazilian Portuguese**: [armoucar/javascript-style-guide](https://github.com/armoucar/javascript-style-guide)
   - ![bg](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Bulgaria.png) **Bulgarian**: [borislavvv/javascript](https://github.com/borislavvv/javascript)
@@ -4347,18 +4498,25 @@ Other Style Guides
   - ![vn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Vietnam.png) **Vietnam**: [dangkyokhoang/javascript-style-guide](https://github.com/dangkyokhoang/javascript-style-guide)
 
 ## The JavaScript Style Guide Guide
+## JavaScript-ის სტილის სახელმძღვანელოს სახელმძღვანელო
 
   - [Reference](https://github.com/airbnb/javascript/wiki/The-JavaScript-Style-Guide-Guide)
+  - [ცნობარი](https://github.com/airbnb/javascript/wiki/The-JavaScript-Style-Guide-Guide)
 
 ## Chat With Us About JavaScript
+## დაგველაპარაკეთ JavaScript-ზე
 
   - Find us on [gitter](https://gitter.im/airbnb/javascript).
+  - გვიპოვეთ [gitter](https://gitter.im/airbnb/javascript)-ზე.
 
 ## Contributors
+## კონტრიბუტორები
 
   - [View Contributors](https://github.com/airbnb/javascript/graphs/contributors)
+  - [კონტრიბუტორების ნახვა](https://github.com/airbnb/javascript/graphs/contributors)
 
 ## License
+## ლიცენზია
 
 (The MIT License)
 
@@ -4383,11 +4541,13 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Amendments
+## შესწორებები
 
 We encourage you to fork this guide and change the rules to fit your team’s style guide. Below, you may list some amendments to the style guide. This allows you to periodically update your style guide without having to deal with merge conflicts.
+გირჩევთ, ეს სახელმძღვანელო დააფორკოთ და წესები თქვენი გუნდის სტილის სახელმძღვანელოს შესაბამისად შეცვალოთ. ქვემოთ შეგიძლიათ ჩამოთვალოთ სტილის სახელმძღვანელოს ზოგიერთი შესწორება. ეს საშუალებას გაძლევთ, თქვენი სტილის სახელმძღვანელო პერიოდულად განაახლოთ ისე, რომ შერწყმის კონფლიქტებთან საქმე არ გქონდეთ.
 
 # };
 
@@ -4469,3 +4629,7 @@ We encourage you to fork this guide and change the rules to fit your team’s st
     ოპერატორი სამი ოპერანდით: პირობა ? მნიშვნელობა1 : მნიშვნელობა2 (ინგლ.: Ternary operator)
 [^38]:
     ლოგიკური ოპერატორი `??`, რომელიც null-ისა და undefined-ის შემთხვევაში სათადარიგო მნიშვნელობის დაბრუნების საშუალებას იძლევა (ინგლ.: Nullish coalescing operator)
+[^39]:
+    დაპროექტების შაბლონი, რომელიც კლასის მხოლოდ ერთი ინსტანციის არსებობას უზრუნველყოფს (ინგლ.: Singleton)
+[^40]:
+    ობიექტის თვისებაზე წვდომის ფუნქცია — getter ან setter (ინგლ.: Accessor)
