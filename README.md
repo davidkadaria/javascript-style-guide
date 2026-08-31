@@ -2495,27 +2495,29 @@ Other Style Guides
 **[⬆ ზემოთ](#table-of-contents)**
 
 ## Blocks
+## ბლოკები
 
   <a name="blocks--braces"></a><a name="16.1"></a>
   - [16.1](#blocks--braces) Use braces with all multiline blocks. eslint: [`nonblock-statement-body-position`](https://eslint.org/docs/rules/nonblock-statement-body-position)
+  - [16.1](#blocks--braces) ფიგურული ფრჩხილები ყველა მრავალხაზიან ბლოკთან ერთად გამოიყენეთ. eslint: [`nonblock-statement-body-position`](https://eslint.org/docs/rules/nonblock-statement-body-position)
 
     ```javascript
-    // bad
+    // ცუდია
     if (test)
       return false;
 
-    // good
+    // კარგია
     if (test) return false;
 
-    // good
+    // კარგია
     if (test) {
       return false;
     }
 
-    // bad
+    // ცუდია
     function foo() { return false; }
 
-    // good
+    // კარგია
     function bar() {
       return false;
     }
@@ -2523,9 +2525,10 @@ Other Style Guides
 
   <a name="blocks--cuddled-elses"></a><a name="16.2"></a>
   - [16.2](#blocks--cuddled-elses) If you’re using multiline blocks with `if` and `else`, put `else` on the same line as your `if` block’s closing brace. eslint: [`brace-style`](https://eslint.org/docs/rules/brace-style)
+  - [16.2](#blocks--cuddled-elses) თუკი მრავალხაზიან ბლოკებს `if`-სა და `else`-თან ერთად იყენებთ, `else` იმავე ხაზზე მოათავსეთ, რომელზეც თქვენი `if` ბლოკის დამხურავი ფიგურული ფრჩხილია. eslint: [`brace-style`](https://eslint.org/docs/rules/brace-style)
 
     ```javascript
-    // bad
+    // ცუდია
     if (test) {
       thing1();
       thing2();
@@ -2534,7 +2537,7 @@ Other Style Guides
       thing3();
     }
 
-    // good
+    // კარგია
     if (test) {
       thing1();
       thing2();
@@ -2545,9 +2548,10 @@ Other Style Guides
 
   <a name="blocks--no-else-return"></a><a name="16.3"></a>
   - [16.3](#blocks--no-else-return) If an `if` block always executes a `return` statement, the subsequent `else` block is unnecessary. A `return` in an `else if` block following an `if` block that contains a `return` can be separated into multiple `if` blocks. eslint: [`no-else-return`](https://eslint.org/docs/rules/no-else-return)
+  - [16.3](#blocks--no-else-return) თუკი `if` ბლოკი ყოველთვის ასრულებს `return` განცხადებას, მომდევნო `else` ბლოკი ზედმეტია. `return`-ის შემცველი `if` ბლოკის მომდევნო `else if` ბლოკში მოთავსებული `return` შესაძლოა რამდენიმე `if` ბლოკად გაიყოს. eslint: [`no-else-return`](https://eslint.org/docs/rules/no-else-return)
 
     ```javascript
-    // bad
+    // ცუდია
     function foo() {
       if (x) {
         return x;
@@ -2556,7 +2560,7 @@ Other Style Guides
       }
     }
 
-    // bad
+    // ცუდია
     function cats() {
       if (x) {
         return x;
@@ -2565,7 +2569,7 @@ Other Style Guides
       }
     }
 
-    // bad
+    // ცუდია
     function dogs() {
       if (x) {
         return x;
@@ -2576,7 +2580,7 @@ Other Style Guides
       }
     }
 
-    // good
+    // კარგია
     function foo() {
       if (x) {
         return x;
@@ -2585,7 +2589,7 @@ Other Style Guides
       return y;
     }
 
-    // good
+    // კარგია
     function cats() {
       if (x) {
         return x;
@@ -2596,7 +2600,7 @@ Other Style Guides
       }
     }
 
-    // good
+    // კარგია
     function dogs(x) {
       if (x) {
         if (z) {
@@ -2608,7 +2612,7 @@ Other Style Guides
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ ზემოთ](#table-of-contents)**
 
 ## Control Statements
 
